@@ -1,0 +1,22 @@
+body {
+	height:200px;
+	overflow-y:scroll;
+	margin:0;
+	padding:0;
+	Background: #E6E6E6;
+}
+svg { 
+	position:fixed;
+	top:0;
+	left:0;
+	height:100%;
+	width:100%;
+}
+@font-face {
+	font-family: segoeUI;
+	src: url("segoe/segoeui.ttf");
+}
+.welcomeBox {
+	font-family: segoeUI;
+	font-size: 12px;
+}

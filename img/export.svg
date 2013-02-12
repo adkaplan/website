@@ -1,0 +1,93 @@
+<g id="gallery">
+	<g class="galleryItem" onclick="galleryClick(evt)">
+		<rect id="fill" x="71.5" y="146.5" fill="#C8C8C8" width="98" height="98"/>
+		<path id="border" fill="#787878" d="M168.5,243.5h-96v-96h96V243.5 M170.5,245.5v-100h-100v100H170.5L170.5,245.5z"/>
+	</g>
+
+	<g class="galleryItem" onclick="galleryClick(evt)">
+		<rect id="fill" x="191.5" y="146.5" fill="#C8C8C8" width="98" height="98"/>
+		<path id="border" fill="#787878" d="M288.5,243.5h-96v-96h96V243.5 M290.5,245.5v-100h-100v100H290.5L290.5,245.5z"/>
+	</g>
+
+	<g class="galleryItem" onclick="galleryClick(evt)">
+		<rect id="fill" x="311.5" y="146.5" fill="#C8C8C8" width="98" height="98"/>
+		<path id="border" fill="#787878" d="M408.5,243.5h-96v-96h96V243.5 M410.5,245.5v-100h-100v100H410.5L410.5,245.5z"/>
+	</g>
+
+	<g class="galleryItem" onclick="galleryClick(evt)">
+		<rect id="fill" x="431.5" y="146.5" fill="#C8C8C8" width="98" height="98"/>
+		<path id="border" fill="#787878" d="M528.5,243.5h-96v-96h96V243.5 M530.5,245.5v-100h-100v100H530.5L530.5,245.5z"/>
+	</g>
+
+
+	<g class="galleryItem" onclick="galleryClick(evt)">
+		<rect id="fill" x="71.5" y="266.5" fill="#C8C8C8" width="98" height="98"/>
+		<path id="border" fill="#787878" d="M168.5,363.5h-96v-96h96V363.5 M170.5,365.5v-100h-100v100H170.5L170.5,365.5z"/>
+	</g>
+	<g class="galleryItem" onclick="galleryClick(evt)">
+		<rect id="fill" x="191.5" y="266.5" fill="#C8C8C8" width="98" height="98"/>
+		<path id="border" fill="#787878" d="M288.5,363.5h-96v-96h96V363.5 M290.5,365.5v-100h-100v100H290.5L290.5,365.5z"/>
+	</g>
+	<g class="galleryItem" onclick="galleryClick(evt)">
+		<rect id="fill" x="311.5" y="266.5" fill="#C8C8C8" width="98" height="98"/>
+		<path id="border" fill="#787878" d="M408.5,363.5h-96v-96h96V363.5 M410.5,365.5v-100h-100v100H410.5L410.5,365.5z"/>
+	</g>
+	<g class="galleryItem" onclick="galleryClick(evt)">
+		<rect id="fill" x="431.5" y="266.5" fill="#C8C8C8" width="98" height="98"/>
+		<path id="border" fill="#787878" d="M528.5,363.5h-96v-96h96V363.5 M530.5,365.5v-100h-100v100H530.5L530.5,365.5z"/>
+	</g>
+
+
+	<g class="galleryItem" onclick="galleryClick(evt)">
+		<rect id="fill" x="71.5" y="386.5" fill="#C8C8C8" width="98" height="98"/>
+		<path id="border" fill="#787878" d="M168.5,483.5h-96v-96h96V483.5 M170.5,485.5v-100h-100v100H170.5L170.5,485.5z"/>
+	</g>
+	<g class="galleryItem" onclick="galleryClick(evt)">
+		<rect id="fill" x="191.5" y="386.5" fill="#C8C8C8" width="98" height="98"/>
+		<path id="border" fill="#787878" d="M288.5,483.5h-96v-96h96V483.5 M290.5,485.5v-100h-100v100H290.5L290.5,485.5z"/>
+	</g>
+	<g class="galleryItem" onclick="galleryClick(evt)">
+		<rect id="fill" x="311.5" y="386.5" fill="#C8C8C8" width="98" height="98"/>
+		<path id="border" fill="#787878" d="M408.5,483.5h-96v-96h96V483.5 M410.5,485.5v-100h-100v100H410.5L410.5,485.5z"/>
+	</g>
+	<g class="galleryItem" onclick="galleryClick(evt)">
+		<rect id="fill" x="431.5" y="386.5" fill="#C8C8C8" width="98" height="98"/>
+		<path id="border" fill="#787878" d="M528.5,483.5h-96v-96h96V483.5 M530.5,485.5v-100h-100v100H530.5L530.5,485.5z"/>
+	</g>
+
+
+	<g class="galleryItem" onclick="galleryClick(evt)">
+		<rect id="fill" x="71.5" y="506.5" fill="#C8C8C8" width="98" height="98"/>
+		<path id="border" fill="#787878" d="M168.5,603.5h-96v-96h96V603.5 M170.5,605.5v-100h-100v100H170.5L170.5,605.5z"/>
+	</g>
+	<g class="galleryItem" onclick="galleryClick(evt)">
+		<rect id="fill" x="191.5" y="506.5" fill="#C8C8C8" width="98" height="98"/>
+		<path id="border" fill="#787878" d="M288.5,603.5h-96v-96h96V603.5 M290.5,605.5v-100h-100v100H290.5L290.5,605.5z"/>
+	</g>
+	<g class="galleryItem" onclick="galleryClick(evt)">
+		<rect id="fill" x="311.5" y="506.5" fill="#C8C8C8" width="98" height="98"/>
+		<path id="border" fill="#787878" d="M408.5,603.5h-96v-96h96V603.5 M410.5,605.5v-100h-100v100H410.5L410.5,605.5z"/>
+	</g>
+	<g class="galleryItem" onclick="galleryClick(evt)">
+		<rect id="fill" x="431.5" y="506.5" fill="#C8C8C8" width="98" height="98"/>
+		<path id="border" fill="#787878" d="M528.5,603.5h-96v-96h96V603.5 M530.5,605.5v-100h-100v100H530.5L530.5,605.5z"/>
+	</g>
+
+
+	<g class="galleryItem" onclick="galleryClick(evt)">
+		<rect id="fill" x="71.5" y="626.5" fill="#C8C8C8" width="98" height="98"/>
+		<path id="border" fill="#787878" d="M168.5,723.5h-96v-96h96V723.5 M170.5,725.5v-100h-100v100H170.5L170.5,725.5z"/>
+	</g>
+	<g class="galleryItem" onclick="galleryClick(evt)">
+		<rect id="fill" x="191.5" y="626.5" fill="#C8C8C8" width="98" height="98"/>
+		<path id="border" fill="#787878" d="M288.5,723.5h-96v-96h96V723.5 M290.5,725.5v-100h-100v100H290.5L290.5,725.5z"/>
+	</g>
+	<g class="galleryItem" onclick="galleryClick(evt)">
+		<rect id="fill" x="311.5" y="626.5" fill="#C8C8C8" width="98" height="98"/>
+		<path id="border" fill="#787878" d="M408.5,723.5h-96v-96h96V723.5 M410.5,725.5v-100h-100v100H410.5L410.5,725.5z"/>
+	</g>
+	<g class="galleryItem" onclick="galleryClick(evt)">
+		<rect id="fill" x="431.5" y="626.5" fill="#C8C8C8" width="98" height="98"/>
+		<path id="border" fill="#787878" d="M528.5,723.5h-96v-96h96V723.5 M530.5,725.5v-100h-100v100H530.5L530.5,725.5z"/>
+	</g>
+</g>
