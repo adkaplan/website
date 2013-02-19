@@ -1,4 +1,5 @@
 function enterProject() {
+    //Test
     $("#project").removeAttr("display");
     $("#project").animate({svgOpacity:'1'},{duration:300});
     $("#galleryTop").attr("clip-path","url(#projectClip)");
