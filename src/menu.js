@@ -2,7 +2,7 @@ function menuOut() {
 	if(jq.length == 0) {
 		jq.push($(".paths"));
 		jq.push($(".circles"));
-		
+
 		$(".galleryItem").each( function() {
 			jq.push($(this));
 		});
@@ -19,7 +19,7 @@ function menuOut() {
 			$('#aBox #fill').animate({svgFill:'#000000'},{duration:200});
 			$('#aBox #border').animate({svgFill:'#B4B4B4'},{duration:200});
 			$('#blogBack').animate({svgOpacity:'0'},{duration:300, complete:(function() {$(this).attr("display","none");})});
-			
+
 			obj.animate(
 							{svgTransform:'translate(0,-185)'},
 							{
@@ -100,14 +100,14 @@ function menuIn() {
 								easing:'easeOutQuad'
 							}
 						);
-			
+
 		break;
 
 	}
 	jq.shift();
 }
 
-function blog
+// function blog
 function menuMouseIn(tLine) {
 	if(tLine.state != "mouseShow" || tLine.jq.length == 0) {
 		if(tLine.jq.length == 0) tLine.state = "rest";
@@ -146,9 +146,9 @@ function menuMouseIn(tLine) {
 			if(gallery) fadeColumnOut(tLine.colNum)
 			else {
 				$("#blogBack").stop(true);
-				$("#blogBack").animate({svgOpacity:.3});
+				$("#blogBack").animate({svgOpacity:.1});
 			}
-			var travelDist = parseInt(obj.attr('traveldist'));	
+			var travelDist = parseInt(obj.attr('traveldist'));
 			obj.attr("transform", 'translate(0,-' + travelDist + ')');
 			obj.attr("opacity", 1);
 			obj.animate(
@@ -254,7 +254,7 @@ function colorOn(tLine) { //Transition between mouseIn and exitMenu(global)
 						);
 		break;
 		case 3: //Popouttext Slide
-			var travelDist = parseInt(obj.attr('traveldist'));	
+			var travelDist = parseInt(obj.attr('traveldist'));
 			obj.animate(
 							{svgTransform:'translate(0,-' + travelDist + ')'},
 							{

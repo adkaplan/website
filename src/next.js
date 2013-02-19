@@ -20,6 +20,12 @@ function next(String) {
 			case "goHome":
 				goHome();
 			break;
+			case "enterProject":
+				enterProject();
+			break;
+			case "exitProject":
+				exitProject();
+			break;
 		}
 	} else { //Local animation
 		var tLine = arguments[0];

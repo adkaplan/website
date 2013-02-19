@@ -12,7 +12,7 @@
 	<script type="text/javascript" src='./src/external/jquery.svganim.js'></script>
 	<script type="text/javascript" src='./src/external/jquery.svgdom.js'></script>
 	<script type="text/javascript" src='./src/external/jquery.easing.1.3.js'></script>
-	
+
 	<!-- src js -->
 	<script type="text/javascript" src='./src/helper.js'></script>
 	<script type="text/javascript" src='./src/next.js'></script>
@@ -20,10 +20,12 @@
 	<script type="text/javascript" src='./src/gallery.js'></script>
 	<script type="text/javascript" src='./src/header.js'></script>
 	<script type="text/javascript" src='./src/global.js'></script>
+	<script type="text/javascript" src='./src/project.js'></script>
+
 	<!-- import content.csv -->
 	<script type="text/javascript">
 	var content = [];
-		<?php		
+		<?php
 		$row = 0;
 		if (($handle = fopen("content.csv", "r")) !== FALSE) {
 			while (($data =	 fgetcsv($handle, 2000, ",")) !== FALSE) {

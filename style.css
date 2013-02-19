@@ -5,7 +5,7 @@ body {
 	padding:0;
 	Background: #E6E6E6;
 }
-svg { 
+svg {
 	position:fixed;
 	top:0;
 	left:0;
@@ -16,7 +16,23 @@ svg {
 	font-family: segoeUI;
 	src: url("segoe/segoeui.ttf");
 }
-.welcomeBox {
+@font-face {
+	font-family: segoeUIl;
+	src: url("segoe/segoeuil.ttf");
+}
+#welcomeBox {
 	font-family: segoeUI;
 	font-size: 12px;
+}
+#projectTitle {
+	font-family: segoeUI;
+	font-size: 20px;
+}
+#projectBrief {
+	font-family: segoeUIl;
+	font-size: 13px;
+	letter-spacing: 2px;
+}
+.clipBoxRect {
+	/*display: none;*/
 }

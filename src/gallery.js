@@ -1,4 +1,5 @@
 function galleryIn() {
+
 	//Should could be called galleryLoad
 	gallery = true;
 	//Also handles distributing content from cStack into gallery objects
@@ -7,7 +8,7 @@ function galleryIn() {
 		state = "rest"
 		return;
 	}
-	if(jq.length == 0) { 
+	if(jq.length == 0) {
 		state = "rest"
 		return;
 	}
@@ -41,28 +42,29 @@ function galleryIn() {
 		var content = cStack[0];
 		obj.removeAttr("display");
 		obj.attr("opacity",0);
-		obj.data("content", content);
+		obj.data("content", content[0]);
+		obj.attr("contentID",content[1]);
 		obj.find('#scale').attr("transform",'scale(.8)');
 		var tempImage = new Image();
 		tempImage.onLoad = (new function() {
 								obj.find('image').removeAttr("display");
-							obj.find('image').attr('xlink:href',"img/tooltip/" + content[3]);
+							obj.find('image').attr('xlink:href',"img/tooltip/" + content[0][3]);
 								obj.animate(
-											{svgOpacity:'1'},	
+											{svgOpacity:'1'},
 											{
 												duration:150,
 												easing:'easeInCirc'
 											}
 										);
 								obj.find('#scale').animate(
-										{svgTransform:'scale(1)'},	
+										{svgTransform:'scale(1)'},
 										{
 											duration:300,
 											easing:'easeInSine'
 										}
 									);
 							});
-		tempImage.src = "img/tooltip/" + content[3];
+		tempImage.src = "img/tooltip/" + content[0][3];
 		setTimeout(next,50);
 		cStack.shift();
 		jq.shift();
@@ -75,7 +77,12 @@ function galleryOut() {
 			$(this).stop(true);
 			$(this).animate({svgOpacity:0},{duration:200, complete:(function() {$(this).attr("display","none");})});
 	})
-	setTimeout((function() {state = "rest";}),200);
+	if(project) {
+		state = "enterProject";
+		setTimeout((function() {next();}),200);
+	} else {
+		setTimeout((function() {state = "rest";}),200);
+	}
 }
 
 function galleryMouseIn(tLine) {
@@ -134,4 +141,7 @@ function galleryMouseOut(tLine) {
 		break;
 	}
 	tLine.jq.shift();
+}
+function projectIn() {
+
 }
