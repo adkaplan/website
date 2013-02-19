@@ -5,6 +5,8 @@ function initialize() {
 //OBJECT DEFINITIONS
 //
 
+//Add a comment
+
 function scroll() {
 	offset = project ? 385 : 0;
 	$("#gallery").attr("transform","translate(0," + (-window.pageYOffset/3 + offset) + ")");
