@@ -1,12 +1,14 @@
-function initialize() {	
-	window.onscroll = function() {
-		$("#gallery").attr("transform","translate(0,-" + window.pageYOffset/3 + ")");
-	}
+function initialize() {
+	window.onscroll = scroll;
 }
-
 //
 //OBJECT DEFINITIONS
 //
+
+function scroll() {
+	offset = project ? 385 : 0;
+	$("#gallery").attr("transform","translate(0," + (-window.pageYOffset/3 + offset) + ")");
+}
 
 function Timeline(group, state) {
 	this.group = group;
@@ -19,7 +21,6 @@ function Timeline(group, state) {
 //
 
 //jq is a global timeline used for transitions. Global animations prevent local animations (local objects can't change state)
-
 //Global States: enterGallery, exitGallery
 
 //m,d,sTime are individual timelines for each object
@@ -32,8 +33,11 @@ var cStack = [];
 var state = "rest";
 
 var gallery = false;
+var project = false;
 var cMenu;
 var cCategory;
+var cProject;
+var cImage;
 
 var mTime = new Timeline("menu", "rest");
 mTime.colNum = 2;
@@ -59,13 +63,13 @@ $(function() {
 			$(this).attr('transform','rotate(0,'+xCenter+','+yCenter+')')
 		}
 	);
-	
+
 	$(".galleryItem").each(
 		function() {
 			$(this).attr("opacity","0");
 			$(this).attr("display","none");
 			$(this).data("tline",new Timeline("gallery","rest"));
-		}	
+		}
 	);
 	var rTotal = 0;
 	var rCount = 0;
@@ -95,7 +99,7 @@ $(function() {
 		function() {
 			var n = parseFloat($(this).attr("r"))/rMax;
 			var hex = Number(parseInt(n*60) + 170).toString(16).toUpperCase();
-  			hex = hex.length == 1 ? "0" + hex : hex; 
+  			hex = hex.length == 1 ? "0" + hex : hex;
 			$(this).attr('fill','#' + hex + hex + hex);
 		}
 	);
@@ -105,7 +109,7 @@ $(function() {
 		}
 	);
 	$('#aFullText').attr('opacity','1');
-	
+
 	//
 	//EVENTS
 	//
@@ -203,7 +207,7 @@ $(function() {
 					next(tLine); //start the animation
 				}
 			}
-			
+
 		}
 	});
 
@@ -301,5 +305,10 @@ function menuClick(evt) {
 
 function galleryClick(evt) {
 	state = "exitGallery";
+	project = true;
+	obj = $(evt.target).closest(".galleryItem");
+	console.log($(obj));
+	cProject = $(obj).data("content")[0];
+	cImage = $(obj).data("content")[4];
 	next();
 }
