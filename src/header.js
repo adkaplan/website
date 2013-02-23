@@ -1,16 +1,15 @@
 function initialize() {
-	window.onscroll = scroll;
+	window.onscroll = function() {
+		$("#gallery").attr("transform","translate(0,-" + window.pageYOffset/3 + ")");
+	}
+}
+
+function scroll() {
+
 }
 //
 //OBJECT DEFINITIONS
 //
-
-//Add a comment
-
-function scroll() {
-	offset = project ? 385 : 0;
-	$("#gallery").attr("transform","translate(0," + (-window.pageYOffset/3 + offset) + ")");
-}
 
 function Timeline(group, state) {
 	this.group = group;
@@ -23,6 +22,7 @@ function Timeline(group, state) {
 //
 
 //jq is a global timeline used for transitions. Global animations prevent local animations (local objects can't change state)
+
 //Global States: enterGallery, exitGallery
 
 //m,d,sTime are individual timelines for each object
@@ -35,12 +35,16 @@ var jq;
 var state = "rest";
 
 var gallery = false;
+<<<<<<< Updated upstream
 var project = false;
 
 
+=======
+>>>>>>> Stashed changes
 var cMenu;
 var cStack = [];
 var cCategory;
+<<<<<<< Updated upstream
 var cProject;
 var cImage;
 var cWidth;
@@ -48,13 +52,13 @@ var cHeight;
 var cCaption;
 var cDate;
 var cTitle;
+=======
+>>>>>>> Stashed changes
 
 var mTime = new Timeline("menu", "rest");
 mTime.colNum = 2;
-
 var dTime = new Timeline("menu", "rest");
 dTime.colNum = 3;
-
 var sTime = new Timeline("menu", "rest");
 sTime.colNum = 4;
 
@@ -137,9 +141,6 @@ $(function() {
 				case "sDark":
 					var tLine = sTime;
 				break;
-				case "aBox":
-					return;
-				break;
 			}
 			if(tLine.state == "rest" || tLine.state == "mouseHide") {
 				var current = tLine.jq.length;
@@ -174,9 +175,6 @@ $(function() {
 				break;
 				case "sDark":
 					var tLine = sTime;
-				break;
-				case "aBox":
-					return;
 				break;
 			}
 			if(tLine.state == "rest" || tLine.state == "mouseShow") {
@@ -255,14 +253,10 @@ function menuClick(evt) {
 				$("#" + cCategory + "Dark").find("#box"),
 				$("#" + cCategory + "Dark").find("#box")
 			]
-			//
-			if(!clicked.attr('id')=="aBox") {
-				//SHIT IF STATEMENT
-				$(".galleryItem").each(function() {
-					$(this).stop(true);
-					$(this).animate({svgOpacity:0},{duration:200, complete:(function() {$(this).attr("display","none");})});
-				})
-			}
+			$(".galleryItem").each(function() {
+				$(this).stop(true);
+				$(this).animate({svgOpacity:0},{duration:200, complete:(function() {$(this).attr("display","none");})});
+			})
 			//Animate the next color coming in
 			cMenu.state = "deselect";
 			next(cMenu);
@@ -283,18 +277,7 @@ function menuClick(evt) {
 				cStack = filterBy(content,"S",1);
 				cCategory = "s"
 			break;
-			case "aBox": //Build goHome
-				if(gallery) {
-					jq = [];
-					$(".galleryItem").each(function() {
-						jq.push(this);
-					});
-					cMenu = null;
-					state = "goHome";
-					return;
-				}
 		}
-
 		cMenu = tLine;
 		var current = tLine.jq.length;
 		tLine.jq = [
@@ -311,9 +294,11 @@ function menuClick(evt) {
 					$("#sDark"),
 					$("#dDark")
 				 ]
+
 }
 
 function galleryClick(evt) {
+<<<<<<< Updated upstream
 	//cContent should only be set from here
 	obj = $(evt.target).closest(".galleryItem");
 	cContent = $(obj).data("content");
@@ -332,4 +317,8 @@ function galleryClick(evt) {
 		cImage = cContent[4];
 		next();
 	}
+=======
+	state = "exitGallery";
+	next();
+>>>>>>> Stashed changes
 }
