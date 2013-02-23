@@ -1,0 +1,943 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"size",
+				"font-size"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "src/header.js",
+			"settings":
+			{
+				"buffer_size": 7181,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "diff --git a/src/header.js b/src/header.js\nindex 8fbcae0..65a18db 100644\n--- a/src/header.js\n+++ b/src/header.js\n@@ -1,16 +1,15 @@\n function initialize() {\n-   window.onscroll = scroll;\n+   window.onscroll = function() {\n+       $(\"#gallery\").attr(\"transform\",\"translate(0,-\" + window.pageYOffset/3 + \")\");\n+   }\n }\n-//\n-//OBJECT DEFINITIONS\n-//\n-\n-//Add a comment\n \n function scroll() {\n-   offset = project ? 385 : 0;\n-   $(\"#gallery\").attr(\"transform\",\"translate(0,\" + (-window.pageYOffset/3 + offset) + \")\");\n+\n }\n+//\n+//OBJECT DEFINITIONS\n+//\n \n function Timeline(group, state) {\n    this.group = group;\n@@ -23,6 +22,7 @@ function Timeline(group, state) {\n //\n \n //jq is a global timeline used for transitions. Global animations prevent local animations (local objects can't change state)\n+\n //Global States: enterGallery, exitGallery\n \n //m,d,sTime are individual timelines for each object\n@@ -35,18 +35,13 @@ var cStack = [];\n var state = \"rest\";\n \n var gallery = false;\n-var project = false;\n var cMenu;\n var cCategory;\n-var cProject;\n-var cImage;\n \n var mTime = new Timeline(\"menu\", \"rest\");\n mTime.colNum = 2;\n-\n var dTime = new Timeline(\"menu\", \"rest\");\n dTime.colNum = 3;\n-\n var sTime = new Timeline(\"menu\", \"rest\");\n sTime.colNum = 4;\n \n@@ -129,9 +124,6 @@ $(function() {\n                case \"sDark\":\n                    var tLine = sTime;\n                break;\n-               case \"aBox\":\n-                   return;\n-               break;\n            }\n            if(tLine.state == \"rest\" || tLine.state == \"mouseHide\") {\n                var current = tLine.jq.length;\n@@ -167,9 +159,6 @@ $(function() {\n                case \"sDark\":\n                    var tLine = sTime;\n                break;\n-               case \"aBox\":\n-                   return;\n-               break;\n            }\n            if(tLine.state == \"rest\" || tLine.state == \"mouseShow\") {\n                var current = tLine.jq.length;\n@@ -247,14 +236,10 @@ function menuClick(evt) {\n                $(\"#\" + cCategory + \"Dark\").find(\"#box\"),\n                $(\"#\" + cCategory + \"Dark\").find(\"#box\")\n            ]\n-           //\n-           if(!clicked.attr('id')==\"aBox\") {\n-               //SHIT IF STATEMENT\n-               $(\".galleryItem\").each(function() {\n-                   $(this).stop(true);\n-                   $(this).animate({svgOpacity:0},{duration:200, complete:(function() {$(this).attr(\"display\",\"none\");})});\n-               })\n-           }\n+           $(\".galleryItem\").each(function() {\n+               $(this).stop(true);\n+               $(this).animate({svgOpacity:0},{duration:200, complete:(function() {$(this).attr(\"display\",\"none\");})});\n+           })\n            //Animate the next color coming in\n            cMenu.state = \"deselect\";\n            next(cMenu);\n@@ -275,18 +260,7 @@ function menuClick(evt) {\n                cStack = filterBy(content,\"S\",1);\n                cCategory = \"s\"\n            break;\n-           case \"aBox\": //Build goHome\n-               if(gallery) {\n-                   jq = [];\n-                   $(\".galleryItem\").each(function() {\n-                       jq.push(this);\n-                   });\n-                   cMenu = null;\n-                   state = \"goHome\";\n-                   return;\n-               }\n        }\n-\n        cMenu = tLine;\n        var current = tLine.jq.length;\n        tLine.jq = [\n@@ -303,14 +277,10 @@ function menuClick(evt) {\n                    $(\"#sDark\"),\n                    $(\"#dDark\")\n                 ]\n+\n }\n \n function galleryClick(evt) {\n    state = \"exitGallery\";\n-   project = true;\n-   obj = $(evt.target).closest(\".galleryItem\");\n-   console.log($(obj));\n-   cProject = $(obj).data(\"content\")[0];\n-   cImage = $(obj).data(\"content\")[4];\n    next();\n }\n\\ No newline at end of file\n",
+			"settings":
+			{
+				"buffer_size": 3774,
+				"line_ending": "Windows",
+				"name": "Git Diff",
+				"read_only": true,
+				"scratch": true
+			}
+		},
+		{
+			"contents": "function enterProject() {\n    $(\"#project\").removeAttr(\"display\");\n    $(\"#project\").animate({svgOpacity:'1'},{duration:300});\n    $(\"#galleryTop\").attr(\"clip-path\",\"url(#projectClip)\");\n    //Reset Scrollbar\n    window.scrollTo(0,0);\n    scroll();\n    console.log(cStack);\n    state=\"enterGallery\";\n    cStack = filterBy(content,cProject,0);\n    //Build jq stack\n    jq = [];\n    $(\".galleryItem\").each(\n        function() {\n            jq.push($(this));\n        });\n    setTimeout(next,300);\n}\nfunction exitProject() {\n    project = false;\n    $(\"#project\").attr(\"display\",\"none\");\n    $(\"#projectTop\").attr(\"clip-path\",\"url(#galleryClip\");\n}",
+			"file": "src/project.js",
+			"file_size": 666,
+			"file_write_time": 130061258041116557,
+			"settings":
+			{
+				"buffer_size": 644,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 35.0,
+		"selected_items":
+		[
+			[
+				"git pull",
+				"Git: Pull"
+			],
+			[
+				"git ",
+				"Git: Stash Changes"
+			],
+			[
+				"git status",
+				"Git: Status"
+			],
+			[
+				"user ",
+				"Preferences: Key Bindings - User"
+			],
+			[
+				"default ",
+				"Preferences: Key Bindings - Default"
+			],
+			[
+				"remove pack",
+				"Package Control: Remove Package"
+			],
+			[
+				"list pack",
+				"Package Control: List Packages"
+			],
+			[
+				"key bindings",
+				"Preferences: Key Bindings - User"
+			],
+			[
+				"bracket",
+				"Bracketeer: Select Inside Braces"
+			],
+			[
+				"bracketeer",
+				"Bracketeer: Select Inside Braces"
+			],
+			[
+				"install p",
+				"Package Control: Install Package"
+			],
+			[
+				"menu",
+				"View: Toggle Menu"
+			],
+			[
+				"remove ",
+				"Package Control: Remove Package"
+			],
+			[
+				"default",
+				"Preferences: Key Bindings - Default"
+			],
+			[
+				"bindings",
+				"Preferences: Key Bindings - Default"
+			],
+			[
+				"list",
+				"Package Control: List Packages"
+			],
+			[
+				"key user",
+				"Preferences: Key Bindings - User"
+			],
+			[
+				"github",
+				"Github: Open File"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"settings",
+				"Preferences: Settings - Default"
+			],
+			[
+				"key",
+				"Preferences: Key Bindings - User"
+			],
+			[
+				"binding",
+				"Preferences: Key Bindings - Default"
+			],
+			[
+				"user",
+				"Preferences: Settings - User"
+			],
+			[
+				"preferences",
+				"Preferences: Settings - User"
+			],
+			[
+				"toggle",
+				"View: Toggle Open Files in Side Bar"
+			],
+			[
+				"tabs",
+				"View: Toggle Tabs"
+			],
+			[
+				"minimap",
+				"View: Toggle Minimap"
+			],
+			[
+				"side",
+				"View: Toggle Side Bar"
+			],
+			[
+				"sidebar",
+				"View: Toggle Side Bar"
+			],
+			[
+				"install package",
+				"Package Control: Install Package"
+			],
+			[
+				"remove package",
+				"Package Control: Remove Package"
+			],
+			[
+				"install pack",
+				"Package Control: Install Package"
+			],
+			[
+				"package remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"install ",
+				"Package Control: Install Package"
+			],
+			[
+				"ss",
+				"SublimeREPL: Scala"
+			],
+			[
+				"php",
+				"Set Syntax: PHP"
+			],
+			[
+				"package rem",
+				"Package Control: Remove Package"
+			],
+			[
+				"python",
+				"SublimeREPL: Python"
+			],
+			[
+				"syntax",
+				"Set Syntax: XML"
+			],
+			[
+				"syntax xml",
+				"Set Syntax: XML"
+			],
+			[
+				"sntax xml",
+				"Set Syntax: XML"
+			],
+			[
+				"syntax obj",
+				"Set Syntax: Objective-C"
+			],
+			[
+				"set sy",
+				"Set Syntax: R"
+			],
+			[
+				"set syntax python",
+				"Set Syntax: Python"
+			],
+			[
+				"python ",
+				"SublimeREPL: Python - IPython"
+			],
+			[
+				"repl",
+				"SublimeREPL: Python"
+			],
+			[
+				"pythy",
+				"SublimeREPL: Python - IPython"
+			],
+			[
+				"rope",
+				"Rope: New Project"
+			],
+			[
+				"package ",
+				"Preferences: Browse Packages"
+			],
+			[
+				"package",
+				"Package Control: List Packages"
+			],
+			[
+				"",
+				"Package Control: Enable Package"
+			],
+			[
+				"package install package",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			],
+			[
+				"Snippet: ",
+				"Snippet: for (…) {…} (Improved Native For-Loop)"
+			],
+			[
+				"add ",
+				"Package Control: Add Repository"
+			]
+		],
+		"width": 522.0
+	},
+	"console":
+	{
+		"height": 118.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": true,
+		"side_bar_visible": true,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/Users/Alex/AppData/Roaming/Sublime Text 2/Packages/User/Default (Windows).sublime-keymap",
+		"/C/Users/Alex/AppData/Roaming/Sublime Text 2/Packages/Default/Default (Windows).sublime-keymap",
+		"/C/Users/Alex/AppData/Roaming/Sublime Text 2/Packages/Bracketeer/README.md",
+		"/C/Users/Alex/AppData/Roaming/Sublime Text 2/Packages/Bracketeer/Default.sublime-commands",
+		"/C/Users/Alex/AppData/Roaming/Sublime Text 2/Packages/Bracketeer/Example.sublime-keymap",
+		"/C/xampp/htdocs/adkaplan/src/project.js",
+		"/C/xampp/htdocs/adkaplan/src/next.js",
+		"/C/xampp/htdocs/adkaplan/src/header.js",
+		"/C/xampp/htdocs/adkaplan/content.csv",
+		"/C/Users/Alex/AppData/Roaming/Sublime Text 2/Packages/User/SideBarEnhancements/Open With/Side Bar.sublime-menu",
+		"/C/xampp/htdocs/adkaplan/index.php",
+		"/C/xampp/htdocs/adkaplan/style.css",
+		"/C/Users/Alex/AppData/Roaming/Sublime Text 2/Packages/Origami/Default (Windows).sublime-keymap",
+		"/C/xampp/htdocs/adkaplan/src/external/blank.svg",
+		"/C/Users/Alex/AppData/Roaming/Sublime Text 2/Packages/User/Distraction Free.sublime-settings",
+		"/C/Users/Alex/AppData/Roaming/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
+		"/C/Users/Alex/AppData/Roaming/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"/C/xampp/htdocs/adkaplan/src/external/svgBasic.html",
+		"/C/Users/Alex/AppData/Roaming/Sublime Text 2/Packages/Goto Folder/README.md",
+		"/C/xampp/htdocs/adkaplan/src/menu.js",
+		"/C/Users/Alex/AppData/Roaming/Sublime Text 2/Packages/Goto Folder/Default.sublime-keymap",
+		"/C/xampp/htdocs/adkaplan/img/main.svg",
+		"/C/xampp/htdocs/adkaplan/src/gallery.js",
+		"/C/xampp/htdocs/adkaplan/fronttext.txt",
+		"/C/xampp/htdocs/adkaplan/test.html",
+		"/C/Users/Alex/AppData/Roaming/Sublime Text 2/Packages/User/BufferScroll.sublime-settings",
+		"/C/Users/Alex/AppData/Roaming/Sublime Text 2/Packages/BufferScroll/BufferScroll.sublime-settings",
+		"/C/xampp/htdocs/adkaplan/img/test.html",
+		"/C/xampp/htdocs/adkaplan/img/borders/rightside.svg",
+		"/C/xampp/htdocs/adkaplan/img/borders/leftside.svg",
+		"//home1.virginia.edu/adk4rj/public_html/index.php",
+		"//home1.virginia.edu/adk4rj/public_html/img/main.svg",
+		"//home1.virginia.edu/adk4rj/public_html/img/borders/leftside.svg",
+		"/C/xampp/htdocs/adkaplan/src/helper.js",
+		"//home1.virginia.edu/adk4rj/public_html/img/borders/rightside.svg",
+		"/C/Users/Alex/Desktop/adkaplan.sublime-workspace",
+		"/C/Users/Alex/Desktop/leftside.svg",
+		"/C/Users/Alex/Desktop/rightside.svg",
+		"/C/Users/Alex/AppData/Roaming/Sublime Text 2/Packages/SublimeREPL/SublimeREPL.sublime-settings",
+		"/C/Users/Alex/Desktop/circles packed tall glitchy [Converted].svg",
+		"/C/xampp/htdocs/adkaplan/src/sourceSort.js",
+		"//home1.virginia.edu/adk4rj/public_html/src/sourceSort.js",
+		"//home1.virginia.edu/adk4rj/public_html/src/header.js",
+		"//home1.virginia.edu/adk4rj/public_html/header.js",
+		"//home1.virginia.edu/adk4rj/public_html/iso/countrymap/index.php",
+		"//home1.virginia.edu/adk4rj/public_html/testPHP.php",
+		"//home1.virginia.edu/adk4rj/public_html/index.pgp.htm",
+		"/C/xampp/htdocs/adkaplan/index.htm",
+		"/C/xampp/htdocs/adkaplan/header.js",
+		"/C/xampp/htdocs/adkaplan/img/main2.svg",
+		"/C/xampp/htdocs/adkaplan/img/export.svg",
+		"/C/xampp/htdocs/adkaplan/img/main - Backup.svg",
+		"/C/xampp/htdocs/testbed/img/main.svg",
+		"/C/xampp/htdocs/adkaplan/img/main copy.svg",
+		"/C/xampp/htdocs/adkaplan/header - backup.js",
+		"/C/xampp/htdocs/testbed/index.php",
+		"/C/xampp/htdocs/testbed/header.js",
+		"/C/xampp/htdocs/testbed/style.css"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"\"\"\"",
+			"by",
+			"alt+shift",
+			"keypad6",
+			"k",
+			"increase_font_size",
+			"focus_group",
+			"alt",
+			"d",
+			"alt",
+			"1",
+			"alt",
+			"ctrl",
+			"command",
+			"margin",
+			"overflow",
+			"margin",
+			"padding",
+			"Background",
+			"{\n",
+			"\"},\n",
+			"keys",
+			"false",
+			"keys",
+			" \"",
+			"{ ",
+			"lines",
+			"keypad",
+			"rect",
+			"upper_case",
+			"find_under_prev",
+			"font",
+			"span",
+			"blogBack",
+			"circle",
+			"</g>\n<!-- Menu Items -->\n<g id=\"mDark\" class=\"dark\">\n	<g id=\"slide\">\n		<path id=\"popoutText\" traveldist=\"53.5\" fill=\"#D4342A\" opacity=\"0\" d=\"M219.336,349.676v-9.346h25.137c2.714,0,5.713,0.117,8.994,0.354\n",
+			"		",
+			"clippath",
+			"clipPath",
+			"scale",
+			"galleryItem",
+			"rest",
+			"ctrl+tab",
+			"this",
+			"case \"mouseShow\"",
+			"color",
+			"break;",
+			";\n",
+			"cCategory",
+			"var",
+			"Menu",
+			"menu",
+			"false",
+			"group",
+			";\n",
+			"	this.group = group;\n	this.state = state;\n	this.jq = [];\n}\n\n//\n//DECLARATIONS\n//\n\n//jq is a global timeline used for transitions. Global animations prevent local animations (local objects can't change state)\n\n//Global States: galleryIn, galleryOut\n\n//m,d,sTime are individual timelines for each object\n\n//c - Current\n",
+			"state",
+			"select",
+			"state = ",
+			"exitGallery",
+			"enterGallery",
+			"exitMenu",
+			"enterGallery",
+			"timeout",
+			"deselect",
+			"color",
+			"rect",
+			"afull",
+			"gallery",
+			"    ",
+			"none",
+			"  ",
+			"    ",
+			"   ",
+			"    ",
+			"stroke-linejoin=\"round\"",
+			"svgid",
+			"mask",
+			"log",
+			"!!!",
+			"data",
+			"exitmenu",
+			"width=98 height=98",
+			"rect transform",
+			"(24.5,24.5)",
+			"translate",
+			"\"",
+			"removeAttr",
+			"+50",
+			"console",
+			"id=\"box\"",
+			"_10_",
+			"_9_",
+			"_8_",
+			"_7_",
+			"_6_",
+			"_5_",
+			"_4_",
+			"_*_",
+			"menuClick(evt)",
+			"console",
+			"_2_",
+			"_1_",
+			"}\n",
+			"mouseOut",
+			"mouseIn",
+			"log",
+			"travelDist",
+			"replace",
+			"switch",
+			"fade"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"galleryOut",
+			"galleryIn",
+			"menuOut",
+			" ",
+			"#000000",
+			" ",
+			"  ",
+			" ",
+			"",
+			"width=\"98\" height=\"98\"",
+			"rect width=98 height=98 transform",
+			"(-24.5,-24.5)",
+			"scale(.8),translate",
+			"scale(.8,translate",
+			"scale(.8",
+			"scale(.8),translate",
+			"'",
+			"+49",
+			"class=\"galleryItem\"",
+			"",
+			"galleryClick(evt)",
+			"",
+			"traveldist"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "src/header.js",
+					"settings":
+					{
+						"buffer_size": 7181,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								238,
+								238
+							]
+						],
+						"settings":
+						{
+							"annotations":
+							[
+								"TODO",
+								"README",
+								"FIXME"
+							],
+							"csslint_options":
+							{
+								"adjoining-classes": "warning",
+								"box-model": true,
+								"box-sizing": "warning",
+								"compatible-vendor-prefixes": "warning",
+								"display-property-grouping": true,
+								"duplicate-background-images": "warning",
+								"duplicate-properties": true,
+								"empty-rules": true,
+								"errors": true,
+								"fallback-colors": "warning",
+								"floats": "warning",
+								"font-faces": "warning",
+								"font-sizes": "warning",
+								"gradients": "warning",
+								"ids": "warning",
+								"import": "warning",
+								"important": "warning",
+								"known-properties": true,
+								"outline-none": "warning",
+								"overqualified-elements": "warning",
+								"qualified-headings": "warning",
+								"regex-selectors": "warning",
+								"rules-count": "warning",
+								"shorthand": "warning",
+								"star-property-hack": "warning",
+								"text-indent": "warning",
+								"underscore-property-hack": "warning",
+								"unique-headings": "warning",
+								"universal-selector": "warning",
+								"vendor-prefix": true,
+								"zero-units": "warning"
+							},
+							"gjslint_ignore":
+							[
+								110.0
+							],
+							"gjslint_options":
+							[
+							],
+							"javascript_linter": "jshint",
+							"jshint_options":
+							{
+								"browser": true,
+								"evil": true,
+								"regexdash": true,
+								"sub": true,
+								"trailing": true,
+								"wsh": true
+							},
+							"pep8": true,
+							"pep8_ignore":
+							[
+								"E501"
+							],
+							"perl_linter": "perlcritic",
+							"pyflakes_ignore":
+							[
+							],
+							"pyflakes_ignore_import_*": true,
+							"sublimelinter": true,
+							"sublimelinter_delay": 2.0,
+							"sublimelinter_disable":
+							[
+							],
+							"sublimelinter_executable_map":
+							{
+							},
+							"sublimelinter_fill_outlines": false,
+							"sublimelinter_gutter_marks": false,
+							"sublimelinter_mark_style": "outline",
+							"sublimelinter_notes": false,
+							"sublimelinter_objj_check_ascii": false,
+							"sublimelinter_popup_errors_on_save": false,
+							"sublimelinter_syntax_map":
+							{
+								"C++": "c",
+								"Python Django": "python",
+								"Ruby on Rails": "ruby"
+							},
+							"sublimelinter_wrap_find": true,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 336.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"settings":
+					{
+						"buffer_size": 3774,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2998,
+								2998
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Diff/Diff.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 1400.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "src/project.js",
+					"settings":
+					{
+						"buffer_size": 644,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								255,
+								255
+							]
+						],
+						"settings":
+						{
+							"annotations":
+							[
+								"TODO",
+								"README",
+								"FIXME"
+							],
+							"csslint_options":
+							{
+								"adjoining-classes": "warning",
+								"box-model": true,
+								"box-sizing": "warning",
+								"compatible-vendor-prefixes": "warning",
+								"display-property-grouping": true,
+								"duplicate-background-images": "warning",
+								"duplicate-properties": true,
+								"empty-rules": true,
+								"errors": true,
+								"fallback-colors": "warning",
+								"floats": "warning",
+								"font-faces": "warning",
+								"font-sizes": "warning",
+								"gradients": "warning",
+								"ids": "warning",
+								"import": "warning",
+								"important": "warning",
+								"known-properties": true,
+								"outline-none": "warning",
+								"overqualified-elements": "warning",
+								"qualified-headings": "warning",
+								"regex-selectors": "warning",
+								"rules-count": "warning",
+								"shorthand": "warning",
+								"star-property-hack": "warning",
+								"text-indent": "warning",
+								"underscore-property-hack": "warning",
+								"unique-headings": "warning",
+								"universal-selector": "warning",
+								"vendor-prefix": true,
+								"zero-units": "warning"
+							},
+							"gjslint_ignore":
+							[
+								110.0
+							],
+							"gjslint_options":
+							[
+							],
+							"javascript_linter": "jshint",
+							"jshint_options":
+							{
+								"browser": true,
+								"evil": true,
+								"regexdash": true,
+								"sub": true,
+								"trailing": true,
+								"wsh": true
+							},
+							"pep8": true,
+							"pep8_ignore":
+							[
+								"E501"
+							],
+							"perl_linter": "perlcritic",
+							"pyflakes_ignore":
+							[
+							],
+							"pyflakes_ignore_import_*": true,
+							"sublimelinter": true,
+							"sublimelinter_delay": 2.0,
+							"sublimelinter_disable":
+							[
+							],
+							"sublimelinter_executable_map":
+							{
+							},
+							"sublimelinter_fill_outlines": false,
+							"sublimelinter_gutter_marks": false,
+							"sublimelinter_mark_style": "outline",
+							"sublimelinter_notes": false,
+							"sublimelinter_objj_check_ascii": false,
+							"sublimelinter_popup_errors_on_save": false,
+							"sublimelinter_syntax_map":
+							{
+								"C++": "c",
+								"Python Django": "python",
+								"Ruby on Rails": "ruby"
+							},
+							"sublimelinter_wrap_find": true,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 34.0
+	},
+	"input":
+	{
+		"height": 30.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": false,
+	"output.git":
+	{
+		"height": 96.0
+	},
+	"replace":
+	{
+		"height": 62.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"header",
+				"src/header.js"
+			],
+			[
+				"project",
+				"src/project.js"
+			],
+			[
+				"content",
+				"content.csv"
+			],
+			[
+				"src/",
+				"src/project.js"
+			],
+			[
+				"next",
+				"src/next.js"
+			],
+			[
+				"index",
+				"index.php"
+			],
+			[
+				"",
+				"style.css"
+			],
+			[
+				"css",
+				"style.css"
+			],
+			[
+				"php",
+				"index.php"
+			],
+			[
+				"main.svg",
+				"img/main.svg"
+			],
+			[
+				"menu",
+				"src/menu.js"
+			],
+			[
+				"front",
+				"fronttext.txt"
+			],
+			[
+				"style",
+				"style.css"
+			],
+			[
+				"main",
+				"img/main.svg"
+			],
+			[
+				"gallery",
+				"src/gallery.js"
+			],
+			[
+				"cs",
+				"style.css"
+			],
+			[
+				"keymap",
+				"/C/Users/Alex/AppData/Roaming/Sublime Text 2/Packages/User/Default (Windows).sublime-keymap"
+			],
+			[
+				"test",
+				"test.html"
+			],
+			[
+				"border",
+				"img/borders/rightside.svg"
+			],
+			[
+				"img/main.svg",
+				"img/main.svg"
+			],
+			[
+				"sty",
+				"/C/xampp/htdocs/adkaplan/style.css"
+			],
+			[
+				"had",
+				"/C/xampp/htdocs/adkaplan/src/header.js"
+			],
+			[
+				"default",
+				"/C/Users/Alex/AppData/Roaming/Sublime Text 2/Packages/Default/Default (Windows).sublime-keymap"
+			],
+			[
+				"g",
+				"/C/Users/Alex/AppData/Roaming/Sublime Text 2/Packages/Default/Default (Windows).sublime-keymap"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+			[
+				"atomage",
+				"/C/xampp/htdocs/atomagetheater/atomagetheater.sublime-project"
+			],
+			[
+				"",
+				"/C/Users/Alex/Desktop/adkaplan.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"show_minimap": false,
+	"show_open_files": true,
+	"show_tabs": false,
+	"side_bar_visible": false,
+	"side_bar_width": 173.0,
+	"status_bar_visible": true
+}

@@ -30,16 +30,24 @@ function Timeline(group, state) {
 //States: rest, mouseShow, mouseHide, select, deselect
 
 //c - Current
+//content is pushed from header.php
 var jq;
-var cStack = [];
 var state = "rest";
 
 var gallery = false;
 var project = false;
+
+
 var cMenu;
+var cStack = [];
 var cCategory;
 var cProject;
 var cImage;
+var cWidth;
+var cHeight;
+var cCaption;
+var cDate;
+var cTitle;
 
 var mTime = new Timeline("menu", "rest");
 mTime.colNum = 2;
@@ -306,11 +314,22 @@ function menuClick(evt) {
 }
 
 function galleryClick(evt) {
-	state = "exitGallery";
-	project = true;
+	//cContent should only be set from here
 	obj = $(evt.target).closest(".galleryItem");
-	console.log($(obj));
-	cProject = $(obj).data("content")[0];
-	cImage = $(obj).data("content")[4];
-	next();
+	cContent = $(obj).data("content");
+	if(project) {
+		c
+		cImage  = cContent[4]
+		cCaption = cContent[]
+		cWidth
+		cHeight
+		cDate
+		cTitle
+	} else {
+		state = "exitGallery";
+		project = true;
+		cProject = cContent[0];
+		cImage = cContent[4];
+		next();
+	}
 }
