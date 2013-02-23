@@ -1,20 +1,20 @@
 function enterProject() {
-    //Test
     $("#project").removeAttr("display");
     $("#project").animate({svgOpacity:'1'},{duration:300});
     $("#galleryTop").attr("clip-path","url(#projectClip)");
-    state="enterGallery";
-    scroll();
+    //Reset Scrollbar
     window.scrollTo(0,0);
-    setTimeout(next,300);
-    cStack = filterBy(content,cProject,0);
+    scroll();
     console.log(cStack);
+    state="enterGallery";
+    cStack = filterBy(content,cProject,0);
     //Build jq stack
     jq = [];
     $(".galleryItem").each(
         function() {
             jq.push($(this));
         });
+    setTimeout(next,300);
 }
 function exitProject() {
     project = false;
