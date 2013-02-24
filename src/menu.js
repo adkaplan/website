@@ -133,8 +133,8 @@ function menuMouseIn(tLine) {
 			obj.animate(
 							{svgTransform:'translate(' + travelDist + ',0)'},
 							{
-								duration: 400,
-								easing: 'easeOutCirc'
+								duration: 200,
+								easing: 'easeOutQuad'
 							}
 						);
 
@@ -143,8 +143,14 @@ function menuMouseIn(tLine) {
 			return; //Proceeds without waiting
 		break;
 		case 2: //Popouttext Slide
-			if(gallery) fadeColumnOut(tLine.colNum)
-			else {
+			if(gallery) {
+				if(project) {
+					$("#projectImage").stop(true);
+					$("#projectImage").animate({svgOpacity:.1})
+				} else {
+					fadeColumnOut(tLine.colNum)
+				}
+			} else {
 				$("#blogBack").stop(true);
 				$("#blogBack").animate({svgOpacity:.1});
 			}
@@ -154,8 +160,8 @@ function menuMouseIn(tLine) {
 			obj.animate(
 							{svgTransform:'translate(0,0)'},
 							{
-								duration: 400,
-								easing: 'easeOutCirc',
+								duration: 200,
+								easing: 'easeOutQuad',
 								complete: (function() {next(tLine);})
 							}
 						);
@@ -164,7 +170,7 @@ function menuMouseIn(tLine) {
 			obj.animate(
 							{svgOpacity:1},
 							{
-								duration:1000,
+								duration:300,
 								complete: (function() {next(tLine);})
 							}
 						);
@@ -190,10 +196,20 @@ function menuMouseOut(tLine) {
 						);
 		break;
 		case 3: //Popouttext Slide
-			if(gallery) fadeColumnIn(tLine.colNum);
-			else {
-				$("#blogBack").stop(true);
-				$("#blogBack").animate({svgOpacity:1});
+			if(gallery) {
+				if(project) {
+					if(mTime.state != "mouseShow" && dTime.state != "mouseShow" && sTime.state !="mouseShow") {
+						$("#projectImage").stop(true);
+						$("#projectImage").animate({svgOpacity:1})
+					}
+				} else {
+					fadeColumnIn(tLine.colNum);
+				}
+			} else {
+				if(mTime.state != "mouseShow" && dTime.state != "mouseShow" && sTime.state !="mouseShow") {
+					$("#blogBack").stop(true);
+					$("#blogBack").animate({svgOpacity:1});
+				}
 			}
 			var travelDist = parseInt(obj.attr('traveldist'));
 			obj.animate(
@@ -317,6 +333,7 @@ function colorOff(tLine) {
 						);
 		break;
 		case 1: //Rotate rect
+			$(obj).css('cursor', 'pointer');
 			var rect = $(obj).children('rect')
 			var xCenter = parseInt(rect.attr('x'))+49;
 			var yCenter = parseInt(rect.attr('y'))+49;

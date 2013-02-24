@@ -1,11 +1,10 @@
 function initialize() {
-	window.onscroll = function() {
-		$("#gallery").attr("transform","translate(0,-" + window.pageYOffset/3 + ")");
-	}
+	window.onscroll = scroll;
 }
 
 function scroll() {
-
+	offset = project ? 385 : 0;
+	$("#gallery").attr("transform","translate(0," + (-window.pageYOffset/3 + offset) + ")");
 }
 //
 //OBJECT DEFINITIONS
@@ -35,25 +34,23 @@ var jq;
 var state = "rest";
 
 var gallery = false;
-<<<<<<< Updated upstream
 var project = false;
 
-
-=======
->>>>>>> Stashed changes
 var cMenu;
 var cStack = [];
 var cCategory;
-<<<<<<< Updated upstream
+
 var cProject;
 var cImage;
+var cID;
 var cWidth;
 var cHeight;
 var cCaption;
 var cDate;
 var cTitle;
-=======
->>>>>>> Stashed changes
+var cMore;
+var cLink;
+var cGalleryItem;
 
 var mTime = new Timeline("menu", "rest");
 mTime.colNum = 2;
@@ -130,7 +127,6 @@ $(function() {
 
 	$(".startButton").mouseenter(function() {
 		if (state == "rest") {
-			$(this).css('cursor', 'pointer');
 			switch($(this).closest('.dark').attr('id')) { //Get the right Timeline
 				case "mDark":
 					var tLine = mTime;
@@ -140,6 +136,9 @@ $(function() {
 				break;
 				case "sDark":
 					var tLine = sTime;
+				break;
+				case "aBox":
+					return;
 				break;
 			}
 			if(tLine.state == "rest" || tLine.state == "mouseHide") {
@@ -165,7 +164,6 @@ $(function() {
 
 	$(".startButton").mouseleave(function() {
 		if (state == "rest") {
-			$(this).css('cursor', 'auto');
 			switch($(this).closest('.dark').attr('id')) { //Get the right Timeline
 				case "mDark":
 					var tLine = mTime;
@@ -175,6 +173,9 @@ $(function() {
 				break;
 				case "sDark":
 					var tLine = sTime;
+				break;
+				case "aBox":
+					return;
 				break;
 			}
 			if(tLine.state == "rest" || tLine.state == "mouseShow") {
@@ -199,7 +200,6 @@ $(function() {
 
 	$(".galleryItem").mouseenter(function() {
 		if(state == "rest") {
-			$(this).css('cursor', 'pointer');
 			tLine = $(this).data("tline");
 			if(tLine.state == "rest" || tLine.state == "mouseHide") {
 				var current = tLine.jq.length;
@@ -207,10 +207,12 @@ $(function() {
 								$(this)
 							]
 				if(tLine.state == "mouseHide") {
+					console.log("1");
 					for(var i=0;i<current;i++) tLine.jq.shift(); //delete unnecessary steps of the animation
 					tLine.state = "mouseShow";
 				}
 				if(tLine.state == "rest") {
+					console.log("2");
 					tLine.state = "mouseShow";
 					next(tLine); //start the animation
 				}
@@ -221,7 +223,6 @@ $(function() {
 
 	$(".galleryItem").mouseleave(function() {
 		if (state == "rest") {
-			$(this).css('cursor', 'auto');
 			tLine = $(this).data("tline");
 			if(tLine.state == "rest" || tLine.state == "mouseShow") {
 				var current = tLine.jq.length;
@@ -244,19 +245,23 @@ $(function() {
 
 
 function menuClick(evt) {
-		document.body.style.height = "2000px";
-		$(".startButton").css('cursor', 'auto');
+		// document.body.style.height = "2000px";
 		var clicked = $(evt.target).closest(".dark");
 
+		clicked.find("#box").css('cursor', 'default');
 		if(gallery) {
 			cMenu.jq = [
 				$("#" + cCategory + "Dark").find("#box"),
 				$("#" + cCategory + "Dark").find("#box")
 			]
-			$(".galleryItem").each(function() {
-				$(this).stop(true);
-				$(this).animate({svgOpacity:0},{duration:200, complete:(function() {$(this).attr("display","none");})});
-			})
+			//
+			if(!clicked.attr('id')=="aBox") {
+				//SHIT IF STATEMENT
+				$(".galleryItem").each(function() {
+					$(this).stop(true);
+					$(this).animate({svgOpacity:0},{duration:200, complete:(function() {$(this).attr("display","none");})});
+				})
+			}
 			//Animate the next color coming in
 			cMenu.state = "deselect";
 			next(cMenu);
@@ -277,7 +282,18 @@ function menuClick(evt) {
 				cStack = filterBy(content,"S",1);
 				cCategory = "s"
 			break;
+			case "aBox": //Build goHome
+				if(gallery) {
+					jq = [];
+					$(".galleryItem").each(function() {
+						jq.push(this);
+					});
+					cMenu = null;
+					state = "goHome";
+					return;
+				}
 		}
+
 		cMenu = tLine;
 		var current = tLine.jq.length;
 		tLine.jq = [
@@ -294,31 +310,38 @@ function menuClick(evt) {
 					$("#sDark"),
 					$("#dDark")
 				 ]
-
 }
 
 function galleryClick(evt) {
-<<<<<<< Updated upstream
 	//cContent should only be set from here
+
+	if(project) {
+		cGalleryItem.find("#scale").animate({svgOpacity:'.3'},{duration:200});
+		// cGalleryItem.
+	}
+
 	obj = $(evt.target).closest(".galleryItem");
 	cContent = $(obj).data("content");
-	if(project) {
-		c
-		cImage  = cContent[4]
-		cCaption = cContent[]
-		cWidth
-		cHeight
-		cDate
-		cTitle
+	cID = $(evt.target).closest(".galleryItem").attr("contentID");
+	cImage = cContent[4]
+	cTitle = cContent[5]
+	cCaption = cContent[6]
+	cDate = cContent[7]
+	cWidth = cContent[8]
+	cHeight = cContent[9]
+	cGalleryItem = obj;
+
+	if(cContent[2] != "") {
+		cMore = cContent[2];
+		cLink = cContent[10];
+	}
+	if (project) {
+		obj.find("#scale").animate({svgOpacity:'1'},{duration:200});
+		changeImage();
 	} else {
+		cProject = cContent[0];
 		state = "exitGallery";
 		project = true;
-		cProject = cContent[0];
-		cImage = cContent[4];
 		next();
 	}
-=======
-	state = "exitGallery";
-	next();
->>>>>>> Stashed changes
 }

@@ -144,21 +144,14 @@
 </clipPath>
 <!-- Blog Rect -->
 <g id="project" opacity='0' display='none'>
-	<g id="projectImage">
-		<g id="scale" transform="scale(1)">
-			<rect x="12.5" y="135" width="575" height="350" fill="#000000"/>
-		</g>
-	</g>
+		<image id="projectImage" x="12.5" y="135" width="575" height="350" display="none" opacity="0" xlink:href="" />
 	<foreignobject x="13" y="485" width="460" height="70">
 		<body xmlns="http://www.w3.org/1999/xhtml">
   			<div id="projectTitle">
   			Project Title!
-  			<?php
-		  		// include "fronttext.txt";
-	  		?>
 		  	</div>
 
-		  	<div id="projectBrief">
+		  	<div id="projectCaption">
 		  		&nbsp;&nbsp;WOOD, PLASTIC | JAN 2013 | ARCH3010
 		  	</div>
 		</body>
@@ -202,7 +195,7 @@
 	<clipPath id="mDarkClip">
 		<rect class="clipBoxRect" x="190" y="200" width="100" height="100"/>
 	</clipPath>
-	<g id="box" onclick="menuClick(evt)" style="clip-path:url(#mDarkClip);" class="startButton">
+	<g id="box" onclick="menuClick(evt)" style="cursor:pointer;clip-path:url(#mDarkClip);" class="startButton">
 		<rect id="fill" x="191" y="201" fill="000000" width="98" height="98"/>
 		<path id="border" style="fill:#B4B4B4;" d="M288,298h-96v-96h96V298 M290,300V200H190v100H290L290,300z"/>
 		<path id="whiteText" traveldist="53.5" style="fill:#FFFFFF;" d="M286.175,270.664h-9.346v-25.137c0-2.714,0.117-5.713,0.353-8.994h-0.234
@@ -253,7 +246,7 @@
 	<clipPath id="dDarkClip">
 		<rect class="clipBoxRect" x="310" y="200" width="100" height="100"/>
 	</clipPath>
-	<g id="box" onclick="menuClick(evt)" style="clip-path:url(#dDarkClip);" class="startButton">
+	<g id="box" onclick="menuClick(evt)" style="cursor:pointer;clip-path:url(#dDarkClip);" class="startButton">
 		<rect id="fill" x="311" y="201" fill="000000" width="98" height="98"/>
 		<path id="border" style="fill:#B4B4B4;" d="M408,298h-96v-96h96V298 M410,300V200H310v100H410L410,300z"/>
 		<path id="whiteText" traveldist="42" style="fill:#FFFFFF;" d="M369.804,270.664v-42.012h14.883c14.926,0,22.387,6.826,22.387,20.479
@@ -308,7 +301,7 @@
 	<clipPath id="sDarkClip">
 		<rect class="clipBoxRect" x="430" y="200" width="100" height="100"/>
 	</clipPath>
-	<g id="box" onclick="menuClick(evt)" style="clip-path:url(#sDarkClip);" class="startButton">
+	<g id="box" onclick="menuClick(evt)" style="cursor:pointer;clip-path:url(#sDarkClip);" class="startButton">
 		<rect id="fill" x="431" y="201" fill="000000" width="98" height="98"/>
 		<path id="border" style="fill:#B4B4B4;" d="M528,298h-96v-96h96V298 M530,300V200H430v100H530L530,300z"/>
 		<path id="whiteText" traveldist="34" style="fill:#FFFFFF;" d="M498.371,269.053v-9.375c1.699,1.426,3.545,2.495,5.537,3.209
@@ -337,7 +330,7 @@
 		<clipPath id="SVGID_8_">
 			<use xlink:href="#SVGID_7_"  style="overflow:visible;"/>
 		</clipPath>
-		<g id="box" onclick="menuClick(evt)" style="clip-path:url(#SVGID_8_);" class="startButton">
+		<g id="box" onclick="menuClick(evt)" style="cursor:default;clip-path:url(#SVGID_8_);" class="startButton">
 			<rect id="fill" x="71" y="16" fill="#84AC4B" width="98" height="98"/>
 
 		</g>
