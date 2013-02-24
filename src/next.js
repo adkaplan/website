@@ -4,6 +4,7 @@
 
 function next(String) {
 	if(!arguments.length) { //Global animation
+		if(debug)console.log("GLOBAL:" + state + ":" + jq.length)
 		switch(state) {
 			case "exitMenu":
 				menuOut();
@@ -29,6 +30,7 @@ function next(String) {
 		}
 	} else { //Local animation
 		var tLine = arguments[0];
+		if(debug)console.log(tLine.group.toUpperCase() +":" + tLine.state + ":" + tLine.jq.length)
 		switch(tLine.group) {
 			case "menu":
 				switch(tLine.state) {

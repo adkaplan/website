@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"cl",
+				"cl	console.log"
+			],
+			[
 				"size",
 				"font-size"
 			]
@@ -11,43 +15,37 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "src/header.js",
-			"settings":
-			{
-				"buffer_size": 7232,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"contents": "diff --git a/src/header.js b/src/header.js\nindex 8fbcae0..65a18db 100644\n--- a/src/header.js\n+++ b/src/header.js\n@@ -1,16 +1,15 @@\n function initialize() {\n-   window.onscroll = scroll;\n+   window.onscroll = function() {\n+       $(\"#gallery\").attr(\"transform\",\"translate(0,-\" + window.pageYOffset/3 + \")\");\n+   }\n }\n-//\n-//OBJECT DEFINITIONS\n-//\n-\n-//Add a comment\n \n function scroll() {\n-   offset = project ? 385 : 0;\n-   $(\"#gallery\").attr(\"transform\",\"translate(0,\" + (-window.pageYOffset/3 + offset) + \")\");\n+\n }\n+//\n+//OBJECT DEFINITIONS\n+//\n \n function Timeline(group, state) {\n    this.group = group;\n@@ -23,6 +22,7 @@ function Timeline(group, state) {\n //\n \n //jq is a global timeline used for transitions. Global animations prevent local animations (local objects can't change state)\n+\n //Global States: enterGallery, exitGallery\n \n //m,d,sTime are individual timelines for each object\n@@ -35,18 +35,13 @@ var cStack = [];\n var state = \"rest\";\n \n var gallery = false;\n-var project = false;\n var cMenu;\n var cCategory;\n-var cProject;\n-var cImage;\n \n var mTime = new Timeline(\"menu\", \"rest\");\n mTime.colNum = 2;\n-\n var dTime = new Timeline(\"menu\", \"rest\");\n dTime.colNum = 3;\n-\n var sTime = new Timeline(\"menu\", \"rest\");\n sTime.colNum = 4;\n \n@@ -129,9 +124,6 @@ $(function() {\n                case \"sDark\":\n                    var tLine = sTime;\n                break;\n-               case \"aBox\":\n-                   return;\n-               break;\n            }\n            if(tLine.state == \"rest\" || tLine.state == \"mouseHide\") {\n                var current = tLine.jq.length;\n@@ -167,9 +159,6 @@ $(function() {\n                case \"sDark\":\n                    var tLine = sTime;\n                break;\n-               case \"aBox\":\n-                   return;\n-               break;\n            }\n            if(tLine.state == \"rest\" || tLine.state == \"mouseShow\") {\n                var current = tLine.jq.length;\n@@ -247,14 +236,10 @@ function menuClick(evt) {\n                $(\"#\" + cCategory + \"Dark\").find(\"#box\"),\n                $(\"#\" + cCategory + \"Dark\").find(\"#box\")\n            ]\n-           //\n-           if(!clicked.attr('id')==\"aBox\") {\n-               //SHIT IF STATEMENT\n-               $(\".galleryItem\").each(function() {\n-                   $(this).stop(true);\n-                   $(this).animate({svgOpacity:0},{duration:200, complete:(function() {$(this).attr(\"display\",\"none\");})});\n-               })\n-           }\n+           $(\".galleryItem\").each(function() {\n+               $(this).stop(true);\n+               $(this).animate({svgOpacity:0},{duration:200, complete:(function() {$(this).attr(\"display\",\"none\");})});\n+           })\n            //Animate the next color coming in\n            cMenu.state = \"deselect\";\n            next(cMenu);\n@@ -275,18 +260,7 @@ function menuClick(evt) {\n                cStack = filterBy(content,\"S\",1);\n                cCategory = \"s\"\n            break;\n-           case \"aBox\": //Build goHome\n-               if(gallery) {\n-                   jq = [];\n-                   $(\".galleryItem\").each(function() {\n-                       jq.push(this);\n-                   });\n-                   cMenu = null;\n-                   state = \"goHome\";\n-                   return;\n-               }\n        }\n-\n        cMenu = tLine;\n        var current = tLine.jq.length;\n        tLine.jq = [\n@@ -303,14 +277,10 @@ function menuClick(evt) {\n                    $(\"#sDark\"),\n                    $(\"#dDark\")\n                 ]\n+\n }\n \n function galleryClick(evt) {\n    state = \"exitGallery\";\n-   project = true;\n-   obj = $(evt.target).closest(\".galleryItem\");\n-   console.log($(obj));\n-   cProject = $(obj).data(\"content\")[0];\n-   cImage = $(obj).data(\"content\")[4];\n    next();\n }\n\\ No newline at end of file\n",
-			"settings":
-			{
-				"buffer_size": 3774,
-				"line_ending": "Windows",
-				"name": "Git Diff",
-				"read_only": true,
-				"scratch": true
-			}
-		},
-		{
-			"contents": "function enterProject() {\n    $(\"#project\").removeAttr(\"display\");\n    $(\"#project\").animate({svgOpacity:'1'},{duration:300});\n    $(\"#galleryTop\").attr(\"clip-path\",\"url(#projectClip)\");\n    //Reset Scrollbar\n    window.scrollTo(0,0);\n    scroll();\n    console.log(cStack);\n    state=\"enterGallery\";\n    cStack = filterBy(content,cProject,0);\n    //Build jq stack\n    jq = [];\n    $(\".galleryItem\").each(\n        function() {\n            jq.push($(this));\n        });\n    setTimeout(next,300);\n}\nfunction exitProject() {\n    project = false;\n    $(\"#project\").attr(\"display\",\"none\");\n    $(\"#projectTop\").attr(\"clip-path\",\"url(#galleryClip\");\n}",
-			"file": "src/project.js",
-			"file_size": 666,
-			"file_write_time": 130061258041116557,
-			"settings":
-			{
-				"buffer_size": 644,
-				"line_ending": "Windows"
-			}
-		}
 	],
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 35.0,
+		"height": 160.0,
 		"selected_items":
 		[
+			[
+				"tabs",
+				"View: Toggle Tabs"
+			],
+			[
+				"git commit",
+				"Git: Commit"
+			],
+			[
+				"git add",
+				"Git: Add..."
+			],
+			[
+				"git add ",
+				"Git: Add Current File"
+			],
+			[
+				"menu",
+				"View: Toggle Menu"
+			],
+			[
+				"word",
+				"Word Wrap: Toggle"
+			],
 			[
 				"git pull",
 				"Git: Pull"
@@ -91,10 +89,6 @@
 			[
 				"install p",
 				"Package Control: Install Package"
-			],
-			[
-				"menu",
-				"View: Toggle Menu"
 			],
 			[
 				"remove ",
@@ -147,10 +141,6 @@
 			[
 				"toggle",
 				"View: Toggle Open Files in Side Bar"
-			],
-			[
-				"tabs",
-				"View: Toggle Tabs"
 			],
 			[
 				"minimap",
@@ -269,7 +259,7 @@
 				"Package Control: Add Repository"
 			]
 		],
-		"width": 522.0
+		"width": 350.0
 	},
 	"console":
 	{
@@ -277,27 +267,32 @@
 	},
 	"distraction_free":
 	{
-		"menu_visible": true,
+		"menu_visible": false,
 		"show_minimap": false,
 		"show_open_files": false,
-		"show_tabs": true,
-		"side_bar_visible": true,
+		"show_tabs": false,
+		"side_bar_visible": false,
 		"status_bar_visible": false
 	},
 	"file_history":
 	[
+		"/C/xampp/htdocs/adkaplan/src/helper.js",
 		"/C/xampp/htdocs/adkaplan/src/header.js",
+		"/C/xampp/htdocs/adkaplan/src/global.js",
+		"/C/xampp/htdocs/adkaplan/src/gallery.js",
+		"/C/xampp/htdocs/adkaplan/style.css",
+		"/C/xampp/htdocs/adkaplan/src/menu.js",
+		"/C/xampp/htdocs/adkaplan/src/next.js",
+		"/C/xampp/htdocs/adkaplan/img/main.svg",
+		"/C/xampp/htdocs/adkaplan/src/project.js",
 		"/C/xampp/htdocs/adkaplan/content.csv",
+		"/C/xampp/htdocs/adkaplan/index.php",
 		"/C/Users/Alex/AppData/Roaming/Sublime Text 2/Packages/User/Default (Windows).sublime-keymap",
 		"/C/Users/Alex/AppData/Roaming/Sublime Text 2/Packages/Default/Default (Windows).sublime-keymap",
 		"/C/Users/Alex/AppData/Roaming/Sublime Text 2/Packages/Bracketeer/README.md",
 		"/C/Users/Alex/AppData/Roaming/Sublime Text 2/Packages/Bracketeer/Default.sublime-commands",
 		"/C/Users/Alex/AppData/Roaming/Sublime Text 2/Packages/Bracketeer/Example.sublime-keymap",
-		"/C/xampp/htdocs/adkaplan/src/project.js",
-		"/C/xampp/htdocs/adkaplan/src/next.js",
 		"/C/Users/Alex/AppData/Roaming/Sublime Text 2/Packages/User/SideBarEnhancements/Open With/Side Bar.sublime-menu",
-		"/C/xampp/htdocs/adkaplan/index.php",
-		"/C/xampp/htdocs/adkaplan/style.css",
 		"/C/Users/Alex/AppData/Roaming/Sublime Text 2/Packages/Origami/Default (Windows).sublime-keymap",
 		"/C/xampp/htdocs/adkaplan/src/external/blank.svg",
 		"/C/Users/Alex/AppData/Roaming/Sublime Text 2/Packages/User/Distraction Free.sublime-settings",
@@ -305,10 +300,7 @@
 		"/C/Users/Alex/AppData/Roaming/Sublime Text 2/Packages/User/Preferences.sublime-settings",
 		"/C/xampp/htdocs/adkaplan/src/external/svgBasic.html",
 		"/C/Users/Alex/AppData/Roaming/Sublime Text 2/Packages/Goto Folder/README.md",
-		"/C/xampp/htdocs/adkaplan/src/menu.js",
 		"/C/Users/Alex/AppData/Roaming/Sublime Text 2/Packages/Goto Folder/Default.sublime-keymap",
-		"/C/xampp/htdocs/adkaplan/img/main.svg",
-		"/C/xampp/htdocs/adkaplan/src/gallery.js",
 		"/C/xampp/htdocs/adkaplan/fronttext.txt",
 		"/C/xampp/htdocs/adkaplan/test.html",
 		"/C/Users/Alex/AppData/Roaming/Sublime Text 2/Packages/User/BufferScroll.sublime-settings",
@@ -319,7 +311,6 @@
 		"//home1.virginia.edu/adk4rj/public_html/index.php",
 		"//home1.virginia.edu/adk4rj/public_html/img/main.svg",
 		"//home1.virginia.edu/adk4rj/public_html/img/borders/leftside.svg",
-		"/C/xampp/htdocs/adkaplan/src/helper.js",
 		"//home1.virginia.edu/adk4rj/public_html/img/borders/rightside.svg",
 		"/C/Users/Alex/Desktop/adkaplan.sublime-workspace",
 		"/C/Users/Alex/Desktop/leftside.svg",
@@ -351,9 +342,11 @@
 	},
 	"find_in_files":
 	{
-		"height": 0.0,
+		"height": 92.0,
 		"where_history":
 		[
+			"",
+			"src"
 		]
 	},
 	"find_state":
@@ -361,6 +354,45 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"abox",
+			"clickable",
+			"toggleClass",
+			"function",
+			"aBox",
+			"css",
+			"project",
+			"clicked",
+			"duration",
+			"closest",
+			"css",
+			"mouseenter",
+			"obj",
+			"startButton",
+			"galleryItem",
+			"GalleryItem",
+			"galleryItem",
+			"cMenu",
+			"style",
+			"function",
+			"cursor",
+			"function",
+			"mouseenter",
+			"mouseleave",
+			"mouse",
+			"Mouse",
+			"mouse",
+			"Mouse",
+			"mouse",
+			"Mouse",
+			"mouse",
+			"Mouse",
+			"mouse",
+			"Mouse",
+			"rest",
+			"blogBack",
+			"gallery",
+			"column",
+			"======",
 			"content",
 			"clicked",
 			"\"\"\"",
@@ -449,31 +481,7 @@
 			"rect transform",
 			"(24.5,24.5)",
 			"translate",
-			"\"",
-			"removeAttr",
-			"+50",
-			"console",
-			"id=\"box\"",
-			"_10_",
-			"_9_",
-			"_8_",
-			"_7_",
-			"_6_",
-			"_5_",
-			"_4_",
-			"_*_",
-			"menuClick(evt)",
-			"console",
-			"_2_",
-			"_1_",
-			"}\n",
-			"mouseOut",
-			"mouseIn",
-			"log",
-			"travelDist",
-			"replace",
-			"switch",
-			"fade"
+			"\""
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -514,355 +522,8 @@
 	"groups":
 	[
 		{
-			"selected": 0,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "src/header.js",
-					"settings":
-					{
-						"buffer_size": 7232,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"annotations":
-							[
-								"TODO",
-								"README",
-								"FIXME"
-							],
-							"csslint_options":
-							{
-								"adjoining-classes": "warning",
-								"box-model": true,
-								"box-sizing": "warning",
-								"compatible-vendor-prefixes": "warning",
-								"display-property-grouping": true,
-								"duplicate-background-images": "warning",
-								"duplicate-properties": true,
-								"empty-rules": true,
-								"errors": true,
-								"fallback-colors": "warning",
-								"floats": "warning",
-								"font-faces": "warning",
-								"font-sizes": "warning",
-								"gradients": "warning",
-								"ids": "warning",
-								"import": "warning",
-								"important": "warning",
-								"known-properties": true,
-								"outline-none": "warning",
-								"overqualified-elements": "warning",
-								"qualified-headings": "warning",
-								"regex-selectors": "warning",
-								"rules-count": "warning",
-								"shorthand": "warning",
-								"star-property-hack": "warning",
-								"text-indent": "warning",
-								"underscore-property-hack": "warning",
-								"unique-headings": "warning",
-								"universal-selector": "warning",
-								"vendor-prefix": true,
-								"zero-units": "warning"
-							},
-							"gjslint_ignore":
-							[
-								110.0
-							],
-							"gjslint_options":
-							[
-							],
-							"javascript_linter": "jshint",
-							"jshint_options":
-							{
-								"browser": true,
-								"evil": true,
-								"regexdash": true,
-								"sub": true,
-								"trailing": true,
-								"wsh": true
-							},
-							"pep8": true,
-							"pep8_ignore":
-							[
-								"E501"
-							],
-							"perl_linter": "perlcritic",
-							"pyflakes_ignore":
-							[
-							],
-							"pyflakes_ignore_import_*": true,
-							"sublimelinter": true,
-							"sublimelinter_delay": 2.0,
-							"sublimelinter_disable":
-							[
-							],
-							"sublimelinter_executable_map":
-							{
-							},
-							"sublimelinter_fill_outlines": false,
-							"sublimelinter_gutter_marks": false,
-							"sublimelinter_mark_style": "outline",
-							"sublimelinter_notes": false,
-							"sublimelinter_objj_check_ascii": false,
-							"sublimelinter_popup_errors_on_save": false,
-							"sublimelinter_syntax_map":
-							{
-								"C++": "c",
-								"Python Django": "python",
-								"Ruby on Rails": "ruby"
-							},
-							"sublimelinter_wrap_find": true,
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"settings":
-					{
-						"buffer_size": 3774,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2998,
-								2998
-							]
-						],
-						"settings":
-						{
-							"annotations":
-							[
-								"TODO",
-								"README",
-								"FIXME"
-							],
-							"csslint_options":
-							{
-								"adjoining-classes": "warning",
-								"box-model": true,
-								"box-sizing": "warning",
-								"compatible-vendor-prefixes": "warning",
-								"display-property-grouping": true,
-								"duplicate-background-images": "warning",
-								"duplicate-properties": true,
-								"empty-rules": true,
-								"errors": true,
-								"fallback-colors": "warning",
-								"floats": "warning",
-								"font-faces": "warning",
-								"font-sizes": "warning",
-								"gradients": "warning",
-								"ids": "warning",
-								"import": "warning",
-								"important": "warning",
-								"known-properties": true,
-								"outline-none": "warning",
-								"overqualified-elements": "warning",
-								"qualified-headings": "warning",
-								"regex-selectors": "warning",
-								"rules-count": "warning",
-								"shorthand": "warning",
-								"star-property-hack": "warning",
-								"text-indent": "warning",
-								"underscore-property-hack": "warning",
-								"unique-headings": "warning",
-								"universal-selector": "warning",
-								"vendor-prefix": true,
-								"zero-units": "warning"
-							},
-							"gjslint_ignore":
-							[
-								110.0
-							],
-							"gjslint_options":
-							[
-							],
-							"javascript_linter": "jshint",
-							"jshint_options":
-							{
-								"browser": true,
-								"evil": true,
-								"regexdash": true,
-								"sub": true,
-								"trailing": true,
-								"wsh": true
-							},
-							"pep8": true,
-							"pep8_ignore":
-							[
-								"E501"
-							],
-							"perl_linter": "perlcritic",
-							"pyflakes_ignore":
-							[
-							],
-							"pyflakes_ignore_import_*": true,
-							"sublimelinter": true,
-							"sublimelinter_delay": 2.0,
-							"sublimelinter_disable":
-							[
-							],
-							"sublimelinter_executable_map":
-							{
-							},
-							"sublimelinter_fill_outlines": false,
-							"sublimelinter_gutter_marks": false,
-							"sublimelinter_mark_style": "outline",
-							"sublimelinter_notes": false,
-							"sublimelinter_objj_check_ascii": false,
-							"sublimelinter_popup_errors_on_save": false,
-							"sublimelinter_syntax_map":
-							{
-								"C++": "c",
-								"Python Django": "python",
-								"Ruby on Rails": "ruby"
-							},
-							"sublimelinter_wrap_find": true,
-							"syntax": "Packages/Diff/Diff.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1400.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "src/project.js",
-					"settings":
-					{
-						"buffer_size": 644,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								255,
-								255
-							]
-						],
-						"settings":
-						{
-							"annotations":
-							[
-								"TODO",
-								"README",
-								"FIXME"
-							],
-							"csslint_options":
-							{
-								"adjoining-classes": "warning",
-								"box-model": true,
-								"box-sizing": "warning",
-								"compatible-vendor-prefixes": "warning",
-								"display-property-grouping": true,
-								"duplicate-background-images": "warning",
-								"duplicate-properties": true,
-								"empty-rules": true,
-								"errors": true,
-								"fallback-colors": "warning",
-								"floats": "warning",
-								"font-faces": "warning",
-								"font-sizes": "warning",
-								"gradients": "warning",
-								"ids": "warning",
-								"import": "warning",
-								"important": "warning",
-								"known-properties": true,
-								"outline-none": "warning",
-								"overqualified-elements": "warning",
-								"qualified-headings": "warning",
-								"regex-selectors": "warning",
-								"rules-count": "warning",
-								"shorthand": "warning",
-								"star-property-hack": "warning",
-								"text-indent": "warning",
-								"underscore-property-hack": "warning",
-								"unique-headings": "warning",
-								"universal-selector": "warning",
-								"vendor-prefix": true,
-								"zero-units": "warning"
-							},
-							"gjslint_ignore":
-							[
-								110.0
-							],
-							"gjslint_options":
-							[
-							],
-							"javascript_linter": "jshint",
-							"jshint_options":
-							{
-								"browser": true,
-								"evil": true,
-								"regexdash": true,
-								"sub": true,
-								"trailing": true,
-								"wsh": true
-							},
-							"pep8": true,
-							"pep8_ignore":
-							[
-								"E501"
-							],
-							"perl_linter": "perlcritic",
-							"pyflakes_ignore":
-							[
-							],
-							"pyflakes_ignore_import_*": true,
-							"sublimelinter": true,
-							"sublimelinter_delay": 2.0,
-							"sublimelinter_disable":
-							[
-							],
-							"sublimelinter_executable_map":
-							{
-							},
-							"sublimelinter_fill_outlines": false,
-							"sublimelinter_gutter_marks": false,
-							"sublimelinter_mark_style": "outline",
-							"sublimelinter_notes": false,
-							"sublimelinter_objj_check_ascii": false,
-							"sublimelinter_popup_errors_on_save": false,
-							"sublimelinter_syntax_map":
-							{
-								"C++": "c",
-								"Python Django": "python",
-								"Ruby on Rails": "ruby"
-							},
-							"sublimelinter_wrap_find": true,
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				}
 			]
 		},
 		{
@@ -899,7 +560,7 @@
 		"cols":
 		[
 			0.0,
-			0.5,
+			0.52635431918,
 			1.0
 		],
 		"rows":
@@ -924,48 +585,72 @@
 		"selected_items":
 		[
 			[
-				"content",
-				"content.csv"
+				"css",
+				"style.css"
+			],
+			[
+				"gallery",
+				"src/gallery.js"
 			],
 			[
 				"header",
 				"src/header.js"
 			],
 			[
-				"project",
-				"src/project.js"
+				"menu",
+				"src/menu.js"
 			],
 			[
-				"src/",
-				"src/project.js"
+				"",
+				"src/global.js"
 			],
 			[
 				"next",
 				"src/next.js"
 			],
 			[
-				"index",
-				"index.php"
+				"helper",
+				"src/helper.js"
 			],
 			[
-				"",
-				"style.css"
-			],
-			[
-				"css",
-				"style.css"
-			],
-			[
-				"php",
-				"index.php"
+				"svg",
+				"img/main.svg"
 			],
 			[
 				"main.svg",
 				"img/main.svg"
 			],
 			[
-				"menu",
+				"men",
 				"src/menu.js"
+			],
+			[
+				"project",
+				"src/project.js"
+			],
+			[
+				"content",
+				"content.csv"
+			],
+			[
+				"index.",
+				"index.php"
+			],
+			[
+				"heaer.js",
+				"src/header.js"
+			],
+			[
+				"index",
+				"index.php"
+			],
+			[
+				"src/",
+				"src/project.js"
+			],
+			[
+				"php",
+				"index.php"
 			],
 			[
 				"front",
@@ -978,10 +663,6 @@
 			[
 				"main",
 				"img/main.svg"
-			],
-			[
-				"gallery",
-				"src/gallery.js"
 			],
 			[
 				"cs",
@@ -1040,7 +721,7 @@
 	},
 	"show_minimap": false,
 	"show_open_files": true,
-	"show_tabs": false,
+	"show_tabs": true,
 	"side_bar_visible": false,
 	"side_bar_width": 173.0,
 	"status_bar_visible": true

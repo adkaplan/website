@@ -15,4 +15,7 @@ function goHome() {
 	$(obj).animate({svgOpacity:0},{duration:150, complete:(function() {$(this).attr("display","none");})});
 	jq.shift();
 	setTimeout(next,25)
+	if(project) {
+		svgFadeOut($("#project"),300);
+	}
 }

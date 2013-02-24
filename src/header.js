@@ -199,46 +199,23 @@ $(function() {
 	});
 
 	$(".galleryItem").mouseenter(function() {
-		if(state == "rest") {
-			tLine = $(this).data("tline");
-			if(tLine.state == "rest" || tLine.state == "mouseHide") {
-				var current = tLine.jq.length;
-				tLine.jq = [
-								$(this)
-							]
-				if(tLine.state == "mouseHide") {
-					console.log("1");
-					for(var i=0;i<current;i++) tLine.jq.shift(); //delete unnecessary steps of the animation
-					tLine.state = "mouseShow";
-				}
-				if(tLine.state == "rest") {
-					console.log("2");
-					tLine.state = "mouseShow";
-					next(tLine); //start the animation
-				}
-			}
-
+		if(!$(this).hasClass("clickable")) return;
+		$(this).stop(true);
+		if($(this).hasClass("clickable")) {
+			$(this).animate(
+						{svgOpacity:.3},
+						{duration:150}
+						);
 		}
 	});
 
 	$(".galleryItem").mouseleave(function() {
-		if (state == "rest") {
-			tLine = $(this).data("tline");
-			if(tLine.state == "rest" || tLine.state == "mouseShow") {
-				var current = tLine.jq.length;
-				tLine.jq = [
-								$(this)
-							]
-				if(tLine.state == "mouseShow") {
-					for(var i=0;i<current;i++) tLine.jq.shift(); //delete unnecessary steps of the animation
-					tLine.state = "mouseHide";
-				}
-				if(tLine.state == "rest") {
-					tLine.state = "mouseHide";
-					next(tLine); //start the animation
-				}
-			}
-		}
+		if(!$(this).hasClass("clickable")) return;
+		$(this).stop(true);
+		$(this).animate(
+					{svgOpacity:1},
+					{duration:150}
+					);
 	});
 });
 
@@ -247,8 +224,7 @@ $(function() {
 function menuClick(evt) {
 		// document.body.style.height = "2000px";
 		var clicked = $(evt.target).closest(".dark");
-
-		clicked.find("#box").css('cursor', 'default');
+		clicked.find("#box").toggleClass("clickable",true);
 		if(gallery) {
 			cMenu.jq = [
 				$("#" + cCategory + "Dark").find("#box"),
@@ -259,7 +235,7 @@ function menuClick(evt) {
 				//SHIT IF STATEMENT
 				$(".galleryItem").each(function() {
 					$(this).stop(true);
-					$(this).animate({svgOpacity:0},{duration:200, complete:(function() {$(this).attr("display","none");})});
+					svgFadeOut($(this),200);
 				})
 			}
 			//Animate the next color coming in
@@ -293,7 +269,10 @@ function menuClick(evt) {
 					return;
 				}
 		}
-
+		if(project) {
+			svgFadeOut($("#project"),300);
+			project = false;
+		}
 		cMenu = tLine;
 		var current = tLine.jq.length;
 		tLine.jq = [
@@ -313,14 +292,18 @@ function menuClick(evt) {
 }
 
 function galleryClick(evt) {
+	obj = $(evt.target).closest(".galleryItem");
+	if(!obj.hasClass("clickable")) return;
+
 	//cContent should only be set from here
 
+	//Before cUpdates
 	if(project) {
 		cGalleryItem.find("#scale").animate({svgOpacity:'.3'},{duration:200});
-		// cGalleryItem.
+		cGalleryItem.toggleClass("clickable",true);
+		 //update cGalleryItem
 	}
-
-	obj = $(evt.target).closest(".galleryItem");
+	//cUpdates
 	cContent = $(obj).data("content");
 	cID = $(evt.target).closest(".galleryItem").attr("contentID");
 	cImage = cContent[4]
@@ -329,14 +312,17 @@ function galleryClick(evt) {
 	cDate = cContent[7]
 	cWidth = cContent[8]
 	cHeight = cContent[9]
-	cGalleryItem = obj;
-
 	if(cContent[2] != "") {
 		cMore = cContent[2];
 		cLink = cContent[10];
 	}
+
+	//after cUpdates
 	if (project) {
+		cGalleryItem = obj;
+		obj.toggleClass("clickable",false);
 		obj.find("#scale").animate({svgOpacity:'1'},{duration:200});
+		obj.animate({svgOpacity:'1'},{duration:200});
 		changeImage();
 	} else {
 		cProject = cContent[0];

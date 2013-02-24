@@ -18,8 +18,7 @@ function menuOut() {
 			$('#aBox #whiteText path').animate({svgFill:'#84AC4B'},{duration:200});
 			$('#aBox #fill').animate({svgFill:'#000000'},{duration:200});
 			$('#aBox #border').animate({svgFill:'#B4B4B4'},{duration:200});
-			$('#blogBack').animate({svgOpacity:'0'},{duration:300, complete:(function() {$(this).attr("display","none");})});
-
+			svgFadeOut($('#blogBack'),300);
 			obj.animate(
 							{svgTransform:'translate(0,-185)'},
 							{
@@ -57,9 +56,9 @@ function menuIn() {
 	if(jq.length == 0) {
 		//jq.push($(".paths"));
 		//jq.push($(".circles"));
-		//Misc Instant Transitions
-		$('#aFullText').removeAttr("display");
-		$('#aFullText').animate({svgOpacity:'1'},{duration:300});
+
+		//Misc Transitions
+		svgFadeIn($("#aFullText"),300)
 		$('#aBox #whiteText path').animate({svgFill:'#FFFFFF'},{duration:400});
 		$('#aBox #fill').animate({svgFill:'#84AC4B'},{duration:400});
 		$('#aBox #border').animate({svgOpacity:'0'},{duration:200});
@@ -72,6 +71,10 @@ function menuIn() {
 	var obj = jq[0];
 	switch(jq.length) {
 		case 3:
+			if(project) {
+				svgFadeOut($("#project"),300);
+			}
+
 			obj.animate(
 					{svgTransform:'translate(0,0)'},
 					{
@@ -237,7 +240,6 @@ function menuMouseOut(tLine) {
 			var rect = $(obj).children('rect')
 			var xCenter = parseInt(rect.attr('x'))+49;
 			var yCenter = parseInt(rect.attr('y'))+49;
-			console.log(xCenter + " " + yCenter);
 			obj.animate(
 							{svgTransform:'rotate(0,' + xCenter + ',' + yCenter + ')'},
 							{

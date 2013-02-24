@@ -1,10 +1,14 @@
 function galleryIn() {
 	//Should could be called galleryLoad
 	gallery = true;
-
-	$("#aBox #box").css('cursor', 'pointer');
+	$("#aBox #box #fill").toggleClass("clickable",true);
 	//Also handles distributing content from cStack into gallery objects
 	if(cStack.length == 0) {
+		while(jq.length>0) {
+			obj = $(jq[0]);
+			jq.shift();
+			obj.find("#scale").attr("transform","scale(1)");
+		}
 		jq = [];
 		state = "rest"
 		return;
@@ -51,7 +55,17 @@ function galleryIn() {
 		tempImage.onLoad = (new function() {
 							obj.find('image').removeAttr("display");
 							obj.find('image').attr('xlink:href',"img/tooltip/" + content[0][3]);
-							if(project && content[1] != cID) obj.find("#scale").attr("opacity",'.3');
+							if(project) {
+								if(content[1] != cID) {
+									obj.find("#scale").attr("opacity",'.3');
+									obj.closest(".galleryItem").toggleClass("clickable",true);
+								} else {
+									cGalleryItem = $(obj);
+									obj.closest(".galleryItem").toggleClass("clickable",false);
+								}
+							} else {
+								obj.closest(".galleryItem").toggleClass("clickable",true);
+							}
 							obj.animate(
 										{svgOpacity:'1'},
 										{

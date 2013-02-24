@@ -36,3 +36,6 @@ svg {
 .clipBoxRect {
 	/*display: none;*/
 }
+.clickable {
+	cursor: pointer;
+}
