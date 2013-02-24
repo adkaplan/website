@@ -3,10 +3,8 @@ function menuOut() {
 		jq.push($(".paths"));
 		jq.push($(".circles"));
 
-		$(".galleryItem").each( function() {
-			jq.push($(this));
-		});
-		state = "enterGallery";
+		buildGalleryJQ();
+		state = "galleryIn";
 		next();
 		return;
 	}
@@ -253,10 +251,10 @@ function menuMouseOut(tLine) {
 	tLine.jq.shift();
 }
 
-function colorOn(tLine) { //Transition between mouseIn and exitMenu(global)
+function colorOn(tLine) { //Transition between mouseIn and menuOut(global)
 	if(tLine.jq.length == 0) {
 		tLine.state = "select";
-		state = "exitMenu"
+		state = "menuOut"
 		next(); //Start the global animation
 		return;
 	}

@@ -3,19 +3,28 @@
 //
 
 function next(String) {
+	//if(debug && project) {console.log("PROJECT")}
+	//if(debug && gallery) {console.log("GALLERY")}
 	if(!arguments.length) { //Global animation
-		if(debug)console.log("GLOBAL:" + state + ":" + jq.length)
+		if(debug)if(jq.length != 0) {
+			console.log("GLOBAL:" + state + ":" + jq.length);
+		} else if(state == "rest") {
+			console.log("REST")
+		} else {
+			console.log("GLOBAL:" + state + ":" + "FINISH")
+		}
 		switch(state) {
-			case "exitMenu":
+			case "menuOut":
 				menuOut();
 			break;
-			case "enterMenu":
+			case "menuIn":
 				menuIn();
 			break;
-			case "enterGallery":
+			case "galleryIn":
 				galleryIn();
+				//gallery
 			break;
-			case "exitGallery":
+			case "galleryOut":
 				galleryOut();
 			break;
 			case "goHome":
@@ -30,7 +39,11 @@ function next(String) {
 		}
 	} else { //Local animation
 		var tLine = arguments[0];
-		if(debug)console.log(tLine.group.toUpperCase() +":" + tLine.state + ":" + tLine.jq.length)
+		if(debug) if(tLine.jq.length!=0) {
+			console.log(tLine.group.toUpperCase() +":" + tLine.state + ":" + tLine.jq.length);
+		} else {
+			console.log(tLine.group.toUpperCase() + ":" + tLine.state + ":" + "FINISH")
+		}
 		switch(tLine.group) {
 			case "menu":
 				switch(tLine.state) {

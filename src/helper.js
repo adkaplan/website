@@ -17,3 +17,12 @@ function svgFadeOut(obj,dur) {
         complete:(function() {$(this).attr("display","none");})
         });
 }
+function buildGalleryJQ() {
+    tmp = cStack.length;
+    $(".galleryItem").each(
+    function() {
+        if(!tmp) return;
+        jq.push($(this));
+        tmp --;
+    });
+}

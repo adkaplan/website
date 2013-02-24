@@ -1,5 +1,6 @@
 function initialize() {
 	window.onscroll = scroll;
+	debug = true;
 }
 
 function scroll() {
@@ -22,7 +23,7 @@ function Timeline(group, state) {
 
 //jq is a global timeline used for transitions. Global animations prevent local animations (local objects can't change state)
 
-//Global States: enterGallery, exitGallery
+//Global States: galleryIn, galleryOut
 
 //m,d,sTime are individual timelines for each object
 
@@ -326,7 +327,7 @@ function galleryClick(evt) {
 		changeImage();
 	} else {
 		cProject = cContent[0];
-		state = "exitGallery";
+		state = "galleryOut";
 		project = true;
 		next();
 	}
