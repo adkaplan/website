@@ -1,6 +1,7 @@
 function initialize() {
 	window.onscroll = scroll;
 	debug = true;
+	//Hello from my machine!
 }
 
 function scroll() {
