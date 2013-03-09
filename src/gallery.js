@@ -1,8 +1,9 @@
 function galleryIn() {
+	console.log("WHAT");
 	//Should could be called galleryLoad
 	gallery = true;
 	$("#aBox #box #fill").toggleClass("clickable",true);
-	//Also handles distributing content from cStack into gallery objects
+	//Also handles distributing cont1ent from cStack into gallery objects
 	if(cStack.length == 0) {
 		while(jq.length>0) {
 			obj = $(jq[0]);
