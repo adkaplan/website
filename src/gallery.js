@@ -1,4 +1,5 @@
 function galleryIn() {
+	//Some changes
 	console.log("WHAT");
 	//Should could be called galleryLoad
 	gallery = true;
