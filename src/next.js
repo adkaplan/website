@@ -22,7 +22,6 @@ function next(String) {
 			break;
 			case "galleryIn":
 				galleryIn();
-				//gallery
 			break;
 			case "galleryOut":
 				galleryOut();
