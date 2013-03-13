@@ -1,13 +1,29 @@
 function initialize() {
 	window.onscroll = scroll;
+	window.onresize = function() {
+		document.body.style.height = String(window.innerHeight+cExcess) + "px";
+	}
 	debug = true
+	scrollFactor = 3;
 	state = "enterSite"
 	next();
+
+}
+function scroll() {
+	//document.body.style.height = "2000px";
+	//if(String(window.innerHeight + cExcess) + "px" != document.body.style.height) {
+	//	console.log("RESIZE!")
+	//	setExcess();
+	//}
+	offset = project ? 385 : 0;
+	$("#gallery").attr("transform","translate(0," + (-window.pageYOffset/scrollFactor + offset) + ")");
 }
 
-function scroll() {
-	offset = project ? 385 : 0;
-	$("#gallery").attr("transform","translate(0," + (-window.pageYOffset/3 + offset) + ")");
+function setExcess(filterCount) {
+	rows = Math.ceil(filterCount/4.0);
+	cExcess = project ? (rows-1.0)*100 : (rows-4.0)*100;
+	document.body.style.height = String(window.innerHeight+cExcess*scrollFactor) + "px";
+	//console.log(window.innerHeight);;
 }
 //
 //OBJECT DEFINITIONS
@@ -34,7 +50,7 @@ function Timeline(group, state) {
 //content is pushed from header.php
 var jq = [];
 var state = "rest";
-
+var count = 0;
 var gallery = false;
 var project = false;
 
@@ -53,6 +69,8 @@ var cTitle;
 var cMore;
 var cLink;
 var cGalleryItem;
+var cExcess = 0;
+
 
 var mTime = new Timeline("menu", "rest");
 mTime.colNum = 2;
@@ -126,29 +144,31 @@ $(function() {
 	//
 	//EVENTS
 	//
-
-	$(".startButton").mouseenter(function() {
+	$(".darkHit").mouseenter(function() {
 		if(state != "rest") return;
-		switch($(this).closest('.dark').attr('id')) { //Get the right Timeline
+		switch($(this).attr('id')) { //Get the right Timeline SHITTY
 			case "mDark":
 				var tLine = mTime;
+				rect = $(".dark#mDark .startButton");
 			break;
 			case "dDark":
 				var tLine = dTime;
+				rect = $(".dark#dDark .startButton");
 			break;
 			case "sDark":
 				var tLine = sTime;
+				rect = $(".dark#sDark .startButton");
 			break;
-			case "aBox":
+			default:
 				return;
 			break;
 		}
 		if(tLine.state == "rest" || tLine.state == "mouseHide") {
 			var current = tLine.jq.length;
-			var root = $(this).closest(".dark");
+			var root = rect.closest(".dark");
 			tLine.jq = [
-							$(this),
-							$(this).find("#whiteText"),
+							rect,
+							rect.find("#whiteText"),
 							root.find("#popoutText"),
 							root.find("#fullText")
 						]
@@ -163,29 +183,32 @@ $(function() {
 		}
 	});
 
-	$(".startButton").mouseleave(function() {
+	$(".darkHit").mouseleave(function() {
 		if(state != "rest") return;
-		switch($(this).closest('.dark').attr('id')) { //Get the right Timeline
+		switch($(this).attr('id')) { //Get the right Timeline (SHITTY)
 			case "mDark":
 				var tLine = mTime;
+				rect = $(".dark#mDark .startButton");
 			break;
 			case "dDark":
 				var tLine = dTime;
+				rect = $(".dark#dDark .startButton");
 			break;
 			case "sDark":
 				var tLine = sTime;
+				rect = $(".dark#sDark .startButton");
 			break;
-			case "aBox":
+			default:
 				return;
 			break;
 		}
 		if(tLine.state == "rest" || tLine.state == "mouseShow") {
 			var current = tLine.jq.length;
 			tLine.jq = [
-							$(this.parentNode).find("#fullText"),
-							$(this.parentNode).find("#popoutText"),
-							$(this).find("#whiteText"),
-							$(this)
+							rect.parent().find("#fullText"),
+							rect.parent().find("#popoutText"),
+							rect.find("#whiteText"),
+							rect
 						]
 			if(tLine.state == "mouseShow") {
 				for(var i=0;i<current;i++) tLine.jq.shift(); //delete unnecessary steps of the animation
@@ -227,8 +250,11 @@ function projectClick(evt) {
 }
 function menuClick(evt) {
 		if(state != "rest") return;
-		// document.body.style.height = "2000px";
-		var clicked = $(evt.target).closest(".dark");
+		if ($(evt.target.parentNode).hasClass("darkHit")) {
+			console.log("GOOD")
+			var clicked = $(".dark#" + $(evt.target.parentNode).attr("id"));
+		}
+		else clicked = $(evt.target);
 		clicked.find("#box").toggleClass("clickable",true);
 		if(gallery) {
 			cMenu.jq = [
@@ -264,7 +290,7 @@ function menuClick(evt) {
 				cStack = filterBy(content,"S",1);
 				cCategory = "s"
 			break;
-			case "aBox": //Build goHome
+			default: //Build goHome
 				if(gallery) {
 					jq = [];
 					$(".galleryItem").each(function() {

@@ -40,7 +40,7 @@
 </head>
 
 <body onload="initialize()">
-	<DIV style="width: 100%; height:100%">
+	<DIV id="main" style="width: 100%; height:100%">
 			<?php include "img/borders/leftside.svg";?>
 			<?php include "img/borders/rightside.svg";?>
 			<?php include "img/main.svg";?>

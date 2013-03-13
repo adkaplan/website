@@ -5,8 +5,11 @@ function filterBy(data,identifier,column) {
             returnArray.push(new Array(data[i],i));
 		}
 	};
-	return returnArray;
+  console.log("FILTERBY:" + returnArray.length);
+	setExcess(returnArray.length);
+  return returnArray;
 }
+function dHeight() {}
 function svgFadeIn(obj,dur) {
     if(obj.hasClass("fading")) {
         obj.stop();
@@ -19,7 +22,6 @@ function svgFadeIn(obj,dur) {
         obj.removeClass("fading")
    });
    obj.animate({svgOpacity:'1'},{duration:dur});
-    // obj.attr("opacity",1)
 }
 function svgFadeOut(obj,dur) {
     if(obj.hasClass("fading")) {

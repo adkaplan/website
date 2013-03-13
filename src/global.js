@@ -146,6 +146,11 @@ function menuOut() {
 					complete: next
 				}
 			);
+		$(".darkHit").animate(
+				{svgTransform:'translate(0,-185)'},
+				{
+					duration:600
+				})
 	break;
 	}
 	jq.shift();
@@ -202,8 +207,12 @@ function menuIn() {
 						}
 					);
 
+		$(".darkHit").animate(
+				{svgTransform:'translate(0,0)'},
+				{
+					duration:600
+				})
 	break;
-
 	}
 	jq.shift();
 }

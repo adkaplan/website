@@ -10,14 +10,17 @@ function menuMouseIn(tLine) {
 			var rect = $(obj).children('rect')
 			var xCenter = parseInt(rect.attr('x'))+49;
 			var yCenter = parseInt(rect.attr('y'))+49;
+			obj.attr("transform","rotate(1,"+xCenter+","+yCenter+")");
 			obj.animate(
 							{svgTransform:'rotate(90,' + xCenter + ',' + yCenter + ')'},
 							{
 								duration: 450,
 								easing: 'easeOutCirc',
-								complete: (function() {next(tLine);})
+								complete: (function() {
+								})
 							}
 						);
+			setTimeout(function(){next(tLine)},450);
 		break;
 		case 3: //WhiteText Slide
 			var travelDist = parseInt(obj.attr('traveldist'));
@@ -118,6 +121,7 @@ function menuMouseOut(tLine) {
 			var rect = $(obj).children('rect')
 			var xCenter = parseInt(rect.attr('x'))+49;
 			var yCenter = parseInt(rect.attr('y'))+49;
+			obj.attr("transform","rotate(90,"+xCenter+","+yCenter+")");
 			obj.animate(
 							{svgTransform:'rotate(0,' + xCenter + ',' + yCenter + ')'},
 							{
@@ -212,6 +216,7 @@ function galleryDeselect(tLine) {
 			var rect = $(obj).children('rect')
 			var xCenter = parseInt(rect.attr('x'))+49;
 			var yCenter = parseInt(rect.attr('y'))+49;
+			obj.attr("transform","rotate(90,"+xCenter+","+yCenter+")");
 			obj.animate(
 							{svgTransform:'rotate(0,' + xCenter + ',' + yCenter + ')'},
 							{

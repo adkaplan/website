@@ -5,7 +5,6 @@
 <rect x="580" y="0" style="fill:#717171;" width="20" height="20" opacity=".3" display="none"/>
 <rect x="580" y="660" style="fill:#717171;" width="20" height="20" opacity=".3" display="none"/>
 <rect y="660" style="fill:#717171;" width="20" height="20" 3=".opacity" display="none"/>
-
 <clipPath id="projectClip">
 	<rect class="clipBoxRect" x="15" y="532" width="575" height="190"/>
 </clipPath>
@@ -159,6 +158,106 @@
 				<image id="image" transform='translate(-49,-49)' width="98" height="98" xlink:href="" />
 			</g>
 		</g>
+
+		<g class='galleryItem column1' onclick='galleryClick(evt)' transform='translate(120.5,795.5)'>
+			<g id='scale' transform='scale(.8)'>
+				<rect fill='#C8C8C8' width='98' height='98' transform='translate(-49,-49)'/>
+				<image id="image" transform='translate(-49,-49)' width="98" height="98" xlink:href="" />
+			</g>
+		</g>
+		<g class='galleryItem column2' onclick='galleryClick(evt)' transform='translate(240.5,795.5)'>
+			<g id='scale' transform='scale(.8)'>
+				<rect fill='#C8C8C8' width='98' height='98' transform='translate(-49,-49)'/>
+				<image id="image" transform='translate(-49,-49)' width="98" height="98" xlink:href="" />
+			</g>
+		</g>
+		<g class='galleryItem column3' onclick='galleryClick(evt)' transform='translate(360.5,795.5)'>
+			<g id='scale' transform='scale(.8)'>
+				<rect fill='#C8C8C8' width='98' height='98' transform='translate(-49,-49)'/>
+				<image id="image" transform='translate(-49,-49)' width="98" height="98" xlink:href="" />
+			</g>
+		</g>
+		<g class='galleryItem column4' onclick='galleryClick(evt)' transform='translate(480.5,795.5)'>
+			<g id='scale' transform='scale(.8)'>
+				<rect fill='#C8C8C8' width='98' height='98' transform='translate(-49,-49)'/>
+				<image id="image" transform='translate(-49,-49)' width="98" height="98" xlink:href="" />
+			</g>
+		</g>
+
+		<g class='galleryItem column1' onclick='galleryClick(evt)' transform='translate(120.5,915.5)'>
+			<g id='scale' transform='scale(.8)'>
+				<rect fill='#C8C8C8' width='98' height='98' transform='translate(-49,-49)'/>
+				<image id="image" transform='translate(-49,-49)' width="98" height="98" xlink:href="" />
+			</g>
+		</g>
+		<g class='galleryItem column2' onclick='galleryClick(evt)' transform='translate(240.5,915.5)'>
+			<g id='scale' transform='scale(.8)'>
+				<rect fill='#C8C8C8' width='98' height='98' transform='translate(-49,-49)'/>
+				<image id="image" transform='translate(-49,-49)' width="98" height="98" xlink:href="" />
+			</g>
+		</g>
+		<g class='galleryItem column3' onclick='galleryClick(evt)' transform='translate(360.5,915.5)'>
+			<g id='scale' transform='scale(.8)'>
+				<rect fill='#C8C8C8' width='98' height='98' transform='translate(-49,-49)'/>
+				<image id="image" transform='translate(-49,-49)' width="98" height="98" xlink:href="" />
+			</g>
+		</g>
+		<g class='galleryItem column4' onclick='galleryClick(evt)' transform='translate(480.5,915.5)'>
+			<g id='scale' transform='scale(.8)'>
+				<rect fill='#C8C8C8' width='98' height='98' transform='translate(-49,-49)'/>
+				<image id="image" transform='translate(-49,-49)' width="98" height="98" xlink:href="" />
+			</g>
+		</g>
+
+		<g class='galleryItem column1' onclick='galleryClick(evt)' transform='translate(120.5,1035.5)'>
+			<g id='scale' transform='scale(.8)'>
+				<rect fill='#C8C8C8' width='98' height='98' transform='translate(-49,-49)'/>
+				<image id="image" transform='translate(-49,-49)' width="98" height="98" xlink:href="" />
+			</g>
+		</g>
+		<g class='galleryItem column2' onclick='galleryClick(evt)' transform='translate(240.5,1035.5)'>
+			<g id='scale' transform='scale(.8)'>
+				<rect fill='#C8C8C8' width='98' height='98' transform='translate(-49,-49)'/>
+				<image id="image" transform='translate(-49,-49)' width="98" height="98" xlink:href="" />
+			</g>
+		</g>
+		<g class='galleryItem column3' onclick='galleryClick(evt)' transform='translate(360.5,1035.5)'>
+			<g id='scale' transform='scale(.8)'>
+				<rect fill='#C8C8C8' width='98' height='98' transform='translate(-49,-49)'/>
+				<image id="image" transform='translate(-49,-49)' width="98" height="98" xlink:href="" />
+			</g>
+		</g>
+		<g class='galleryItem column4' onclick='galleryClick(evt)' transform='translate(480.5,1035.5)'>
+			<g id='scale' transform='scale(.8)'>
+				<rect fill='#C8C8C8' width='98' height='98' transform='translate(-49,-49)'/>
+				<image id="image" transform='translate(-49,-49)' width="98" height="98" xlink:href="" />
+			</g>
+		</g>
+
+		<g class='galleryItem column1' onclick='galleryClick(evt)' transform='translate(120.5,1155.5)'>
+			<g id='scale' transform='scale(.8)'>
+				<rect fill='#C8C8C8' width='98' height='98' transform='translate(-49,-49)'/>
+				<image id="image" transform='translate(-49,-49)' width="98" height="98" xlink:href="" />
+			</g>
+		</g>
+		<g class='galleryItem column2' onclick='galleryClick(evt)' transform='translate(240.5,1155.5)'>
+			<g id='scale' transform='scale(.8)'>
+				<rect fill='#C8C8C8' width='98' height='98' transform='translate(-49,-49)'/>
+				<image id="image" transform='translate(-49,-49)' width="98" height="98" xlink:href="" />
+			</g>
+		</g>
+		<g class='galleryItem column3' onclick='galleryClick(evt)' transform='translate(360.5,1155.5)'>
+			<g id='scale' transform='scale(.8)'>
+				<rect fill='#C8C8C8' width='98' height='98' transform='translate(-49,-49)'/>
+				<image id="image" transform='translate(-49,-49)' width="98" height="98" xlink:href="" />
+			</g>
+		</g>
+		<g class='galleryItem column4' onclick='galleryClick(evt)' transform='translate(480.5,1155.5)'>
+			<g id='scale' transform='scale(.8)'>
+				<rect fill='#C8C8C8' width='98' height='98' transform='translate(-49,-49)'/>
+				<image id="image" transform='translate(-49,-49)' width="98" height="98" xlink:href="" />
+			</g>
+		</g>
 	</g>
 </g>
 <!-- Menu Items -->
@@ -198,7 +297,6 @@
 			c0.527-2.324,1.084-4.347,1.67-6.063l8.584-24.844h13.506L286.175,270.664L286.175,270.664z"/>
 	</g>
 </g>
-
 
 <g id="dDark" class="dark" opacity="0">
 	<g id="slide">
@@ -240,7 +338,7 @@
 	<clipPath id="dDarkClip">
 		<rect class="clipBoxRect" x="310" y="200" width="100" height="100"/>
 	</clipPath>
-	<g id="box" onclick="menuClick(evt)" style="cursor:pointer;clip-path:url(#dDarkClip);" class="startButton">
+	<g id="box" style="cursor:pointer;clip-path:url(#dDarkClip);" class="startButton">
 		<rect id="fill" x="311" y="201" fill="000000" width="98" height="98"/>
 		<path id="border" style="fill:#B4B4B4;" d="M408,298h-96v-96h96V298 M410,300V200H310v100H410L410,300z"/>
 		<path id="whiteText" traveldist="42" style="fill:#FFFFFF;" d="M369.804,270.664v-42.012h14.883c14.926,0,22.387,6.826,22.387,20.479
@@ -314,7 +412,15 @@
 			c-2.021,0.432-4.155,0.646-6.401,0.646c-2.305,0-4.495-0.195-6.575-0.586C501.695,270.419,499.895,269.834,498.371,269.053z"/>
 	</g>
 </g>
-
+<g id="mDark"class="darkHit clickable" opacity="0" onclick="menuClick(evt)" >
+	<rect x="190" y="200" width="100" height="100"/>
+</g>
+<g id="dDark" class="darkHit clickable" opacity="0" onclick="menuClick(evt)" >
+	<rect x="310" y="200" width="100" height="100"/>
+</g>
+<g id="sDark" class="darkHit clickable" opacity="0" onclick="menuClick(evt)" >
+	<rect x="430" y="200" width="100" height="100"/>
+</g>
 <!-- "A" menu item -->
 <g id="aBox" class="dark">
 	<g>
