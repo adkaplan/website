@@ -1,3 +1,21 @@
+function enterSite() {
+	// svgFadeIn($("#blogBack"),1000);
+	console.log($("#blogback"))
+	setTimeout(function() {
+		svgFadeIn($("#mDark"),400)
+	}, 200);
+	setTimeout(function() {
+		svgFadeIn($("#dDark"),400)
+	}, 400);
+	setTimeout(function() {
+		svgFadeIn($("#sDark"),400)
+	}, 600);
+
+	setTimeout(function() {
+		svgFadeIn($("#blogBack"),1000);
+		state = "rest";
+	},1000)
+}
 function goHome() {
 	if(jq.length == 0) {
 		jq = [
@@ -22,16 +40,23 @@ function goHome() {
 
 function enterProject() {
     //Update Text
-    $("#projectTitle").html(cTitle);
-    $("#projectCaption").html("&nbsp;&nbsp;" + cProject + " | " + cDate + " | " + cCaption);
+    $("#projectTitle").text(cTitle);
+    $("#projectCaption").text(cProject + " | " + cDate + " | " + cCaption);
+    if(cMore != "") {
+    	$("#click").removeAttr("display")
+    	$("#click").attr("opacity","1")
+    	$("#click").text(cMore)
+    } else {
+    	$("#click").attr("opacity","0")
+    	$("#click").attr("display","none")
+    }
     //cCaption
     //cDate
     //cTitle
     //cProject
 
     //Fade in Project
-    $("#project").removeAttr("display");
-    $("#project").animate({svgOpacity:'1'},{duration:300});
+    svgFadeIn($("#project"),300);
 
     //Reset Scrollbar
     window.scrollTo(0,0);
@@ -66,7 +91,7 @@ function enterProject() {
 }
 
 function exitProject() {
-	//Nothing calls this?...
+	//Nothing builds this..?
     project = false;
     $("#project").attr("display","none");
     $("#projectTop").attr("clip-path","url(#galleryClip");
@@ -209,30 +234,17 @@ function galleryIn() {
 	if(!project) { //Should be in some type of PREP function (runs multiple times)
 		    $("#galleryTop").attr("clip-path","url(#galleryclip)");
 	}
+
 	if(obj.id = "blogBack") {
-		svgFadeOut(obj,250);
+		// svgFadeOut(obj,250);
 	}
 
-	if(obj.attr("class") == "paths") { //Stupid way of sorting incoming jq objects
-		obj.removeAttr("display");
-		obj.animate(
-					{svgOpacity:'1'},
-					{
-						duration:400,
-						easing:'easeInOutSine'
-					}
-				);
+	if(obj.hasClass("paths")) { //Stupid way of sorting incoming jq objects
+		svgFadeIn(obj,300);
 		jq.shift();
 		setTimeout(next,500);
-	} else if(obj.attr("class")=="circles") {
-		obj.removeAttr("display");
-		obj.animate(
-					{svgOpacity:'1'},
-					{
-						duration:1500,
-						easing:'easeOutSine'
-					}
-				);
+	} else if(obj.hasClass("circles")) {
+		svgFadeIn(obj,500)
 		jq.shift();
 		next();
 	} else {
@@ -243,28 +255,26 @@ function galleryIn() {
 		obj.attr("contentid",content[1]);
 		obj.find('#scale').attr("transform",'scale(.8)');
 		var tempImage = new Image();
+		//Isn't this redundant?
 		tempImage.onLoad = (new function() {
 							obj.find('image').removeAttr("display");
 							obj.find('image').attr('xlink:href',"img/tooltip/" + content[0][3]);
 							if(project) {
+								//Set the opacity to .3
+								console.log(cID);
 								if(content[1] != cID) {
 									obj.find("#scale").attr("opacity",'.3');
 									obj.closest(".galleryItem").toggleClass("clickable",true);
 								} else {
 									cGalleryItem = $(obj);
+									obj.find("#scale").attr("opacity",'1');
 									obj.closest(".galleryItem").toggleClass("clickable",false);
 								}
 							} else {
 								obj.closest(".galleryItem").toggleClass("clickable",true);
 								obj.find("#scale").attr("opacity",'1');
 							}
-							obj.animate(
-										{svgOpacity:'1'},
-										{
-											duration:150,
-											easing:'easeInCirc'
-										}
-									);
+							svgFadeIn(obj,150);
 							obj.find('#scale').animate(
 									{svgTransform:'scale(1)'},
 									{

@@ -15,9 +15,9 @@
 
 	<!-- src js -->
 	<script type="text/javascript" src='./src/helper.js'></script>
+	<script type="text/javascript" src='./src/gallery.js'></script>
 	<script type="text/javascript" src='./src/next.js'></script>
 	<script type="text/javascript" src='./src/menu.js'></script>
-	<script type="text/javascript" src='./src/gallery.js'></script>
 	<script type="text/javascript" src='./src/header.js'></script>
 	<script type="text/javascript" src='./src/global.js'></script>
 	<script type="text/javascript" src='./src/project.js'></script>

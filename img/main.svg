@@ -11,19 +11,13 @@
 </clipPath>
 <!-- Blog Rect -->
 <g id="project" opacity='0' display='none'>
-		<image id="projectImage" x="12.5" y="135" width="575" height="350" display="none" opacity="0" xlink:href="" />
-	<foreignobject x="13" y="485" width="460" height="70">
-		<body xmlns="http://www.w3.org/1999/xhtml">
-  			<div id="projectTitle">
-  			Project Title!
-		  	</div>
-
-		  	<div id="projectCaption">
-		  		&nbsp;&nbsp;WOOD, PLASTIC | JAN 2013 | ARCH3010
-		  	</div>
-		</body>
+	<image id="projectImage" onclick='projectClick(evt)' x="12.5" y="135" width="575" height="350" display="none" opacity="0" xlink:href="" />
+	<text xml:space="preserve" id="projectTitle" y="505" x="18"fill="#000000">Project Title!</text>
+	<text xml:space="preserve" id="projectCaption" y="520" x="38"fill="#000000">WOOD, PLASTIC | JAN 2013 | ARCH3010</text>
+	<textArea width='500' height='200' x='100' y='400'>HELLO HELLO</textArea>
+	<text id="click" text-anchor="middle" x="300" y="300" fill="#FFFFFF">Click for more!</textArea>
 </g>
-<g id="blogBack" opacity="1">
+<g id="blogBack" opacity="0" display="none">
 	<rect x="70" y="320" width="460" height="200" fill="#EEEEEE" stroke="#CCCCCC" />
   	<foreignobject x="70" y="320" width="460" height="200"><body xmlns="http://www.w3.org/1999/xhtml">
   		<div id="welcomeBox">
@@ -168,13 +162,13 @@
 	</g>
 </g>
 <!-- Menu Items -->
-<g id="mDark" class="dark">
+<g id="mDark" class="dark" opacity="0">
 	<g id="slide">
 		<path id="popoutText" traveldist="53.5" fill="#D4342A" opacity="0" d="M219.336,349.676v-9.346h25.137c2.714,0,5.713,0.117,8.994,0.354
 			v-0.232c-2.578-0.488-4.434-0.928-5.566-1.318l-28.564-9.844v-7.734l28.271-10.02c0.762-0.274,2.714-0.713,5.859-1.318v-0.264
 			c-4.141,0.253-7.774,0.381-10.898,0.381h-23.232v-8.523h42.012v13.855l-24.902,8.584c-1.992,0.686-3.994,1.184-6.006,1.494v0.176
 			c2.324,0.527,4.346,1.084,6.063,1.67l24.844,8.584v13.508L219.336,349.676L219.336,349.676z"/>
-		<g id="fullText" opacity="0">
+		<g id="fullText" opacity="0" display="none">
 			<path style="fill:#010101;" d="M219.519,364.833h4.004v-0.078c-1.367-0.638-2.458-1.563-3.271-2.782s-1.221-2.566-1.221-4.054
 				c0-1.901,0.534-3.405,1.602-4.512c1.067-1.106,2.415-1.66,4.043-1.66c3.489,0,5.599,2.312,6.328,6.935l0.918,6.151
 				c4.297,0,6.445-1.614,6.445-4.844c0-2.2-0.886-4.343-2.656-6.427h2.168c0.586,0.742,1.087,1.748,1.504,3.019
@@ -206,13 +200,13 @@
 </g>
 
 
-<g id="dDark" class="dark">
+<g id="dDark" class="dark" opacity="0">
 	<g id="slide">
 		<path id="popoutText" traveldist="42" fill="#A2328D" opacity="0" d="M339.336,301.807h42.012v14.883
 			c0,14.924-6.823,22.385-20.479,22.385c-6.543,0-11.77-2.036-15.674-6.108c-3.906-4.071-5.859-9.497-5.859-16.272V301.807
 			L339.336,301.807z M373.643,311.27h-26.631v4.688c0,4.103,1.23,7.319,3.691,9.653c2.461,2.332,5.811,3.5,10.049,3.5
 			c4.003,0,7.153-1.156,9.448-3.473c2.295-2.313,3.439-5.562,3.439-9.74L373.643,311.27L373.643,311.27z"/>
-		<g id="fullText" opacity="0">
+		<g id="fullText" opacity="0"  display="none">
 			<path style="fill:#010101;" d="M350.064,342.311c-2.748,0-4.896,0.635-6.444,1.903c-1.55,1.271-2.324,3.011-2.324,5.226
 				c0,2.238,0.827,4.429,2.479,6.563h-1.914c-1.473-2.069-2.207-4.382-2.207-6.935c0-2.577,0.925-4.66,2.771-6.25
 				c1.852-1.59,4.459-2.382,7.832-2.382c2.917,0,5.374,0.83,7.373,2.489c1.999,1.66,2.998,3.818,2.998,6.476
@@ -256,7 +250,7 @@
 	</g>
 </g>
 
- <g id="sDark" class="dark">
+ <g id="sDark" class="dark" opacity="0">
 	<g id="slide">
 		<path id="popoutText" traveldist="34"  fill="#FFD431" opacity="0" d="M460.947,302.371h9.375c-1.426,1.699-2.495,3.545-3.208,5.537
 			c-0.714,1.992-1.069,4.004-1.069,6.035c0,1.189,0.107,2.229,0.322,3.119s0.513,1.631,0.894,2.228
@@ -272,7 +266,7 @@
 			c-0.791,1.337-1.688,2.485-2.683,3.442c-0.995,0.957-2.137,1.688-3.411,2.195c-1.279,0.508-2.771,0.764-4.472,0.764
 			c-2.344,0-4.312-0.444-5.899-1.334c-1.597-0.891-2.884-2.096-3.867-3.617c-0.986-1.523-1.694-3.297-2.124-5.317
 			c-0.431-2.021-0.646-4.155-0.646-6.401c0-2.305,0.195-4.496,0.587-6.576C459.581,305.695,460.166,303.895,460.947,302.371z"/>
-		<g id="fullText" style="opacity:0;">
+		<g id="fullText" style="opacity:0;" display="none">
 			<path style="fill:#010101;" d="M459.773,347.163c-0.911-1.483-1.367-3.255-1.367-5.313c0-2.722,0.934-4.914,2.803-6.582
 				c1.868-1.666,4.313-2.5,7.334-2.5c3.177,0,5.777,0.938,7.803,2.813c2.024,1.875,3.037,4.284,3.037,7.228
 				c0,1.522-0.313,3-0.938,4.436h-2.031c0.885-1.436,1.328-3.001,1.328-4.707c0-2.344-0.844-4.245-2.529-5.703

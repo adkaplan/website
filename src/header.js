@@ -1,7 +1,8 @@
 function initialize() {
 	window.onscroll = scroll;
-	debug = true;
-	//Hello from my machine!
+	debug = true
+	state = "enterSite"
+	next();
 }
 
 function scroll() {
@@ -29,10 +30,9 @@ function Timeline(group, state) {
 //m,d,sTime are individual timelines for each object
 
 //States: rest, mouseShow, mouseHide, select, deselect
-
 //c - Current
 //content is pushed from header.php
-var jq;
+var jq = [];
 var state = "rest";
 
 var gallery = false;
@@ -128,74 +128,72 @@ $(function() {
 	//
 
 	$(".startButton").mouseenter(function() {
-		if (state == "rest") {
-			switch($(this).closest('.dark').attr('id')) { //Get the right Timeline
-				case "mDark":
-					var tLine = mTime;
-				break;
-				case "dDark":
-					var tLine = dTime;
-				break;
-				case "sDark":
-					var tLine = sTime;
-				break;
-				case "aBox":
-					return;
-				break;
+		if(state != "rest") return;
+		switch($(this).closest('.dark').attr('id')) { //Get the right Timeline
+			case "mDark":
+				var tLine = mTime;
+			break;
+			case "dDark":
+				var tLine = dTime;
+			break;
+			case "sDark":
+				var tLine = sTime;
+			break;
+			case "aBox":
+				return;
+			break;
+		}
+		if(tLine.state == "rest" || tLine.state == "mouseHide") {
+			var current = tLine.jq.length;
+			var root = $(this).closest(".dark");
+			tLine.jq = [
+							$(this),
+							$(this).find("#whiteText"),
+							root.find("#popoutText"),
+							root.find("#fullText")
+						]
+			if(tLine.state == "mouseHide") {
+				for(var i=0;i<current;i++) tLine.jq.shift(); //delete unnecessary steps of the animation
+				tLine.state = "mouseShow";
 			}
-			if(tLine.state == "rest" || tLine.state == "mouseHide") {
-				var current = tLine.jq.length;
-				var root = $(this).closest(".dark");
-				tLine.jq = [
-								$(this),
-								$(this).find("#whiteText"),
-								root.find("#popoutText"),
-								root.find("#fullText")
-							]
-				if(tLine.state == "mouseHide") {
-					for(var i=0;i<current;i++) tLine.jq.shift(); //delete unnecessary steps of the animation
-					tLine.state = "mouseShow";
-				}
-				if(tLine.state == "rest") {
-					tLine.state = "mouseShow";
-					next(tLine); //start the animation
-				}
+			if(tLine.state == "rest") {
+				tLine.state = "mouseShow";
+				next(tLine); //start the animation
 			}
 		}
 	});
 
 	$(".startButton").mouseleave(function() {
-		if (state == "rest") {
-			switch($(this).closest('.dark').attr('id')) { //Get the right Timeline
-				case "mDark":
-					var tLine = mTime;
-				break;
-				case "dDark":
-					var tLine = dTime;
-				break;
-				case "sDark":
-					var tLine = sTime;
-				break;
-				case "aBox":
-					return;
-				break;
+		if(state != "rest") return;
+		switch($(this).closest('.dark').attr('id')) { //Get the right Timeline
+			case "mDark":
+				var tLine = mTime;
+			break;
+			case "dDark":
+				var tLine = dTime;
+			break;
+			case "sDark":
+				var tLine = sTime;
+			break;
+			case "aBox":
+				return;
+			break;
+		}
+		if(tLine.state == "rest" || tLine.state == "mouseShow") {
+			var current = tLine.jq.length;
+			tLine.jq = [
+							$(this.parentNode).find("#fullText"),
+							$(this.parentNode).find("#popoutText"),
+							$(this).find("#whiteText"),
+							$(this)
+						]
+			if(tLine.state == "mouseShow") {
+				for(var i=0;i<current;i++) tLine.jq.shift(); //delete unnecessary steps of the animation
+				tLine.state = "mouseHide";
 			}
-			if(tLine.state == "rest" || tLine.state == "mouseShow") {
-				var current = tLine.jq.length;
-				tLine.jq = [
-								$(this.parentNode).find("#fullText"),
-								$(this.parentNode).find("#popoutText"),
-								$(this).find("#whiteText"),
-								$(this)
-							]
-				if(tLine.state == "mouseShow") {
-					for(var i=0;i<current;i++) tLine.jq.shift(); //delete unnecessary steps of the animation
-					tLine.state = "mouseHide";
-				}
-				if(tLine.state == "rest") {
-					tLine.state = "mouseHide";
-					next(tLine); //start the animation
-				}
+			if(tLine.state == "rest") {
+				tLine.state = "mouseHide";
+				next(tLine); //start the animation
 			}
 		}
 	});
@@ -222,8 +220,13 @@ $(function() {
 });
 
 
+function projectClick(evt) {
+	if(!$("#projectImage").hasClass("clickable")) return;
+	window.open(cLink,'popUpWindow','height=600,width=600,left=100,top=100,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no, status=yes');
 
+}
 function menuClick(evt) {
+		if(state != "rest") return;
 		// document.body.style.height = "2000px";
 		var clicked = $(evt.target).closest(".dark");
 		clicked.find("#box").toggleClass("clickable",true);
@@ -233,9 +236,10 @@ function menuClick(evt) {
 				$("#" + cCategory + "Dark").find("#box")
 			]
 			//
-			if(!clicked.attr('id')=="aBox") {
+			if(clicked.get(0).id!="aBox") {
 				//SHIT IF STATEMENT
 				$(".galleryItem").each(function() {
+					console.log("GI")
 					$(this).stop(true);
 					svgFadeOut($(this),200);
 				})
@@ -286,24 +290,24 @@ function menuClick(evt) {
 		if(tLine.state == "mouseShow") for(var i=0;i<current;i++) tLine.jq.shift(); //delete unnecessary steps of the animation
 		tLine.state = "select";
 		next(tLine);
-			jq = [
-					$("#mDark"),
-					$("#sDark"),
-					$("#dDark")
-				 ]
+		jq = [
+				$("#mDark"),
+				$("#sDark"),
+				$("#dDark")
+			 ]
 }
 
 function galleryClick(evt) {
 	obj = $(evt.target).closest(".galleryItem");
 	if(!obj.hasClass("clickable")) return;
+	if(state != "rest") return;
 
 	//cContent should only be set from here
-
 	//Before cUpdates
 	if(project) {
+		//update cGalleryItem
 		cGalleryItem.find("#scale").animate({svgOpacity:'.3'},{duration:200});
 		cGalleryItem.toggleClass("clickable",true);
-		 //update cGalleryItem
 	}
 	//cUpdates
 	cContent = $(obj).data("content");
@@ -317,14 +321,20 @@ function galleryClick(evt) {
 	if(cContent[2] != "") {
 		cMore = cContent[2];
 		cLink = cContent[10];
+        $("#projectImage").toggleClass("clickable",true)
+	} else {
+		cMore = ""
+		cLink = ""
 	}
 
 	//after cUpdates
 	if (project) {
 		cGalleryItem = obj;
 		obj.toggleClass("clickable",false);
-		obj.find("#scale").animate({svgOpacity:'1'},{duration:200});
-		obj.animate({svgOpacity:'1'},{duration:200});
+		obj.find("#scale").stop();
+		obj.stop();
+		svgFadeIn(obj.find("#scale"),200)
+		svgFadeIn(obj,200);
 		changeImage();
 	} else {
 		cProject = cContent[0];

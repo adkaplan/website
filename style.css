@@ -20,6 +20,10 @@ svg {
 	font-family: segoeUIl;
 	src: url("segoe/segoeuil.ttf");
 }
+@font-face {
+	font-family: segoeUIi;
+	src: url("segoe/segoeuii.ttf");
+}
 #welcomeBox {
 	font-family: segoeUI;
 	font-size: 12px;
@@ -30,8 +34,12 @@ svg {
 }
 #projectCaption {
 	font-family: segoeUIl;
-	font-size: 13px;
-	letter-spacing: 2px;
+	font-size: 14px;
+	letter-spacing: 3px;
+}
+#click {
+	font-family: segoeUIi;
+	font-size: 26px;
 }
 .clipBoxRect {
 	/*display: none;*/

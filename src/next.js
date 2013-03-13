@@ -14,6 +14,9 @@ function next(String) {
 			console.log("GLOBAL:" + state + ":" + "FINISH")
 		}
 		switch(state) {
+			case "enterSite":
+				enterSite();
+			break;
 			case "menuOut":
 				menuOut();
 			break;
@@ -53,10 +56,10 @@ function next(String) {
 						menuMouseOut(tLine);
 					break;
 					case "select":
-						colorOn(tLine);
+						gallerySelect(tLine);
 					break;
 					case "deselect":
-						colorOff(tLine);
+						galleryDeselect(tLine);
 					break;
 				}
 			break;

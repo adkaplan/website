@@ -1,116 +1,6 @@
-function menuOut() {
-	if(jq.length == 0) {
-		jq.push($(".paths"));
-		jq.push($(".circles"));
-
-		buildGalleryJQ();
-		state = "galleryIn";
-		next();
-		return;
-	}
-	var obj = jq[0];
-	switch(jq.length) {
-		case 3:
-			//Misc Instant Transitions
-			$('#aFullText').animate({svgOpacity:'0'},{duration:300, complete:(function() {$(this).attr("display","none");})});
-			$('#aBox #whiteText path').animate({svgFill:'#84AC4B'},{duration:200});
-			$('#aBox #fill').animate({svgFill:'#000000'},{duration:200});
-			$('#aBox #border').animate({svgFill:'#B4B4B4'},{duration:200});
-			svgFadeOut($('#blogBack'),300);
-			obj.animate(
-							{svgTransform:'translate(0,-185)'},
-							{
-								duration:600,
-								easing:'easeOutQuad'
-							}
-						);
-			setTimeout(next,200);
-		break;
-		case 2:
-			obj.animate(
-							{svgTransform:'translate(0,-185)'},
-							{
-								duration:600,
-								easing:'easeOutQuad'
-							}
-						);
-			setTimeout(next,200);
-		break;
-		case 1:
-			obj.animate(
-					{svgTransform:'translate(0,-185)'},
-					{
-						duration:600,
-						easing:'easeOutQuad',
-						complete: next
-					}
-				);
-		break;
-	}
-	jq.shift();
-}
-
-function menuIn() {
-	if(jq.length == 0) {
-		//jq.push($(".paths"));
-		//jq.push($(".circles"));
-
-		//Misc Transitions
-		svgFadeIn($("#aFullText"),300)
-		$('#aBox #whiteText path').animate({svgFill:'#FFFFFF'},{duration:400});
-		$('#aBox #fill').animate({svgFill:'#84AC4B'},{duration:400});
-		$('#aBox #border').animate({svgOpacity:'0'},{duration:200});
-		$('#blogBack').removeAttr("display");
-		$('#blogBack').animate({svgOpacity:'1'},{duration:300});
-		gallery = false;
-		state = "rest";
-		return;
-	}
-	var obj = jq[0];
-	switch(jq.length) {
-		case 3:
-			if(project) {
-				svgFadeOut($("#project"),300);
-			}
-
-			obj.animate(
-					{svgTransform:'translate(0,0)'},
-					{
-						duration:600,
-						easing:'easeOutQuad',
-						complete: next
-					}
-				);
-			setTimeout(next,200);
-		break;
-		case 2:
-			obj.animate(
-							{svgTransform:'translate(0,0)'},
-							{
-								duration:600,
-								easing:'easeOutQuad'
-							}
-						);
-			setTimeout(next,200);
-		break;
-		case 1:
-			obj.animate(
-							{svgTransform:'translate(0,0)'},
-							{
-								duration:600,
-								easing:'easeOutQuad'
-							}
-						);
-
-		break;
-
-	}
-	jq.shift();
-}
-
 // function blog
 function menuMouseIn(tLine) {
-	if(tLine.state != "mouseShow" || tLine.jq.length == 0) {
+	if(tLine.state != "mouseShow"	 || tLine.jq.length == 0) {
 		if(tLine.jq.length == 0) tLine.state = "rest";
 		return;
 	}
@@ -168,13 +58,8 @@ function menuMouseIn(tLine) {
 						);
 		break;
 		case 1: //Fade Fulltext
-			obj.animate(
-							{svgOpacity:1},
-							{
-								duration:300,
-								complete: (function() {next(tLine);})
-							}
-						);
+			svgFadeIn(obj,300)
+			setTimeout((function() {next(tLine)}),300)
 		break;
 	}
 	tLine.jq.shift();
@@ -188,13 +73,8 @@ function menuMouseOut(tLine) {
 	var obj = tLine.jq[0];
 	switch(tLine.jq.length) {
 		case 4: //Fade Fulltext
-			obj.animate(
-							{svgOpacity:0},
-							{
-								duration:150,
-								complete: (function() {next(tLine);})
-							}
-						);
+			svgFadeOut(obj,150)
+			setTimeout((function() {next(tLine)}),150)
 		break;
 		case 3: //Popouttext Slide
 			if(gallery) {
@@ -251,7 +131,7 @@ function menuMouseOut(tLine) {
 	tLine.jq.shift();
 }
 
-function colorOn(tLine) { //Transition between mouseIn and menuOut(global)
+function gallerySelect(tLine) { //Transition between mouseIn and menuOut(global)
 	if(tLine.jq.length == 0) {
 		tLine.state = "select";
 		state = "menuOut"
@@ -261,13 +141,8 @@ function colorOn(tLine) { //Transition between mouseIn and menuOut(global)
 	var obj = tLine.jq[0];
 	switch(tLine.jq.length) {
 		case 4: //Fade Fulltext
-			obj.animate(
-							{svgOpacity:0},
-							{
-								duration:300,
-								complete: (function() {next(tLine);})
-							}
-						);
+			svgFadeOut(obj,300)
+			setTimeout((function() {next(tLine)}), 300);
 		break;
 		case 3: //Popouttext Slide
 			var travelDist = parseInt(obj.attr('traveldist'));
@@ -313,7 +188,7 @@ function colorOn(tLine) { //Transition between mouseIn and menuOut(global)
 	tLine.jq.shift();
 }
 
-function colorOff(tLine) {
+function galleryDeselect(tLine) {
 	if(tLine.jq.length == 0) {
 		tLine.state = "rest";
 		next(tLine);

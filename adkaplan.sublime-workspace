@@ -16,30 +16,144 @@
 	"buffers":
 	[
 		{
-			"file": "index.php",
+			"file": "src/gallery.js",
 			"settings":
 			{
-				"buffer_size": 1729,
+				"buffer_size": 1238,
 				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/next.js",
+			"settings":
+			{
+				"buffer_size": 1801,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/menu.js",
+			"settings":
+			{
+				"buffer_size": 5796,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/header.js",
+			"settings":
+			{
+				"buffer_size": 7284,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/global.js",
+			"settings":
+			{
+				"buffer_size": 6777,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/helper.js",
+			"settings":
+			{
+				"buffer_size": 1124,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "Searching 43 files for \"fadeout\"\n\nC:\\xampp\\htdocs\\adkaplan\\src\\global.js:\n   17  	setTimeout(next,25)\n   18  	if(project) {\n   19: 		svgFadeOut($(\"#project\"),300);\n   20  	}\n   21  }\n   ..\n   92  		$('#aBox #fill').animate({svgFill:'#000000'},{duration:200});\n   93  		$('#aBox #border').animate({svgFill:'#B4B4B4'},{duration:200});\n   94: 		svgFadeOut($('#blogBack'),300);\n   95  		obj.animate(\n   96  						{svgTransform:'translate(0,-185)'},\n   ..\n  144  	case 3:\n  145  		if(project) {\n  146: 			svgFadeOut($(\"#project\"),300);\n  147: 			svgFadeOut($(\"#gallery\"),300);\n  148  		}\n  149  \n  ...\n  211  \n  212  	if(obj.id = \"blogBack\") {\n  213: 		svgFadeOut(obj,250);\n  214  	}\n  215  \n\nC:\\xampp\\htdocs\\adkaplan\\src\\header.js:\n  236  				$(\".galleryItem\").each(function() {\n  237  					$(this).stop(true);\n  238: 					svgFadeOut($(this),200);\n  239  				})\n  240  			}\n  ...\n  271  		}\n  272  		if(project) {\n  273: 			svgFadeOut($(\"#project\"),300);\n  274  			project = false;\n  275  		}\n\nC:\\xampp\\htdocs\\adkaplan\\src\\helper.js:\n   14      console.log(obj.get(0))\n   15  }\n   16: function svgFadeOut(obj,dur) {\n   17      console.log(obj.get(0))\n   18       obj.animate({svgOpacity:'0'},{\n\n8 matches across 3 files\n",
+			"settings":
+			{
+				"buffer_size": 1216,
+				"line_ending": "Windows",
+				"name": "Find Results",
+				"scratch": true
+			}
+		},
+		{
+			"file": "/C/Users/Alex/AppData/Roaming/Sublime Text 2/Packages/BracketHighlighter/readme.md",
+			"settings":
+			{
+				"buffer_size": 8048,
+				"line_ending": "Unix"
 			}
 		}
 	],
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 355.0,
+		"height": 375.0,
 		"selected_items":
 		[
 			[
-				"tabs",
-				"View: Toggle Tabs"
+				"list",
+				"Package Control: List Packages"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"package install",
+				"Package Control: Install Package"
+			],
+			[
+				"package add",
+				"Package Control: Add Channel"
+			],
+			[
+				"add",
+				"Package Control: Add Repository"
+			],
+			[
+				"animate",
+				"Snippet: .animate() with callback"
+			],
+			[
+				"fadein",
+				"Snippet: .fadeIn()"
+			],
+			[
+				"swi",
+				"Snippet: .animate() with callback"
+			],
+			[
+				"snippet",
+				"Snippet: switch"
+			],
+			[
+				"new sn",
+				"Snippet: $.browser.version"
 			],
 			[
 				"menu",
 				"View: Toggle Menu"
 			],
 			[
+				"settings",
+				"Preferences: Settings - Default"
+			],
+			[
+				"tabs",
+				"View: Toggle Tabs"
+			],
+			[
+				"install ",
+				"Package Control: Install Package"
+			],
+			[
+				"github",
+				"Git: Push Current Branch"
+			],
+			[
 				"git push",
+				"Git: Push"
+			],
+			[
+				"git push current",
 				"Git: Push Current Branch"
 			],
 			[
@@ -47,8 +161,16 @@
 				"Git: Commit"
 			],
 			[
+				"git add ..",
+				"Git: Add..."
+			],
+			[
 				"git add ",
 				"Git: Add..."
+			],
+			[
+				"git add",
+				"Git: Add Current File"
 			],
 			[
 				"git commit ",
@@ -67,16 +189,8 @@
 				"Preferences: Key Bindings - Default"
 			],
 			[
-				"list",
-				"Package Control: List Packages"
-			],
-			[
 				"install pack",
 				"Package Control: Install Package"
-			],
-			[
-				"git add",
-				"Git: Add..."
 			],
 			[
 				"git status",
@@ -143,18 +257,6 @@
 				"Preferences: Key Bindings - User"
 			],
 			[
-				"github",
-				"Github: Open File"
-			],
-			[
-				"install",
-				"Package Control: Install Package"
-			],
-			[
-				"settings",
-				"Preferences: Settings - Default"
-			],
-			[
 				"key",
 				"Preferences: Key Bindings - User"
 			],
@@ -193,10 +295,6 @@
 			[
 				"package remove",
 				"Package Control: Remove Package"
-			],
-			[
-				"install ",
-				"Package Control: Install Package"
 			],
 			[
 				"ss",
@@ -300,21 +398,27 @@
 	},
 	"file_history":
 	[
+		"/C/Users/Alex/AppData/Roaming/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
+		"/C/Users/Alex/AppData/Roaming/Sublime Text 2/Packages/User/Preferences.sublime-settings",
 		"/C/xampp/htdocs/adkaplan/index.php",
-		"/C/xampp/htdocs/adkaplan/src/project.js",
-		"/C/xampp/htdocs/adkaplan/src/next.js",
-		"/C/xampp/htdocs/adkaplan/src/header.js",
+		"/C/xampp/htdocs/adkaplantest/index.php",
 		"/C/xampp/htdocs/adkaplan/src/gallery.js",
+		"/C/xampp/htdocs/adkaplan/src/header.js",
+		"/C/xampp/htdocs/adkaplan/src/next.js",
+		"/C/xampp/htdocs/adkaplan/src/helper.js",
+		"/C/Windows/MEMORY.DMP",
+		"/C/Windows/Minidump/031013-29796-01.dmp",
+		"/C/Windows/Minidump/031013-19578-01.dmp",
+		"/C/Windows/Minidump/011313-15927-01.dmp",
+		"/C/xampp/htdocs/adkaplan/src/project.js",
 		"/C/xampp/htdocs/adkaplan/src/global.js",
 		"/C/xampp/htdocs/adkaplan/src/menu.js",
 		"/C/Users/Alex/AppData/Roaming/Sublime Text 2/Packages/SublimeCodeIntel/Default (Windows).sublime-keymap",
 		"/C/Users/Alex/AppData/Roaming/Sublime Text 2/Packages/SublimeCodeIntel/README.rst",
 		"/D/DATA/Files/working folders/Sublime/adkaplan.sublime-project",
 		"/C/xampp/htdocs/adkaplan/img/main.svg",
-		"/C/xampp/htdocs/adkaplan/src/helper.js",
 		"/C/Users/Alex/AppData/Roaming/Sublime Text 2/Packages/User/Default (Windows).sublime-keymap",
 		"/C/Users/Alex/AppData/Roaming/Sublime Text 2/Packages/Default/Default (Windows).sublime-keymap",
-		"/C/Users/Alex/AppData/Roaming/Sublime Text 2/Packages/User/Preferences.sublime-settings",
 		"/C/xampp/htdocs/adkaplan/style.css",
 		"/C/xampp/htdocs/adkaplan/content.csv",
 		"/C/Users/Alex/AppData/Roaming/Sublime Text 2/Packages/Bracketeer/README.md",
@@ -324,7 +428,6 @@
 		"/C/Users/Alex/AppData/Roaming/Sublime Text 2/Packages/Origami/Default (Windows).sublime-keymap",
 		"/C/xampp/htdocs/adkaplan/src/external/blank.svg",
 		"/C/Users/Alex/AppData/Roaming/Sublime Text 2/Packages/User/Distraction Free.sublime-settings",
-		"/C/Users/Alex/AppData/Roaming/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
 		"/C/xampp/htdocs/adkaplan/src/external/svgBasic.html",
 		"/C/Users/Alex/AppData/Roaming/Sublime Text 2/Packages/Goto Folder/README.md",
 		"/C/Users/Alex/AppData/Roaming/Sublime Text 2/Packages/Goto Folder/Default.sublime-keymap",
@@ -369,7 +472,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 0.0,
+		"height": 92.0,
 		"where_history":
 		[
 			"<open folders>",
@@ -382,6 +485,13 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"fadeout",
+			"fAdein",
+			"fadeout",
+			"removeAttr",
+			"exitProject",
+			"enterProject",
+			"gohome",
 			"exitproject",
 			"project",
 			"galleryIn",
@@ -502,14 +612,7 @@
 			"state = ",
 			"exitGallery",
 			"enterGallery",
-			"exitMenu",
-			"enterGallery",
-			"timeout",
-			"deselect",
-			"color",
-			"rect",
-			"afull",
-			"gallery"
+			"exitMenu"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -554,29 +657,462 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "index.php",
+					"file": "src/gallery.js",
 					"settings":
 					{
-						"buffer_size": 1729,
+						"buffer_size": 1238,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								188,
-								188
+								0,
+								1238
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
 							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "src/next.js",
+					"settings":
+					{
+						"buffer_size": 1801,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								342,
+								342
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "src/menu.js",
+					"settings":
+					{
+						"buffer_size": 5796,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "src/header.js",
+					"settings":
+					{
+						"buffer_size": 7284,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								880,
+								880
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 506.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "src/global.js",
+					"settings":
+					{
+						"buffer_size": 6777,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4987,
+								4987
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 2884.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 0,
+					"file": "src/gallery.js",
+					"settings":
+					{
+						"buffer_size": 1238,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								177,
+								177
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "src/next.js",
+					"settings":
+					{
+						"buffer_size": 1801,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								687,
+								687
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 568.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "src/menu.js",
+					"settings":
+					{
+						"buffer_size": 5796,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1047,
+								1049
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "src/helper.js",
+					"settings":
+					{
+						"buffer_size": 1124,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "src/helper.js",
+					"settings":
+					{
+						"buffer_size": 1124,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1002,
+								1002
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "src/header.js",
+					"settings":
+					{
+						"buffer_size": 7284,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								8,
+								8
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "src/helper.js",
+					"settings":
+					{
+						"buffer_size": 1124,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								186,
+								186
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"settings":
+					{
+						"buffer_size": 1216,
+						"regions":
+						{
+							"match":
+							{
+								"flags": 112,
+								"regions":
+								[
+									[
+										136,
+										143
+									],
+									[
+										345,
+										352
+									],
+									[
+										503,
+										510
+									],
+									[
+										544,
+										551
+									],
+									[
+										651,
+										658
+									],
+									[
+										822,
+										829
+									],
+									[
+										923,
+										930
+									],
+									[
+										1093,
+										1100
+									]
+								],
+								"scope": ""
+							}
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"detect_indentation": false,
+							"output_tag": 1,
+							"result_base_dir": "",
+							"result_file_regex": "^([A-Za-z\\\\/<].*):$",
+							"result_line_regex": "^ +([0-9]+):",
+							"scroll_past_end": true,
+							"syntax": "Packages/Default/Find Results.hidden-tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 4,
+					"file": "src/global.js",
+					"settings":
+					{
+						"buffer_size": 6777,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								102,
+								102
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "/C/Users/Alex/AppData/Roaming/Sublime Text 2/Packages/BracketHighlighter/readme.md",
+					"settings":
+					{
+						"buffer_size": 8048,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								476,
+								476
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Markdown/Markdown.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -604,11 +1140,18 @@
 				0,
 				1,
 				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
 			]
 		],
 		"cols":
 		[
 			0.0,
+			0.5,
 			1.0
 		],
 		"rows":
@@ -620,7 +1163,7 @@
 	"menu_visible": true,
 	"output.git":
 	{
-		"height": 96.0
+		"height": 162.0
 	},
 	"replace":
 	{
@@ -633,7 +1176,31 @@
 		"selected_items":
 		[
 			[
-				"index.php",
+				"next",
+				"src/next.js"
+			],
+			[
+				"global",
+				"src/global.js"
+			],
+			[
+				"helper",
+				"src/helper.js"
+			],
+			[
+				"header",
+				"src/header.js"
+			],
+			[
+				"menu",
+				"src/menu.js"
+			],
+			[
+				"gallery",
+				"src/gallery.js"
+			],
+			[
+				"indx",
 				"index.php"
 			],
 			[
@@ -641,40 +1208,24 @@
 				"index.php"
 			],
 			[
+				"gallery.",
+				"src/gallery.js"
+			],
+			[
+				"index.php",
+				"index.php"
+			],
+			[
 				"main.svg",
 				"img/main.svg"
-			],
-			[
-				"next",
-				"src/next.js"
-			],
-			[
-				"menu",
-				"src/menu.js"
-			],
-			[
-				"global",
-				"src/global.js"
 			],
 			[
 				"project",
 				"src/project.js"
 			],
 			[
-				"header",
-				"src/header.js"
-			],
-			[
-				"gallery",
-				"src/gallery.js"
-			],
-			[
 				"header.js",
 				"src/header.js"
-			],
-			[
-				"helper",
-				"src/helper.js"
 			],
 			[
 				"cgallery",
@@ -797,7 +1348,7 @@
 	},
 	"show_minimap": false,
 	"show_open_files": true,
-	"show_tabs": true,
+	"show_tabs": false,
 	"side_bar_visible": false,
 	"side_bar_width": 173.0,
 	"status_bar_visible": true
