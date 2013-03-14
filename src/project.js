@@ -1,6 +1,5 @@
 function changeImage() {
     //Update Text
-    console.log("hello")
     $("#projectTitle").fadeOut()
     $("#projectCaption").fadeOut()
     if(cMore != "") {
@@ -20,23 +19,29 @@ function changeImage() {
     }),500);
 
     //Load the current Image
-    var tempImage = new Image();
+    var tmp = new Image();
     $("#projectImage").stop();
-    tempImage.onLoad = (new function() {
+    var d = new Date();
+    var start = d.getTime();
+    tmp.src = "img/" + cImage;
+    tmp.onload = function() {
+                            d = new Date();
+                            if(debug) console.log("CIMAGE:ELAPSED: "+ String(d.getTime() - start));
                             $("#projectImage").attr("opacity","0");
                             $("#projectImage").attr('xlink:href',"img/" + cImage);
+                            var opac = 1;
+                            if(cMore != "") {
+                                svgFadeIn($("#click"),500)
+                                opac = linkOpacity;
+                            }
                             $("#projectImage").animate(
-                                        {svgOpacity:'1'},
+                                        {svgOpacity:opac},
                                         {
                                             duration:800,
                                             easing:'easeOutCirc'
                                         }
                             );
-                            if(cMore != "") {
-                                svgFadeIn($("#click"),500)
-                            }
-                        });
-    tempImage.src = "img/" + cImage;
+                        };
 
     //Clip the Gallery
     $("#galleryTop").attr("clip-path","url(#projectClip)");

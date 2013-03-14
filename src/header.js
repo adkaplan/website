@@ -1,10 +1,34 @@
+//TODO
+//
+//
+//add loading bar, text, something
+//add "back"
+//add Welcome Text
+//maybe a few blog posts
+//
 function initialize() {
 	window.onscroll = scroll;
 	window.onresize = function() {
-		document.body.style.height = String(window.innerHeight+cExcess) + "px";
+		document.body.style.height = String(window.innerHeight+cExcess*scrollFactor) + "px";
+		if(debug) console.log("RESIZE!")
 	}
+	//
+	//GLOBAL CONSTANTS
+	//
 	debug = true
-	scrollFactor = 3;
+	scrollFactor = 5;
+	linkOpacity = .45;
+	//
+	//
+	//
+	//Initial Sorting, shuffling of list
+	for (var i=0;i<content.length;i++) {
+		for(var j=0;j<content[i].length;j++) {
+			if(content[i][j].indexOf(";") != -1) content[i][j] = content[i][j].split(";")
+			else content[i][j] = [content[i][j]]
+		}
+	}
+	shuffle(content);
 	state = "enterSite"
 	next();
 
@@ -23,7 +47,7 @@ function setExcess(filterCount) {
 	rows = Math.ceil(filterCount/4.0);
 	cExcess = project ? (rows-1.0)*100 : (rows-4.0)*100;
 	document.body.style.height = String(window.innerHeight+cExcess*scrollFactor) + "px";
-	//console.log(window.innerHeight);;
+	if(debug) console.log("SETEXCESS:"+cExcess)
 }
 //
 //OBJECT DEFINITIONS
@@ -48,6 +72,7 @@ function Timeline(group, state) {
 //States: rest, mouseShow, mouseHide, select, deselect
 //c - Current
 //content is pushed from header.php
+
 var jq = [];
 var state = "rest";
 var count = 0;
@@ -245,13 +270,14 @@ $(function() {
 
 function projectClick(evt) {
 	if(!$("#projectImage").hasClass("clickable")) return;
-	window.open(cLink,'popUpWindow','height=600,width=600,left=100,top=100,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no, status=yes');
+	window.open(cLink,"_new")
+	// window.open(cLink,'popUpWindow','height=600,width=600,left=0,top=0,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no, status=yes');
 
 }
 function menuClick(evt) {
 		if(state != "rest") return;
 		if ($(evt.target.parentNode).hasClass("darkHit")) {
-			console.log("GOOD")
+		//	console.log("GOOD")
 			var clicked = $(".dark#" + $(evt.target.parentNode).attr("id"));
 		}
 		else clicked = $(evt.target);

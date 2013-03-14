@@ -42,13 +42,16 @@ function enterProject() {
     //Update Text
     $("#projectTitle").text(cTitle);
     $("#projectCaption").text(cProject + " | " + cDate + " | " + cCaption);
+
     if(cMore != "") {
     	$("#click").removeAttr("display")
     	$("#click").attr("opacity","1")
     	$("#click").text(cMore)
+    	var opac = linkOpacity;
     } else {
     	$("#click").attr("opacity","0")
     	$("#click").attr("display","none")
+    	var opac = 1;
     }
     //cCaption
     //cDate
@@ -68,7 +71,7 @@ function enterProject() {
                             $("#projectImage").removeAttr("display");
                             $("#projectImage").attr('xlink:href',"img/" + cImage);
                             $("#projectImage").animate(
-                                        {svgOpacity:'1'},
+                                        {svgOpacity:opac},
                                         {
                                             duration:250,
 
@@ -242,6 +245,7 @@ function galleryIn() {
 
 	if(!project) { //Should be in some type of PREP function (runs multiple times)
 		    $("#galleryTop").attr("clip-path","url(#galleryclip)");
+		    window.scrollTo(0,0);
 	}
 
 	if(obj.id = "blogBack") {
@@ -263,9 +267,13 @@ function galleryIn() {
 		obj.data("content", content[0]);
 		obj.attr("contentid",content[1]);
 		obj.find('#scale').attr("transform",'scale(.8)');
-		var tempImage = new Image();
+		var tmp = new Image();
+		var d = new Date();
+		var start = d.getTime();
 		//Isn't this redundant?
-		tempImage.onLoad = (new function() {
+		tmp.src = "img/tooltip/" + content[0][3];
+		tmp.onload = function() {
+							d = new Date();
 							obj.find('image').removeAttr("display");
 							obj.find('image').attr('xlink:href',"img/tooltip/" + content[0][3]);
 							if(project) {
@@ -291,8 +299,7 @@ function galleryIn() {
 										easing:'easeInSine'
 									}
 								);
-							});
-		tempImage.src = "img/tooltip/" + content[0][3];
+							};
 		setTimeout(next,50);
 		cStack.shift();
 		jq.shift();
