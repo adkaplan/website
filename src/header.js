@@ -276,12 +276,11 @@ function projectClick(evt) {
 }
 function menuClick(evt) {
 		if(state != "rest") return;
+		state = "transition"
 		if ($(evt.target.parentNode).hasClass("darkHit")) {
-		//	console.log("GOOD")
 			var clicked = $(".dark#" + $(evt.target.parentNode).attr("id"));
 		}
 		else clicked = $(evt.target);
-		clicked.find("#box").toggleClass("clickable",true);
 		if(gallery) {
 			cMenu.jq = [
 				$("#" + cCategory + "Dark").find("#box"),
@@ -291,7 +290,6 @@ function menuClick(evt) {
 			if(clicked.get(0).id!="aBox") {
 				//SHIT IF STATEMENT
 				$(".galleryItem").each(function() {
-					console.log("GI")
 					$(this).stop(true);
 					svgFadeOut($(this),200);
 				})
@@ -318,6 +316,8 @@ function menuClick(evt) {
 			break;
 			default: //Build goHome
 				if(gallery) {
+					svgFadeOut($(".dark #back"),100)
+
 					jq = [];
 					$(".galleryItem").each(function() {
 						jq.push(this);
@@ -333,6 +333,7 @@ function menuClick(evt) {
 		}
 		cMenu = tLine;
 		var current = tLine.jq.length;
+		svgFadeOut($(".dark #back"),100)
 		tLine.jq = [
 						clicked.find("#fullText"),
 						clicked.find("#popoutText"),
@@ -390,6 +391,7 @@ function galleryClick(evt) {
 		changeImage();
 	} else {
 		cProject = cContent[0];
+		svgFadeIn($("#" + cCategory + "Dark #back"),300)
 		state = "galleryOut";
 		project = true;
 		next();

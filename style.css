@@ -41,6 +41,11 @@ svg {
 	font-family: segoeUIi;
 	font-size: 26px;
 }
+.backText {
+	font-family: segoeUIl;
+	font-size: 15px;
+	letter-spacing: 3px;
+}
 .clipBoxRect {
 	/*display: none;*/
 }

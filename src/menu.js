@@ -145,8 +145,8 @@ function gallerySelect(tLine) { //Transition between mouseIn and menuOut(global)
 	var obj = tLine.jq[0];
 	switch(tLine.jq.length) {
 		case 4: //Fade Fulltext
-			svgFadeOut(obj,300)
-			setTimeout((function() {next(tLine)}), 300);
+			svgFadeOut(obj,100)
+			setTimeout((function() {next(tLine)}), 1000);
 		break;
 		case 3: //Popouttext Slide
 			var travelDist = parseInt(obj.attr('traveldist'));
@@ -194,9 +194,9 @@ function gallerySelect(tLine) { //Transition between mouseIn and menuOut(global)
 
 function galleryDeselect(tLine) {
 	if(tLine.jq.length == 0) {
+		if(tLine.state == "rest") return;
 		tLine.state = "rest";
-		next(tLine);
-		next(); //Start the global animation
+		if(state == "goHome") next(); //Start the global animation
 		return;
 	}
 	var obj = tLine.jq[0];

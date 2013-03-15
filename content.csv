@@ -58,7 +58,7 @@ MAPPING,,,2020/sympathetic2.png,2020/sympathetic2.png,Urban Grid Displacement St
 3010 FINAL,,,3010/final5.png,3010/final5.gif,Diagram,PHOTOSHOP,FALL 2012,,,
 3010 FINAL,,,3010/final6.png,3010/final6.gif,Diagram,PHOTOSHOP,FALL 2012,,,
 3010 FINAL,D,,3010/final7.png,3010/final7.gif,Diagram,PHOTOSHOP,FALL 2012,,,
-3010 FINAL,D,,3010/final8.png,3010/final8.png,Aerial Composite,PHOTOSHOP,FALL 2012,,,
+3010 FINAL,D,,3010/final8.png,3010/final8d.png,Aerial Composite,PHOTOSHOP,FALL 2012,,,
 3010 FINAL,D,Click for full image,3010/infographic.png,3010/infographicd.jpg,Infographic,ILLUSTRATOR,FALL 2012,,,img/3010/infographic.jpg
 MAPPING,S,,3010/mapping1.png,3010/mapping1.png,Density Study,"GIS, GRASSHOPPER",FALL 2012,,,
 MAPPING,,,3010/mapping2.png,3010/mapping2.png,Commuter Study,"CENSUS DATA, GRASSHOPPER",FALL 2012,,,
@@ -129,3 +129,7 @@ STREETCAR,M,,theater/streetcar4.png,theater/streetcar4.JPG,Detail on Railing,A S
 STREETCAR,,,theater/streetcar5.png,theater/streetcar5.JPG,Set Work in Progress,A STREETCAR NAMED DESIRE LBT,2009,,,
 STREETCAR,M;D,,theater/streetcar6.png,theater/streetcar6.JPG,Finished Set,A STREETCAR NAMED DESIRE LBT,2009,,,
 WEB,S,Click for article,old/spacepilot.png,old/spacepilot.png,Space Pilot (game/sold),"FLASH,ACTIONSCRIPT",2006,,,http://jayisgames.com/archives/2007/09/space_pilot.php
+BORDER STUDY,S,,borders/border Study1.png,borders/Border Study1.png,Study for Website Border,"GRASSHOPPER, ILLUSTRATOR",2013,,,
+BORDER STUDY,S,,borders/border Study2.png,borders/Border Study2.png,Study for Website Border,"GRASSHOPPER, ILLUSTRATOR",2013,,,
+BORDER STUDY,S,,borders/border Study3.png,borders/Border Study3.png,Study for Website Border,"GRASSHOPPER, ILLUSTRATOR",2013,,,
+3020,S,Click for videos,misc/perlin.png,misc/perlin.png,Block Carving via Perlin Noise (WIP),GRASSHOPPER,2013,,,http://vimeo.com/61360580

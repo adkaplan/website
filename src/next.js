@@ -56,6 +56,7 @@ function next(String) {
 						menuMouseOut(tLine);
 					break;
 					case "select":
+						console.log("NEXT");
 						gallerySelect(tLine);
 					break;
 					case "deselect":

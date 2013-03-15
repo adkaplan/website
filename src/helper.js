@@ -23,30 +23,23 @@ function shuffle(list) {
   }
 }
 function svgFadeIn(obj,dur) {
-    if(obj.hasClass("fading")) {
-        obj.stop();
-    }
+   obj.stop();
    obj.removeAttr("display");
-   obj.addClass("fading")
    obj.animate({
        svgOpacity: '1'},
-       {duration:dur}, function() {
-        obj.removeClass("fading")
-   });
+       {duration:dur}
+   );
    obj.animate({svgOpacity:'1'},{duration:dur});
 }
 function svgFadeOut(obj,dur) {
-    if(obj.hasClass("fading")) {
-        obj.stop();
-    }
-    obj.addClass("fading");
-     obj.animate({svgOpacity:'0'},{
+    obj.stop();
+    obj.attr("display","none")
+    obj.animate({svgOpacity:'0'},{
         duration:dur,
         complete:(function() {
             $(this).attr("display","none");
-            obj.removeClass("fading");
          })
-        });
+      });
 }
 function buildGalleryJQ() {
     tmp = cStack.length;

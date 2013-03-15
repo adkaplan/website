@@ -1,6 +1,4 @@
 function enterSite() {
-	// svgFadeIn($("#blogBack"),1000);
-	console.log($("#blogback"))
 	setTimeout(function() {
 		svgFadeIn($("#mDark"),400)
 	}, 200);
@@ -67,19 +65,26 @@ function enterProject() {
 
     //Load the current Image
     var tempImage = new Image();
-    tempImage.onLoad = (new function() {
+    tempImage.src = "img/" + cImage;
+    var d = new Date();
+    var start = d.getTime();
+    tempImage.onload = function() {
+    						d = new Date();
+    						if(true) console.log("CIMAGE:ELAPSED: "+ String(d.getTime() - start));
                             $("#projectImage").removeAttr("display");
                             $("#projectImage").attr('xlink:href',"img/" + cImage);
-                            $("#projectImage").animate(
-                                        {svgOpacity:opac},
-                                        {
-                                            duration:250,
+                            setTimeout(function() {
+	                            $("#projectImage").animate(
+	                                        {svgOpacity:opac},
+	                                        {
+	                                            duration:250,
 
-                                           easing:'easeInCirc'
-                                        }
-                                    );
-                        });
-    tempImage.src = "img/" + cImage;
+	                                           easing:'easeInCirc'
+	                                        }
+	                                    );
+                            },150);
+                        };
+
 
     //Clip the Gallery
     $("#galleryTop").attr("clip-path","url(#projectClip)");
@@ -278,7 +283,6 @@ function galleryIn() {
 							obj.find('image').attr('xlink:href',"img/tooltip/" + content[0][3]);
 							if(project) {
 								//Set the opacity to .3
-								console.log(cID);
 								if(content[1] != cID) {
 									obj.find("#scale").attr("opacity",'.3');
 									obj.closest(".galleryItem").toggleClass("clickable",true);
