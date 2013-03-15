@@ -164,7 +164,7 @@ $(function() {
 			$(this).attr('stroke','#ADADAD');
 		}
 	);
-	$('#aFullText').attr('opacity','1');
+	//$('#aFullText').attr('opacity','1');
 
 	//
 	//EVENTS
@@ -298,6 +298,10 @@ function menuClick(evt) {
 			cMenu.state = "deselect";
 			next(cMenu);
 		}
+		if(project) {
+			svgFadeOut($("#project"),300);
+			project = false;
+		}
 		switch(clicked.attr('id')) { //Get the right Timeline
 			case "mDark":
 				var tLine = mTime;
@@ -326,10 +330,6 @@ function menuClick(evt) {
 					state = "goHome";
 					return;
 				}
-		}
-		if(project) {
-			svgFadeOut($("#project"),300);
-			project = false;
 		}
 		cMenu = tLine;
 		var current = tLine.jq.length;

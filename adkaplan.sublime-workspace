@@ -47,9 +47,25 @@
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 210.0,
+		"height": 135.0,
 		"selected_items":
 		[
+			[
+				"git gui",
+				"Git: Gui"
+			],
+			[
+				"git graph",
+				"Git: Graph Current File"
+			],
+			[
+				"git commit",
+				"Git: Commit"
+			],
+			[
+				"git add",
+				"Git: Add..."
+			],
 			[
 				"tabs",
 				"View: Toggle Tabs"
@@ -75,16 +91,8 @@
 				"Preferences: Settings - User"
 			],
 			[
-				"git gui",
-				"Git: Gui"
-			],
-			[
 				"gitg",
 				"Git: Gui"
-			],
-			[
-				"git add",
-				"Git: Add..."
 			],
 			[
 				"",
@@ -97,10 +105,6 @@
 			[
 				"git push",
 				"Git: Push Current Branch"
-			],
-			[
-				"git commit",
-				"Git: Commit"
 			],
 			[
 				"git add..",
@@ -375,7 +379,7 @@
 				"Package Control: Add Repository"
 			]
 		],
-		"width": 522.0
+		"width": 455.0
 	},
 	"console":
 	{
@@ -392,6 +396,7 @@
 	},
 	"file_history":
 	[
+		"/C/xampp/htdocs/adkaplan/.gitignore",
 		"/C/xampp/htdocs/adkaplan/src/header.js",
 		"/C/xampp/htdocs/adkaplan/src/next.js",
 		"/C/xampp/htdocs/adkaplan/index.php",
@@ -413,7 +418,6 @@
 		"/C/xampp/htdocs/adkaplan/img/borders/rightside.svg",
 		"/C/xampp/htdocs/adkaplan/img/borders/rightside2.svg",
 		"/C/Users/Alex/AppData/Roaming/Sublime Text 2/Packages/User/Preferences.sublime-settings",
-		"/C/xampp/htdocs/adkaplan/.gitignore",
 		"/C/xampp/htdocs/adkaplan/content.csv",
 		"/C/xampp/htdocs/adkaplan/test.html",
 		"/C/xampp/htdocs/adkaplan/fronttext.txt",
@@ -479,7 +483,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 92.0,
+		"height": 0.0,
 		"where_history":
 		[
 			"<open folders>",
@@ -679,8 +683,8 @@
 						"selection":
 						[
 							[
-								4035,
-								4035
+								3815,
+								3815
 							]
 						],
 						"settings":
@@ -766,8 +770,8 @@
 						"selection":
 						[
 							[
-								6389,
-								6389
+								6240,
+								6240
 							]
 						],
 						"settings":
@@ -836,6 +840,10 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"gitignore",
+				".gitignore"
+			],
 			[
 				"header",
 				"src/header.js"
@@ -1082,7 +1090,7 @@
 	"show_minimap": false,
 	"show_open_files": true,
 	"show_tabs": true,
-	"side_bar_visible": false,
+	"side_bar_visible": true,
 	"side_bar_width": 173.0,
 	"status_bar_visible": true
 }

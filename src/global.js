@@ -1,18 +1,31 @@
 function enterSite() {
-	setTimeout(function() {
-		svgFadeIn($("#mDark"),400)
-	}, 200);
-	setTimeout(function() {
-		svgFadeIn($("#dDark"),400)
-	}, 400);
-	setTimeout(function() {
-		svgFadeIn($("#sDark"),400)
-	}, 600);
 
 	setTimeout(function() {
-		svgFadeIn($("#blogBack"),1000);
+		svgFadeIn($("#aFullText"),500)
+	}, 500);
+	setTimeout(function() {
+		$("#aBox").animate(
+		{svgTransform:'translate(0,0)'},
+		{
+			duration:1000,
+			easing:'easeOutQuint'
+		}
+		);
+	},1000);
+	setTimeout(function() {
+		svgFadeIn($("#mDark"),400)
+	}, 1300);
+	setTimeout(function() {
+		svgFadeIn($("#dDark"),400)
+	}, 1450);
+	setTimeout(function() {
+		svgFadeIn($("#sDark"),400)
+	}, 1600);
+
+	setTimeout(function() {
+		svgFadeIn($("#blogBack"),200);
 		state = "rest";
-	},1000)
+	},2000)
 }
 function goHome() {
 	if(jq.length == 0) {
@@ -68,10 +81,14 @@ function enterProject() {
     tempImage.src = "img/" + cImage;
     var d = new Date();
     var start = d.getTime();
+    $("#projectImage").attr("opacity","0");
+    $("#projectImage").stop();
     tempImage.onload = function() {
     						d = new Date();
     						if(true) console.log("CIMAGE:ELAPSED: "+ String(d.getTime() - start));
                             $("#projectImage").removeAttr("display");
+                            $("#projectImage").attr("opacity","0");
+                            $("#projectImage").stop();
                             $("#projectImage").attr('xlink:href',"img/" + cImage);
                             setTimeout(function() {
 	                            $("#projectImage").animate(

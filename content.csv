@@ -88,7 +88,7 @@ SCIENCE FAIR RENO NV,M,,sci/sci1.png,sci/sci1.JPG,Custom Designed Airfoil,WOOD,S
 SCIENCE FAIR RENO NV,M,,sci/sci2.png,sci/sci2.JPG,Custom Built Wind-tunnel,MIXED,SPRING 2010,,,
 SCIENCE FAIR RENO NV,,,sci/sci3.png,sci/sci3.JPG,Process Photo,WOOD,SPRING 2010,,,
 SCIENCE FAIR RENO NV,,,sci/sci4.png,sci/sci4.JPG,Process Photo,WOOD,SPRING 2010,,,
-HERITAGE,M,Click to view full,shop/17761.png,shop/17761.jpg,"Full Theater Panorama, Congress Interior (Set Carpentry)",HERITAGE,SUMMER 2012,,,img/shop/17761.png
+HERITAGE,M,Click to view full,shop/17761.png,shop/17761.jpg,"Full Theater Panorama, Congress Interior (Set Carpentry)",HERITAGE,SUMMER 2012,,,img/shop/17761.jpg
 HERITAGE,,,shop/17762.png,shop/17762.jpg,Jefferson Exterior (Theater Set Carpentry),HERITAGE,SUMMER 2012,,,
 HERITAGE,M,,shop/17763.png,shop/17763.jpg,Custom Built Open Pediment,HERITAGE,SUMMER 2012,,,
 HERITAGE,,,shop/17764.png,shop/17764.jpg,Jefferson Interior (Theater Set Carpentry),HERITAGE,SUMMER 2012,,,
@@ -131,5 +131,5 @@ STREETCAR,M;D,,theater/streetcar6.png,theater/streetcar6.JPG,Finished Set,A STRE
 WEB,S,Click for article,old/spacepilot.png,old/spacepilot.png,Space Pilot (game/sold),"FLASH,ACTIONSCRIPT",2006,,,http://jayisgames.com/archives/2007/09/space_pilot.php
 BORDER STUDY,S,,borders/border Study1.png,borders/Border Study1.png,Study for Website Border,"GRASSHOPPER, ILLUSTRATOR",2013,,,
 BORDER STUDY,S,,borders/border Study2.png,borders/Border Study2.png,Study for Website Border,"GRASSHOPPER, ILLUSTRATOR",2013,,,
-BORDER STUDY,S,,borders/border Study3.png,borders/Border Study3.png,Study for Website Border,"GRASSHOPPER, ILLUSTRATOR",2013,,,
+BORDER STUDY,S,,borders/border Study3.png,borders/border Study3.png,Study for Website Border,"GRASSHOPPER, ILLUSTRATOR",2013,,,
 3020,S,Click for videos,misc/perlin.png,misc/perlin.png,Block Carving via Perlin Noise (WIP),GRASSHOPPER,2013,,,http://vimeo.com/61360580

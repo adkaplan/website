@@ -29,7 +29,7 @@ function svgFadeIn(obj,dur) {
        svgOpacity: '1'},
        {duration:dur}
    );
-   obj.animate({svgOpacity:'1'},{duration:dur});
+   obj.animate({svgOpacity:'1'},{easing: 'easeOutCirc',duration:dur});
 }
 function svgFadeOut(obj,dur) {
     obj.stop();
