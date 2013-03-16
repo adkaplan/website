@@ -1086,4 +1086,15 @@
 
 		<line fill="none" stroke="#3A53A4" stroke-linecap="round" stroke-linejoin="round" x1="163.699" y1="2351.857" x2="163.699" y2="2405.465"/>
 </g>
+<g>
+    <text class="texts" opacity="0" transform="matrix(-4.371139e-008 -1 1 -4.371139e-008 667.375 1300.3281)" fill="#E6E6E6" font-family="'Swiss'" font-size="234">STREETCAR</text>
+    <text class="texts" opacity="0" transform="matrix(-4.371139e-008 -1 1 -4.371139e-008 424.3501 1024.3013)" fill="#E6E6E6" font-family="'Swiss'" font-size="235">STREETCAR</text>
+<text class="texts" opacity="0" transform="matrix(-4.371139e-008 -1 1 -4.371139e-008 856.3936 550.2544)" fill="#E6E6E6" font-family="'Swiss'" font-size="235">STREETCAR</text>
+    <text class="texts" opacity="0" transform="matrix(-4.371139e-008 -1 1 -4.371139e-008 235.3311 1933.3926)" fill="#E6E6E6" font-family="'Swiss'" font-size="235">STREETCAR</text>
+    <text class="texts" opacity="0" transform="matrix(-4.371139e-008 -1 1 -4.371139e-008 400.3477 2722.4707)" fill="#E6E6E6" font-family="'Swiss'" font-size="235">STREETCAR</text>
+    <g opacity=".45">
+    <text class="texts standout" opacity="0" transform="matrix(-4.371139e-008 -1 1 -4.371139e-008 751.3838 2281.4277)" fill="#D4342A" font-family="'Swiss'" font-size="235">STREETCAR</text>
+    </g>
+</g>
+
 </svg>

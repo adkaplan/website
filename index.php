@@ -4,7 +4,7 @@
 <head>
 
 	<title>ADKaplan</title>
-	<link rel="stylesheet" type="text/css" href="style.css" />
+
 
 	<!-- external js -->
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
@@ -28,14 +28,15 @@
 	<?php
 		global $goAhead;
 		$agent = $_SERVER['HTTP_USER_AGENT'];
+
 		//$agent = "MSIE";
 		//
 		$browser_version = 0;
-		     $browser= 'ss';
+	    $browser= 'ss';
 		if (preg_match('|MSIE ([0-9]{1,2}.[0-9]{1,2})|',$agent,$matched)) {
 		     $browser_version=$matched[1];
 		     $browser = 'IE';
-		} elseif (preg_match('|Opera ([0-9].[0-9]{1,2})|',$agent,$matched)) {
+		} elseif (preg_match('|Opera ([0-9]\.[0-9]{1,2})|',$agent,$matched)) {
 		     $browser_version=$matched[1];
 		     $browser = 'Opera';
 		} elseif(preg_match('|Firefox/([0-9{1,2}\.]+)|',$agent,$matched)) {
@@ -47,23 +48,42 @@
 		} elseif(preg_match('|Chrome/([0-9{1,2}\.]+)|',$agent,$matched)) {
 		         $browser_version=$matched[1];
 		         $browser = 'Safari';
-        }  else {
-	         // browser not recognized!
-
+        } elseif(preg_match('|Android ([0-9]\.[0-9{1-2}])|',$agent,$matched)) {
+	         	$browser_version=$matched[1];
+	         	$browser = 'Android';
+		} elseif(preg_match('|iPad|iPhone.*Version/([0-9]\.[0-9])|',$agent,$matched)) {
+				$browser_version=$matched[1];
+				$browser = 'iMobile';
+		} else {
+			$browser = "other";
+			$browser_version = 0;
 		}
 		if ($browser == "IE" && $browser_version<9) {
 			$goAhead = False;
-			$message = "Your version of internet explorer needs to be updated to 9 to be supported."
+			$message = "Your version of internet explorer needs to be updated to 9 to be supported.";
+		} elseif($browser == "Android" && $browser_version<3) {
+			$goAhead = False;
+			$message = "This site does not support older android browsers";
 		} elseif ($browser == 'other') {
 			$goAhead = False;
-			print("console.log('" . $agent . "');");
+			//print("console.log('" . $agent . "');");
 			$messge = "";
+		} elseif ($browser == "Safari" && $browser_version<5.1) {
+			$goAhead = False;
+			$message = "Please update Safari.";
+		} elseif ($browser == "iPhone" && $browser_version<5.0) {
+			$goAhead = False;
+			$message = "";
+		} elseif ($browser == "iMobile" && $browser_version<5.0) {
+			$goAhead = False;
+			$message = "";
 		} else {
-			print("console.log('" . $browser_version . "');");
+			//print("console.log('" . $browser_version . "');");
 			$message = "";
 			$goAhead = True;
 		}
 		$row = 0;
+
 		if (($handle = fopen("content.csv", "r")) !== FALSE) {
 			while (($data =	 fgetcsv($handle, 2000, ",")) !== FALSE) {
 			               	echo "content[".$row."] = new Array();\n";
@@ -72,18 +92,24 @@
 			}
 			fclose($handle);
 		} else $error = "Cannot find content";
+		echo "</script>";
+		if($browser == "IE") {
+			echo "<link rel='stylesheet' type='text/css' href='styleIE.css' />";
+		} else {
+			echo "<link rel='stylesheet' type='text/css' href='style.css' />";
+		}
 		?>
-	</script>
 </head>
 
 <body onload="initialize()">
 	<DIV id="main" style="width: 100%; height:100%">
-			<?php if($goAhead) {
-					include "img/borders/leftside.svg";
-					include "img/borders/rightside.svg";
-					include "img/main.svg";
+			<?php
+				if($goAhead) {
+						include "img/borders/leftside.svg";
+						include "img/borders/rightside.svg";
+						include "img/main.svg";
 				} else {
-					print("Your browser is not supported. " . $message . " Instead, check out adkaplan.wordpress.com and vimeo.com/adkaplan");
+					echo "Your browser is not supported. " . $message . " Instead, check out adkaplan.wordpress.com and vimeo.com/adkaplan";
 				}
 			?>
 	</DIV>

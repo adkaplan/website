@@ -9,13 +9,15 @@
 	<rect class="clipBoxRect" x="15" y="532" width="575" height="190"/>
 </clipPath>
 <!-- Blog Rect -->
-<g id="project" opacity='0' display='none'>
-	<image id="projectImage" onclick='projectClick(evt)' x="12.5" y="135" width="575" height="350" display="none" opacity="0" xlink:href="" />
-	<text xml:space="preserve" id="projectTitle" y="505" x="18"fill="#000000">Project Title!</text>
-	<text xml:space="preserve" id="projectCaption" y="520" x="38"fill="#000000">WOOD, PLASTIC | JAN 2013 | ARCH3010</text>
-	<textArea width='500' height='200' x='100' y='400'>HELLO HELLO</textArea>
-	<text id="click" text-anchor="middle" x="300" y="300" fill="#000000">Click for more!</textArea>
-</g>
+	<g id="project" opacity='0' display='none'>
+	<g id="projectOuter" opacity="1">
+		<image id="projectImage" onclick='projectClick(evt)' x="12.5" y="135" width="575" height="350" display="none" opacity="0" xlink:href="" />
+	</g>
+		<text xml:space="preserve" id="projectTitle" y="505" x="18"fill="#000000">Project Title!</text>
+		<text xml:space="preserve" id="projectCaption" y="520" x="36"fill="#000000">WOOD, PLASTIC | JAN 2013 | ARCH3010</text>
+		<text id="click" text-anchor="middle" x="300" y="300" fill="#000000">Click for more!</text>
+	</g>
+
 <g id="blogBack" opacity="0" display="none">
 	<rect x="70" y="320" width="460" height="200" fill="#EEEEEE" stroke="#CCCCCC" />
   	<foreignobject x="70" y="320" width="460" height="200"><body xmlns="http://www.w3.org/1999/xhtml">

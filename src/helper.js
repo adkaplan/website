@@ -33,7 +33,6 @@ function svgFadeIn(obj,dur) {
 }
 function svgFadeOut(obj,dur) {
     obj.stop();
-    obj.attr("display","none")
     obj.animate({svgOpacity:'0'},{
         duration:dur,
         complete:(function() {

@@ -281,6 +281,7 @@ function menuClick(evt) {
 			var clicked = $(".dark#" + $(evt.target.parentNode).attr("id"));
 		}
 		else clicked = $(evt.target);
+		if(clicked.attr('id') == 'aBox' && !gallery) return;
 		if(gallery) {
 			cMenu.jq = [
 				$("#" + cCategory + "Dark").find("#box"),
@@ -299,6 +300,7 @@ function menuClick(evt) {
 			next(cMenu);
 		}
 		if(project) {
+			svgFadeOut($(".texts"),500);
 			svgFadeOut($("#project"),300);
 			project = false;
 		}
@@ -328,6 +330,8 @@ function menuClick(evt) {
 					});
 					cMenu = null;
 					state = "goHome";
+					return;
+				} else {
 					return;
 				}
 		}

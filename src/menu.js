@@ -39,8 +39,8 @@ function menuMouseIn(tLine) {
 		case 2: //Popouttext Slide
 			if(gallery) {
 				if(project) {
-					$("#projectImage").stop(true);
-					$("#projectImage").animate({svgOpacity:.1})
+					$("#projectOuter").stop(true);
+					$("#projectOuter").animate({svgOpacity:.1})
 				} else {
 					fadeColumnOut(tLine.colNum)
 				}
@@ -83,8 +83,8 @@ function menuMouseOut(tLine) {
 			if(gallery) {
 				if(project) {
 					if(mTime.state != "mouseShow" && dTime.state != "mouseShow" && sTime.state !="mouseShow") {
-						$("#projectImage").stop(true);
-						$("#projectImage").animate({svgOpacity:1})
+						$("#projectOuter").stop(true);
+						$("#projectOuter").animate({svgOpacity:1})
 					}
 				} else {
 					fadeColumnIn(tLine.colNum);
@@ -177,6 +177,7 @@ function gallerySelect(tLine) { //Transition between mouseIn and menuOut(global)
 		case 1: //Colorize rectangle
 			var rect = obj.children('#rect')
 			var color = obj.closest(".dark").find('#popoutText').attr('fill');
+			$(".standout").attr('fill',color);
 			var xCenter = parseInt(rect.attr('x'))+49;
 			var yCenter = parseInt(rect.attr('y'))+49;
 			obj.animate(

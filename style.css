@@ -14,15 +14,19 @@ svg {
 }
 @font-face {
 	font-family: segoeUI;
-	src: url("segoe/segoeui.ttf");
+	src: url("font/segoeui.ttf");
 }
 @font-face {
 	font-family: segoeUIl;
-	src: url("segoe/segoeuil.ttf");
+	src: url("font/segoeuil.ttf");
 }
 @font-face {
 	font-family: segoeUIi;
-	src: url("segoe/segoeuii.ttf");
+	src: url("font/sdfsduii.ttf");
+}
+@font-face {
+	font-family: swiss;
+	src: url("font/SwissB.ttf");
 }
 #welcomeBox {
 	font-family: segoeUI;
@@ -30,11 +34,11 @@ svg {
 }
 #projectTitle {
 	font-family: segoeUI;
-	font-size: 20px;
+	font-size: 19px;
 }
 #projectCaption {
 	font-family: segoeUIl;
-	font-size: 14px;
+	font-size: 15px;
 	letter-spacing: 3px;
 }
 #click {
@@ -52,3 +56,18 @@ svg {
 .clickable {
 	cursor: pointer;
 }
+.texts {
+	font-family: swiss;
+   -moz-user-select: -moz-none;
+   -khtml-user-select: none;
+   -webkit-user-select: none;16
+   /*
+     Introduced in IE 10.
+     See http://ie.microsoft.com/testdrive/HTML5/msUserSelect/
+   */
+   -ms-user-select: none;
+   user-select: none;
+}
+/*
+ddf1be
+*/

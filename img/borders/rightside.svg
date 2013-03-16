@@ -1003,4 +1003,11 @@
 	<line fill="none" stroke="#3A53A4" stroke-linecap="round" x1="606.063" y1="432.526" x2="631.43" y2="432.071"/>
 	<line fill="none" stroke="#3A53A4" stroke-linecap="round" x1="608.432" y1="702.089" x2="631.595" y2="699.776"/>
 </g>
+<g>
+	<text class="texts" transform="matrix(-4.371139e-008 -1 1 -4.371139e-008 326.1729 1763.646)" fill="#E7E7E7" font-family="'Swiss'" opacity="0" font-size="182">STREETCAR</text>
+	<text class="texts" transform="matrix(-4.371139e-008 -1 1 -4.371139e-008 609.3926 2065.8511)" fill="#E6E6E6" font-family="'Swiss'" opacity="0" font-size="182">STREETCAR</text>
+	<text class="texts" transform="matrix(-4.371139e-008 -1 1 -4.371139e-008 362.6484 689.5391)" fill="#E6E6E6" font-family="'Swiss'" opacity="0" font-size="182">STREETCAR</text>
+	<text class="texts" transform="matrix(-4.371139e-008 -1 1 -4.371139e-008 145.415 1185.4019)" fill="#E6E6E6" font-family="'Swiss'" opacity="0" font-size="182">STREETCAR</text>
+	<text class="texts" transform="matrix(-4.371139e-008 -1 1 -4.371139e-008 478.7109 1623.7905)" fill="#EAEAEA" font-family="'Swiss'" opacity="0" font-size="182">STREETCAR</text>
+	</g>
 </svg>

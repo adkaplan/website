@@ -51,6 +51,7 @@ function goHome() {
 
 function enterProject() {
     //Update Text
+    $(".texts").text(cProject);
     $("#projectTitle").text(cTitle);
     $("#projectCaption").text(cProject + " | " + cDate + " | " + cCaption);
 
@@ -71,7 +72,7 @@ function enterProject() {
 
     //Fade in Project
     svgFadeIn($("#project"),300);
-
+    $("#projectOuter").attr("opacity",1);
     //Reset Scrollbar
     window.scrollTo(0,0);
     scroll();
@@ -84,6 +85,11 @@ function enterProject() {
     $("#projectImage").attr("opacity","0");
     $("#projectImage").stop();
     tempImage.onload = function() {
+    						// temp = 300;
+    						svgFadeIn($(".texts"),1000);
+
+
+    						// svgFadeIn($(".texts"),1000);
     						d = new Date();
     						if(true) console.log("CIMAGE:ELAPSED: "+ String(d.getTime() - start));
                             $("#projectImage").removeAttr("display");
@@ -116,6 +122,8 @@ function enterProject() {
 }
 
 function exitProject() {
+	//$(".texts").text(cProject);
+
 	//Nothing builds this..?
     project = false;
     $("#project").attr("display","none");
