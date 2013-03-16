@@ -15,20 +15,20 @@ function initialize() {
 	//
 	//GLOBAL CONSTANTS
 	//
-	debug = true
+	debug = false
 	scrollFactor = 5;
 	linkOpacity = .45;
 	//
 	//
 	//
 	//Initial Sorting, shuffling of list
-	for (var i=0;i<content.length;i++) {
+	for (var i=0;i<content.length;i++) { //Delimit
 		for(var j=0;j<content[i].length;j++) {
 			if(content[i][j].indexOf(";") != -1) content[i][j] = content[i][j].split(";")
 			else content[i][j] = [content[i][j]]
 		}
 	}
-	shuffle(content);
+	//shuffle(content);
 	state = "enterSite"
 	next();
 
@@ -276,12 +276,12 @@ function projectClick(evt) {
 }
 function menuClick(evt) {
 		if(state != "rest") return;
+		if($(evt.target).attr('id') == 'fill' && !gallery) return;
 		state = "transition"
 		if ($(evt.target.parentNode).hasClass("darkHit")) {
 			var clicked = $(".dark#" + $(evt.target.parentNode).attr("id"));
 		}
 		else clicked = $(evt.target);
-		if(clicked.attr('id') == 'aBox' && !gallery) return;
 		if(gallery) {
 			cMenu.jq = [
 				$("#" + cCategory + "Dark").find("#box"),
@@ -395,7 +395,12 @@ function galleryClick(evt) {
 		changeImage();
 	} else {
 		cProject = cContent[0];
-		svgFadeIn($("#" + cCategory + "Dark #back"),300)
+		back = $("#" + cCategory + "Dark #back");
+		back.stop();
+		console.log(back);
+		back.removeAttr("display");
+		back.animate({svgOpacity: '.8'}, {duration:250});
+		back.animate({svgOpacity: '.5'}, {duration:300});
 		state = "galleryOut";
 		project = true;
 		next();

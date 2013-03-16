@@ -5,7 +5,7 @@ function changeImage() {
     if(cMore != "") {
         $("#click").removeAttr("display")
         $("#click").attr("opacity","0")
-        $("#click").text(cMore)
+        $("#clicktext").text(cMore)
         $("#projectImage").toggleClass("clickable",true)
     } else {
         $("#click").attr("display","none");

@@ -58,7 +58,7 @@ function enterProject() {
     if(cMore != "") {
     	$("#click").removeAttr("display")
     	$("#click").attr("opacity","1")
-    	$("#click").text(cMore)
+    	$("#clicktext").text(cMore)
     	var opac = linkOpacity;
     } else {
     	$("#click").attr("opacity","0")

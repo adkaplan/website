@@ -28,13 +28,22 @@ svg {
 	font-family: swiss;
 	src: url("font/SwissB.ttf");
 }
-#welcomeBox {
-	font-family: segoeUI;
-	font-size: 12px;
+#email {unicode-bidi:bidi-override; direction: rtl;}
+#welcomeText {
+	font-family: segoeUIl;
+	font-size: 12.5px;
 }
 #projectTitle {
 	font-family: segoeUI;
 	font-size: 19px;
+}
+#clicktext {
+	font-family: swiss;
+	font-size: 19px;
+}
+#clicktextsub {
+	font-family: segoeUI;
+	font-size: 11px;
 }
 #projectCaption {
 	font-family: segoeUIl;

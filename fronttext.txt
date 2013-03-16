@@ -1,1 +1,8 @@
-My name is Alexander Kaplan. I'm an undergraduate in the University of Virginia's architecture program.
+Welcome to my digital portfolio.
+
+<p>I am a student of the University of Virginia School of Architecture,<br>
+a programmer, 3D modeller, carpenter, welder, and web designer.</p>
+
+<i>-Alex Kaplan<br>
+
+<span id="email">ude.ainigriv&#064;nalpakda</i></span>

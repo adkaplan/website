@@ -15,16 +15,21 @@
 	</g>
 		<text xml:space="preserve" id="projectTitle" y="505" x="18"fill="#000000">Project Title!</text>
 		<text xml:space="preserve" id="projectCaption" y="520" x="36"fill="#000000">WOOD, PLASTIC | JAN 2013 | ARCH3010</text>
-		<text id="click" text-anchor="middle" x="300" y="300" fill="#000000">Click for more!</text>
+		<g id="click">
+		<text id="clicktext" text-anchor="middle" x="300" y="300" fill="#000000">Click for more!</text>
+		<text id="clicktextsub" text-anchor="middle" x="300" y="315" fill="#000000">(Opens in a new window)</text>
+		</g>
 	</g>
 
 <g id="blogBack" opacity="0" display="none">
-	<rect x="70" y="320" width="460" height="200" fill="#EEEEEE" stroke="#CCCCCC" />
-  	<foreignobject x="70" y="320" width="460" height="200"><body xmlns="http://www.w3.org/1999/xhtml">
+	<rect opacity=".4" x="70" y="320" width="460" height="120" fill="#EEEEEE" stroke="#CCCCCC" />
+  	<foreignobject x="75" y="320" width="450" height="120"><body xmlns="http://www.w3.org/1999/xhtml">
   		<div id="welcomeBox">
+  			<span id="welcomeText">
   			<?php
 		  		include "fronttext.txt";
 	  		?>
+	  	</span>
 		  	</div>
 		</body>
 	</foreignobject>
@@ -299,7 +304,7 @@
 			c0.527-2.324,1.084-4.347,1.67-6.063l8.584-24.844h13.506L286.175,270.664L286.175,270.664z"/>
 	</g>
 	<g id="back" opacity="0">
-		<rect opacity=".45" x="192" y="269" opacity=".5" fill="#FFFFFF" width="96px" height="29px"/>
+		<rect opacity=".9" x="192" y="269" opacity=".5" fill="#FFFFFF" width="96px" height="29px"/>
 		<text xml:space="preserve" text-anchor="middle" class="backText" y="290" x="238"fill="#000000">GO BACK</text>
 	</g>
 </g>
@@ -353,7 +358,7 @@
 			c-2.313-2.295-5.562-3.442-9.739-3.442L379.267,236.357L379.267,236.357z"/>
 	</g>
 	<g id="back" opacity="0">
-		<rect opacity=".45" x="312" y="269" opacity=".5" fill="#FFFFFF" width="96px" height="29px"/>
+		<rect opacity=".9" x="312" y="269" opacity=".5" fill="#FFFFFF" width="96px" height="29px"/>
 		<text xml:space="preserve" text-anchor="middle" class="backText" y="290" x="358"fill="#000000">GO BACK</text>
 	</g>
 </g>
@@ -422,7 +427,7 @@
 			c-2.021,0.432-4.155,0.646-6.401,0.646c-2.305,0-4.495-0.195-6.575-0.586C501.695,270.419,499.895,269.834,498.371,269.053z"/>
 	</g>
 	<g id="back" opacity="0">
-		<rect opacity=".45" x="432" y="269" opacity=".5" fill="#FFFFFF" width="96px" height="29px"/>
+		<rect opacity=".9" x="432" y="269" opacity=".5" fill="#FFFFFF" width="96px" height="29px"/>
 		<text xml:space="preserve" text-anchor="middle" class="backText" y="290" x="478"fill="#000000">GO BACK</text>
 	</g>
 </g>
