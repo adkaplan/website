@@ -6,10 +6,10 @@ function changeImage() {
         $("#click").removeAttr("display")
         $("#click").attr("opacity","0")
         $("#clicktext").text(cMore)
-        $("#projectImage").toggleClass("clickable",true)
+        $("#projectClick").toggleClass("clickable",true)
     } else {
         $("#click").attr("display","none");
-        $("#projectImage").toggleClass("clickable",false)
+        $("#projectClick").toggleClass("clickable",false)
     }
     setTimeout((function() {
         $("#projectTitle").text(cTitle);

@@ -15,7 +15,7 @@ function initialize() {
 	//
 	//GLOBAL CONSTANTS
 	//
-	debug = false
+	debug = true
 	scrollFactor = 5;
 	linkOpacity = .45;
 	//
@@ -95,6 +95,7 @@ var cMore;
 var cLink;
 var cGalleryItem;
 var cExcess = 0;
+var cWaiting;
 
 
 var mTime = new Timeline("menu", "rest");
@@ -170,7 +171,6 @@ $(function() {
 	//EVENTS
 	//
 	$(".darkHit").mouseenter(function() {
-		if(state != "rest") return;
 		switch($(this).attr('id')) { //Get the right Timeline SHITTY
 			case "mDark":
 				var tLine = mTime;
@@ -188,7 +188,15 @@ $(function() {
 				return;
 			break;
 		}
-		if(tLine.state == "rest" || tLine.state == "mouseHide") {
+
+		if(state != "rest") {
+			console.log(state)
+			cWaiting = $(this)
+				tLine.jq = [];
+				tLine.state = "wait";
+			return;
+		}
+		if(tLine.state == "wait" || tLine.state == "rest" || tLine.state == "mouseHide") {
 			var current = tLine.jq.length;
 			var root = rect.closest(".dark");
 			tLine.jq = [
@@ -201,7 +209,7 @@ $(function() {
 				for(var i=0;i<current;i++) tLine.jq.shift(); //delete unnecessary steps of the animation
 				tLine.state = "mouseShow";
 			}
-			if(tLine.state == "rest") {
+			if(tLine.state == "rest" || tLine.state == "wait") {
 				tLine.state = "mouseShow";
 				next(tLine); //start the animation
 			}
@@ -209,6 +217,7 @@ $(function() {
 	});
 
 	$(".darkHit").mouseleave(function() {
+		cWaiting = null;
 		if(state != "rest") return;
 		switch($(this).attr('id')) { //Get the right Timeline (SHITTY)
 			case "mDark":
@@ -269,7 +278,7 @@ $(function() {
 
 
 function projectClick(evt) {
-	if(!$("#projectImage").hasClass("clickable")) return;
+	if(!$("#projectClick").hasClass("clickable")) return;
 	window.open(cLink,"_new")
 	// window.open(cLink,'popUpWindow','height=600,width=600,left=0,top=0,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no, status=yes');
 
@@ -378,7 +387,7 @@ function galleryClick(evt) {
 	if(cContent[2] != "") {
 		cMore = cContent[2];
 		cLink = cContent[10];
-        $("#projectImage").toggleClass("clickable",true)
+        $("#projectClick").toggleClass("clickable",true)
 	} else {
 		cMore = ""
 		cLink = ""

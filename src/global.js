@@ -25,7 +25,7 @@ function enterSite() {
 	setTimeout(function() {
 		svgFadeIn($("#blogBack"),200);
 		state = "rest";
-	},2000)
+	},1800)
 }
 function goHome() {
 	if(jq.length == 0) {

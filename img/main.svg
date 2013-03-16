@@ -11,13 +11,16 @@
 <!-- Blog Rect -->
 	<g id="project" opacity='0' display='none'>
 	<g id="projectOuter" opacity="1">
+
 		<image id="projectImage" onclick='projectClick(evt)' x="12.5" y="135" width="575" height="350" display="none" opacity="0" xlink:href="" />
+
 	</g>
 		<text xml:space="preserve" id="projectTitle" y="505" x="18"fill="#000000">Project Title!</text>
 		<text xml:space="preserve" id="projectCaption" y="520" x="36"fill="#000000">WOOD, PLASTIC | JAN 2013 | ARCH3010</text>
 		<g id="click">
 		<text id="clicktext" text-anchor="middle" x="300" y="300" fill="#000000">Click for more!</text>
 		<text id="clicktextsub" text-anchor="middle" x="300" y="315" fill="#000000">(Opens in a new window)</text>
+		<rect id="projectClick" opacity="0" onclick='projectClick(evt)' x="12.5" y="135" width="575" height="350" opacity=".5"/>
 		</g>
 	</g>
 
@@ -431,13 +434,13 @@
 		<text xml:space="preserve" text-anchor="middle" class="backText" y="290" x="478"fill="#000000">GO BACK</text>
 	</g>
 </g>
-<g id="mDark"class="darkHit clickable" opacity="0" onclick="menuClick(evt)" >
+<g id="mDark"class="mdh darkHit clickable" opacity="0" onclick="menuClick(evt)" >
 	<rect x="190" y="200" width="100" height="100"/>
 </g>
-<g id="dDark" class="darkHit clickable" opacity="0" onclick="menuClick(evt)" >
+<g id="dDark" class="ddh darkHit clickable" opacity="0" onclick="menuClick(evt)" >
 	<rect x="310" y="200" width="100" height="100"/>
 </g>
-<g id="sDark" class="darkHit clickable" opacity="0" onclick="menuClick(evt)" >
+<g id="sDark" class="sdh darkHit clickable" opacity="0" onclick="menuClick(evt)" >
 	<rect x="430" y="200" width="100" height="100"/>
 </g>
 <!-- "A" menu item -->

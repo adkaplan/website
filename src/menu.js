@@ -1,5 +1,10 @@
 // function blog
 function menuMouseIn(tLine) {
+	if(state != "rest") {
+		tLine.jq = []
+		tLine.state = "rest"
+		return;
+	}
 	if(tLine.state != "mouseShow"	 || tLine.jq.length == 0) {
 		if(tLine.jq.length == 0) tLine.state = "rest";
 		return;
