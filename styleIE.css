@@ -12,24 +12,6 @@ svg {
     height:100%;
     width:100%;
 }
-a:link {
-    text-decoration: none;
-    color: #84AC4B;
-}
-a:visited {
-    text-decoration: none;
-    color: #84AC4B;
-}
-a:hover {
-    text-decoration: underline;
-    color: #84AC4B;
-}
-
-a:active {
-    text-decoration: underline;
-    color: #84AC4B;
-}
-
 @font-face {
     font-family: segoeUI;
     src: url("font/segoeui.ttf");
@@ -40,40 +22,31 @@ a:active {
 }
 @font-face {
     font-family: segoeUIi;
-    src: url("font/segoeuii.ttf");
+    src: url("font/sdfsduii.ttf");
 }
 @font-face {
     font-family: swiss;
     src: url("font/SwissB.ttf");
 }
-#email {unicode-bidi:bidi-override; direction: rtl;}
-#welcomeText {
-    font-family: segoeUIl;
-    font-size: 15px;
+#welcomeBox {
+    font-family: arial;
+    font-size: 12px;
 }
 #projectTitle {
-    font-family: segoeUI;
+    font-family: arial;
     font-size: 19px;
-}
-#clicktext {
-    font-family: swiss;
-    font-size: 19px;
-}
-#clicktextsub {
-    font-family: segoeUI;
-    font-size: 11px;
 }
 #projectCaption {
-    font-family: segoeUIl;
+    font-family: arial;
     font-size: 15px;
     letter-spacing: 3px;
 }
 #click {
-    font-family: segoeUIi;
+    font-family: arial;
     font-size: 26px;
 }
 .backText {
-    font-family: segoeUIl;
+    font-family: arial;
     font-size: 15px;
     letter-spacing: 3px;
 }
@@ -84,7 +57,7 @@ a:active {
     cursor: pointer;
 }
 .texts {
-    font-family: swiss;
+    font-family: arial;
    -moz-user-select: -moz-none;
    -khtml-user-select: none;
    -webkit-user-select: none;16
@@ -95,3 +68,6 @@ a:active {
    -ms-user-select: none;
    user-select: none;
 }
+/*
+ddf1be
+*/

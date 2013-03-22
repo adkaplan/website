@@ -1,8 +1,16 @@
-Welcome to my digital portfolio.
+ Welcome to my digital portfolio.
 
 <p>I am a student of the University of Virginia School of Architecture,<br>
-a programmer, 3D modeller, carpenter, welder, and web designer.</p>
+a programmer, 3D modeler, carpenter, welder, and web designer.</p>
 
-<i>-Alex Kaplan<br>
+<em>-Alex Kaplan<br>
 
-<span id="email">ude.ainigriv&#064;nalpakda</i></span>
+<span id="email">ude.ainigriv&#064;nalpakda</span></em> <br>
+<a href="alexkaplan.pdf"><strong>Resume</strong></a><img src="pdf_inline.gif" />
+
+
+
+
+
+
+

@@ -15,16 +15,16 @@ function next(String) {
 		}
 		if(jq.length == 0) {
 			if(state == "galleryIn") state = "rest";
-			if(mTime.state == "wait") {
-				mTime.state = "rest"
-				$(".mdh").mouseenter();
-			} else if (dTime.state == "wait") {
-				dTime.state = "rest"
-				$(".ddh").mouseenter();
-			} else if (sTime.state == "wait") {
-				sTime.state = "rest"
-				$(".sdh").mouseenter();
-			}
+			// if(mTime.state == "wait") {
+			// 	mTime.state = "rest"
+			// 	$(".mdh").mouseenter();
+			// } else if (dTime.state == "wait") {
+			// 	dTime.state = "rest"
+			// 	$(".ddh").mouseenter();
+			// } else if (sTime.state == "wait") {
+			// 	sTime.state = "rest"
+			// 	$(".sdh").mouseenter();
+			// }
 		}
 		switch(state) {
 			case "enterSite":

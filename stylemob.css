@@ -1,0 +1,78 @@
+@font-face {
+    font-family: segoeUI;
+    src: url("font/segoeui.ttf");
+}
+@font-face {
+    font-family: segoeUIl;
+    src: url("font/segoeuil.ttf");
+}
+@font-face {
+    font-family: segoeUIi;
+    src: url("font/segoeuii.ttf");
+}
+@font-face {
+    font-family: swiss;
+    src: url("font/SwissB.ttf");
+}
+a:link {
+    text-decoration: none;
+    color: #84AC4B;
+    outline: 0;
+}
+body {
+    overflow-y:none;
+    overflow-x: none;
+    margin:0;
+    padding:0;
+    Background: #E6E6E6;
+}
+.map{
+    outline: none;
+}
+#welcomeBox {
+    width: 500px;
+    margin: 0 auto;
+}
+#email {unicode-bidi:bidi-override; direction: rtl;}
+.texts {
+    font-family: swiss;
+   -moz-user-select: -moz-none;
+   -khtml-user-select: none;
+   -webkit-user-select: none;16
+   /*
+     Introduced in IE 10.
+     See http://ie.microsoft.com/testdrive/HTML5/msUserSelect/
+   */
+   -ms-user-select: none;
+   user-select: none;
+}
+#welcomeText {
+    font-family: swiss;
+    font-size: 14px;
+
+}
+/*style="position:absolute; top:30%; left:15%; width:100; height:100 background-color:*/
+.mobdark {
+    position: absolute;
+    top: 30%;
+    width: 15%;
+    padding-bottom: 10%;
+    background-color: #000000;
+    font-family: arial;
+    font-size: 20;
+
+    align: right;
+}
+
+#m {
+    left: 25%;
+    color: #D4342A;
+}
+#d {
+    left: 45%;
+    color: #A2328D;
+}
+#s {
+    left: 65%;
+    color: #FFD431;
+}

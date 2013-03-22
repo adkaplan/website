@@ -26,14 +26,16 @@
 	<script type="text/javascript">
 	var content = [];
 	<?php
-		global $goAhead;
+		global $goAhead, $agent;
 		$agent = $_SERVER['HTTP_USER_AGENT'];
 
-		//$agent = "MSIE";
-		//
 		$browser_version = 0;
 	    $browser= 'ss';
-		if (preg_match('|MSIE ([0-9]{1,2}.[0-9]{1,2})|',$agent,$matched)) {
+	    if (preg_match('|Mobile|',$agent,$matched)) {
+	    	$agent = "YAY";
+	    	$browser = "mobile";
+
+	    } elseif (preg_match('|MSIE ([0-9]{1,2}.[0-9]{1,2})|',$agent,$matched)) {
 		     $browser_version=$matched[1];
 		     $browser = 'IE';
 		} elseif (preg_match('|Opera ([0-9]\.[0-9]{1,2})|',$agent,$matched)) {
@@ -58,7 +60,9 @@
 			$browser = "other";
 			$browser_version = 0;
 		}
-		if ($browser == "IE" && $browser_version<9) {
+		if ($browser == "mobile") {
+			$goAhead = False;
+		} elseif ($browser == "IE" && $browser_version<9) {
 			$goAhead = False;
 			$message = "Your version of internet explorer needs to be updated to 9 to be supported.";
 		} elseif($browser == "Android" && $browser_version<3) {
@@ -66,7 +70,6 @@
 			$message = "This site does not support older android browsers";
 		} elseif ($browser == 'other') {
 			$goAhead = False;
-			//print("console.log('" . $agent . "');");
 			$messge = "";
 		} elseif ($browser == "Safari" && $browser_version<5.1) {
 			$goAhead = False;
@@ -93,10 +96,12 @@
 			fclose($handle);
 		} else $error = "Cannot find content";
 		echo "</script>";
-		if($browser == "IE") {
+		if($browser == "IE" && $goAhead) {
 			echo "<link rel='stylesheet' type='text/css' href='styleIE.css' />";
-		} else {
+		} else if ($goAhead) {
 			echo "<link rel='stylesheet' type='text/css' href='style.css' />";
+		} else {
+			echo "<link rel='stylesheet' type='text/css' href='stylemob.css' />";
 		}
 		?>
 </head>
@@ -105,11 +110,12 @@
 	<DIV id="main" style="width: 100%; height:100%">
 			<?php
 				if($goAhead) {
-						include "img/borders/leftside.svg";
-						include "img/borders/rightside.svg";
-						include "img/main.svg";
+						include "imgstatic/leftside.svg";
+						include "imgstatic/rightside.svg";
+						include "imgstatic/main.svg";
 				} else {
-					echo "Your browser is not supported. " . $message . " Instead, check out adkaplan.wordpress.com and vimeo.com/adkaplan";
+					// echo "Your browser is not supported. " . $message . " Instead, check out adkaplan.wordpress.com (WIP) and vimeo.com/adkaplan";
+						include "mobileindex.html";
 				}
 			?>
 	</DIV>

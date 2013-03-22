@@ -15,7 +15,7 @@ function initialize() {
 	//
 	//GLOBAL CONSTANTS
 	//
-	debug = true
+	debug = false
 	scrollFactor = 5;
 	linkOpacity = .45;
 	//
@@ -190,10 +190,10 @@ $(function() {
 		}
 
 		if(state != "rest") {
-			console.log(state)
-			cWaiting = $(this)
+				console.log(state)
+				//cWaiting = $(this)
 				tLine.jq = [];
-				tLine.state = "wait";
+				if(tLine.state == "mouseHide" || tLine.state == "mouseShow") tLine.state = "wait";
 			return;
 		}
 		if(tLine.state == "wait" || tLine.state == "rest" || tLine.state == "mouseHide") {
